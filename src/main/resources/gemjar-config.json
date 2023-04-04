@@ -1,0 +1,22 @@
+{
+  "environment": "beta",
+  "project_name": "HRIS",
+  "enter_point": "https://apis.gemecosystem.com/enter-point",
+  "jewel_user": "anshuman.singh",
+  "sub_id": "test_id",
+  "jewel_bridge_token": "8e6fde4e-83c6-456b-aacb-de9e1d801e311680510023694",
+  "glueCode":"com.qa.hris.stepdefinitions",
+  "email_report": null,
+  "email_to": "",
+  "email_cc": "",
+   "dev": {
+    "browserName": "edge",
+    "launchUrl": "https://dev-hris.geminisolutions.com/login",
+    "browserTimeout": 100
+  },
+  "beta": {
+    "browserName": "chrome",
+    "launchUrl": "https://uat-hris.geminisolutions.com/login",
+    "browserTimeout": 100
+  }
+}
