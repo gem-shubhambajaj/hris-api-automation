@@ -3,7 +3,6 @@ package com.qa.hris.stepdefinitions;
 import com.gemini.generic.api.utils.ApiInvocation;
 import com.gemini.generic.api.utils.Request;
 import com.gemini.generic.api.utils.Response;
-import com.qa.hris.commonutils.Utils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.testng.Assert;
@@ -35,7 +34,7 @@ public class LoginPage {
         request.setURL(url);
         request.setMethod("POST");
         request.setRequestPayload("{\n" +
-                "  \"email\": \"anshuman.singh@geminisolutions.com\",\n" +
+                "  \"email\": \"ananya.jain@geminisolutions.com\",\n" +
                 "  \"_id\": \"\"\n" +
                 "}");
 

@@ -6,7 +6,6 @@ Feature: HRIS API Authentication
   Scenario: test step
     Given fetch response
 
-
 #  Scenario Outline: API VALIDATION: Login Dashboard Authentication
 #    Given Set endpoint "<endpoint>" and method "<method>" for Login Dashboard Authentication
 #    Then Verify dashboard status code <expectedStatus>
