@@ -1,5 +1,5 @@
 {
-  "environment": "beta",
+  "environment": "dev",
   "project_name": "HRIS",
   "enter_point": "https://apis.gemecosystem.com/enter-point",
   "jewel_user": "ananya.jain",
@@ -12,10 +12,7 @@
   "dev": {
     "browserName": "edge",
     "launchUrl": "https://dev-hris.geminisolutions.com/login",
-    "browserTimeout": 100
-  },
-
-  "dev": {
+    "browserTimeout": 100,
     "addnew": "/dev/users/addnew",
     "getallHr": "/dev/hr/getallHr",
     "getRoles": "/dev/users/getRoles",
