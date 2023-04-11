@@ -14,11 +14,11 @@ public class LoginPage {
 
     int status;
     static Response response;
-    @Given("^Set endpoint \"(.*)\" and method \"(.*)\" for Login Dashboard Authentication$")
-    public void LoginDshbrdAuth(String url, String method) throws Exception {
-        HashMap<String, String> token = new HashMap<String, String>();
-        token.put("authorization", Utils.GetAuthorization());
-        response = Utils.LoginUser(url, method, token, "LoginUser");
+    @Given("Set endpoint {string} and method {string} and payload {string} for Login Dashboard Authentication")
+    public void LoginDshbrdAuth(String url, String method, String payload) throws Exception {
+//        HashMap<String, String> token = new HashMap<String, String>();
+//        token.put("authorization", Utils.GetAuthorization());
+        response = Utils.LoginUser(url, method, payload, "LoginUser");
         status = response.getStatus();
     }
 
@@ -27,11 +27,10 @@ public class LoginPage {
         Utils.VerifyStatusCode(Expected, status);
     }
 
-
     @Given("^User is able to successfully fetch access token$")
     public static void authMethod(){
         Request request = new Request();
-        String url = "https://y8dnz1n4p5.execute-api.ap-south-1.amazonaws.com/dev/users/auth";
+        String url = "https://dleae1blka.execute-api.ap-south-1.amazonaws.com/uat/users/auth";
         request.setURL(url);
         request.setMethod("POST");
         request.setRequestPayload("{\n" +

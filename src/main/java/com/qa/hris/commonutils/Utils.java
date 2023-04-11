@@ -72,27 +72,27 @@ public class Utils extends GemjarTestngBase {
         return commonAPI;
     }
 
-    public static Response LoginUser(String UrlNameFromConfig, String method, Map<String, String> headers, String step) throws Exception {
+    public static Response LoginUser(String UrlNameFromConfig, String method, String sample, String step) throws Exception {
         Response response = new Response();
         try {
             Request request = new Request();
-//            String url = APIcalling() + ProjectConfigData.getProperty(UrlNameFromConfig);
-            /*+ ProjectConfigData.getProperty(UrlNameFromConfig)*/
-            UrlNameFromConfig = APIcalling();
-//            GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url, STATUS.INFO);
-            request.setURL(UrlNameFromConfig);
+            String url = ProjectConfigData.getProperty(UrlNameFromConfig);
+            GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url, STATUS.INFO);
+            request.setURL(url);
             request.setMethod(method);
-            if (!headers.isEmpty()) {
-                request.setHeaders(headers);
-            }
+//            if (!headers.isEmpty()) {
+//                request.setHeaders(headers);
+//            }
             if (!step.isEmpty()) {
                 request.setStep(step);
             }
-
+            String payload = ProjectSampleJson.getSampleDataString(sample);
+            request.setRequestPayload(payload);
             response = ApiInvocation.handleRequest(request);
             if (response.getStatus() == HttpStatus.SC_OK) {
                 GlobalVariable.token = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("token").getAsString();
             }
+            System.out.println(GlobalVariable.token);
             GemTestReporter.addTestStep("Response Message", response.getResponseMessage(), STATUS.INFO);
             if ((response.getResponseBody()) != null) {
                 GemTestReporter.addTestStep("Response Body", response.getResponseBody(), STATUS.INFO);
@@ -182,14 +182,9 @@ public class Utils extends GemjarTestngBase {
             if (!step.isEmpty()) {
                 request.setStep(step);
             }
-            if (!payloadName.equals("")) {
-                String payload = ProjectSampleJson.getSampleDataString(payloadName);
-                JsonParser parser = new JsonParser();
-                JsonObject pay = (JsonObject) parser.parse(payload);
-                String payloads = String.valueOf(ApiHealthCheckUtils.result(pay));
-                request.setRequestPayload(payloads);
-                GemTestReporter.addTestStep("Payload ", String.valueOf(payloads), STATUS.INFO);
-            }
+            String payload = ProjectSampleJson.getSampleDataString(payloadName);
+            request.setRequestPayload(payload);
+
             response = ApiInvocation.handleRequest(request);
             GemTestReporter.addTestStep("Response Message", response.getResponseMessage(), STATUS.INFO);
 

@@ -19,10 +19,10 @@ public class HRonboardingStep {
     int status = 0;
 
     //setting the endpoint and method for API
-    @Given("Set endpoint and method {string} and {string}")
+    @Given("^Set endpoint and method (.+) and (.+)$")
     public void setEndpointAndMethod(String url, String method) {
         HashMap<String, String> header = new HashMap<String, String>();
-        header.put("", "");
+        header.put("Authorization",GlobalVariable.token);
         try {
             status = Utils.apiWithoutPayloads(url, method, header, "").getStatus();
             GemTestReporter.addTestStep("Hit the " + url, "API was successfully triggered", STATUS.PASS);
@@ -33,14 +33,15 @@ public class HRonboardingStep {
     }
 
     @Then("Verify Status code {int}")
-    public void verifyStatusCodeExpected_status(Integer Expected) {
+    public void verifyStatusCodeExpected_status(Integer Expected)
+    {
         Utils.VerifyStatusCode(Expected, status);
     }
 
     //    @Given("^Set endpoint and method (\\w*) and method (\\w+)$")
 //    public void setEndpointAndMethod(String url, String method) {
 //        HashMap<String, String> header = new HashMap<String, String>();
-//        header.put("", "");
+     //   header.put("Authorization",GlobalVariable.token);
 //        try {
 //            status = Utils.apiWithoutPayloads(url, method, header, "").getStatus();
 //            GemTestReporter.addTestStep("Hit the " + url, "API was successfully triggered", STATUS.PASS);
