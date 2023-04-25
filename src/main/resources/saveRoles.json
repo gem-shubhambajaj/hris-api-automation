@@ -1,0 +1,7 @@
+{
+  "screenId": "string",
+  "permission": "string",
+  "name": "string",
+  "displayName": "string",
+  "description": "string"
+}

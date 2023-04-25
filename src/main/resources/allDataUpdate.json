@@ -1,0 +1,7 @@
+{
+  "_id": "string",
+  "reportingManager": {
+    "name": "string",
+    "email": "string"
+  }
+}

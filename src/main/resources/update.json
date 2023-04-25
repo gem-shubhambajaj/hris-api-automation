@@ -1,0 +1,49 @@
+{
+  "candidateDetails": {
+    "name": {
+      "fullName": "string"
+    },
+    "marital_status": {
+      "status": "string",
+      "spouseName": "string",
+      "spouseDob": "string",
+      "isSpouseWorking": "string",
+      "spouseGender": "string"
+    },
+    "dob": "string",
+    "gender": "string",
+    "primaryContactNumber": "string",
+    "emergencyContactNumber": "string",
+    "email": "string",
+    "bloodGroup": "string",
+    "nationality": {
+      "country": "string",
+      "workPermitForIndia": true
+    },
+    "languageProficiency": "string",
+    "profile": "string",
+    "profileStakeholder": {
+      "name": "string",
+      "email": "string"
+    },
+    "offerDate": "string",
+    "doj": "string",
+    "dof": "string",
+    "professionalExperience": "string",
+    "resume": "string",
+    "hiringLocation": "string",
+    "candidateLocation": "string",
+    "createdAt": "string",
+    "ctc": "string",
+    "paytm_status": {
+      "status": "string",
+      "paytmNumber": "string"
+    },
+    "noOfCompanyWorkedWith": 0
+  },
+  "deskInfo": {
+    "tShirtSize": "string"
+  },
+  "selfDescription": "string",
+  "_id": "string"
+}

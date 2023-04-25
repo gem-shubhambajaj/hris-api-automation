@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "collegeName": "string",
+      "name": "string",
+      "email": "string",
+      "isBA": "string",
+      "isBTech": "string"
+    }
+  ],
+  "collegeName": "string",
+  "name": "string",
+  "email": "string",
+  "isBA": "string",
+  "isBTech": "string"
+}

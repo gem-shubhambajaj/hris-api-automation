@@ -1,0 +1,12 @@
+{
+  "apiModule": "string",
+  "reminderRate": "string",
+  "dayOfTheWeek": "string",
+  "timeOfTheDay": "string",
+  "monthOfTheYear": "string",
+  "dateOfTheMonth": "string",
+  "mailFrom": "string",
+  "mailCc": [
+    "string"
+  ]
+}

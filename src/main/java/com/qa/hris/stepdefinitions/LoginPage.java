@@ -15,16 +15,14 @@ public class LoginPage {
     int status;
     static Response response;
     @Given("Set endpoint {string} and method {string} and payload {string} for Login Dashboard Authentication")
-    public void LoginDshbrdAuth(String url, String method, String payload) throws Exception {
-//        HashMap<String, String> token = new HashMap<String, String>();
-//        token.put("authorization", Utils.GetAuthorization());
-        response = Utils.LoginUser(url, method, payload, "LoginUser");
+    public void loginDashboardAuth(String url, String method, String payload) throws Exception {
+        response = Utils.loginUser(url, method, payload, "LoginUser");
         status = response.getStatus();
     }
 
     @Then("Verify dashboard status code {int}")
-    public void check_status_code(int Expected) throws Exception {
-        Utils.VerifyStatusCode(Expected, status);
+    public void checkStatusCode(int Expected) throws Exception {
+        Utils.verifyStatusCode(Expected, status);
     }
 
     @Given("^User is able to successfully fetch access token$")
@@ -41,11 +39,9 @@ public class LoginPage {
         try{
             response = ApiInvocation.handleRequest(request);
             System.out.println(response);
-//            authToken = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("token").getAsString();
-//            return authToken;
-        }catch(Exception e ){
+        }
+        catch(Exception e ){
             Assert.fail("Failed to generate Auth token due to exception: "+e);
-//            return null;
         }
     }
 

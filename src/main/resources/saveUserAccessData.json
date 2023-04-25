@@ -1,0 +1,7 @@
+{
+  "email": "string",
+  "name": "string",
+  "designation": "string",
+  "team": "string",
+  "role": "string"
+}

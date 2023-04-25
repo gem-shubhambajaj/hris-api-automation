@@ -1,0 +1,8 @@
+{
+  "collegeName": "string",
+  "tpoName": "string",
+  "tpoEmail": "string",
+  "isBA": true,
+  "isBTech": true,
+  "_id": "string"
+}

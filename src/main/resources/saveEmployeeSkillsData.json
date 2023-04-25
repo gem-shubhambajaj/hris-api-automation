@@ -1,0 +1,20 @@
+{
+  "email": "string",
+  "name": "string",
+  "designation": "string",
+  "departmentName": "string",
+  "primarySkills": [
+    {
+      "skillType": "string",
+      "skill": "string",
+      "level": "string"
+    }
+  ],
+  "secondarySkills": [
+    {
+      "skillType": "string",
+      "skill": "string",
+      "level": "string"
+    }
+  ]
+}
