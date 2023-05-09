@@ -1,0 +1,32 @@
+{
+  "_id": "string",
+  "email": "string",
+  "name": "string",
+  "empCode": "string",
+  "screenId": "string",
+  "feedback": {
+    "technicalSupport": "string",
+    "wasContentRelevant": "string",
+    "difficultyLevel": "string",
+    "wasTimeSufficient": "string",
+    "additionalResouces": "string",
+    "traineeAssesmetTest": {
+      "rating": "string",
+      "comment": "string"
+    },
+    "questionIrrelevant": "string",
+    "preMaterialProvided": "string",
+    "preTrainingPrep": "string",
+    "particpantsEnagagement": "string",
+    "interactivityFromParticipants": "string",
+    "anyExternalDistraction": {
+      "rating": "string",
+      "comment": "string"
+    },
+    "participantsQueries": "string",
+    "courseContentChallenging": "string",
+    "obstaclesInTraining": "string",
+    "improvementPreTrainingPhase": "string",
+    "questionQualityByParticipants": "string"
+  }
+}

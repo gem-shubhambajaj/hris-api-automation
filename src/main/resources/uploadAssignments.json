@@ -1,0 +1,10 @@
+{
+  "docId": "string",
+  "uploadedDocuments": [
+    {
+      "filename": "string",
+      "Uid": "string"
+    }
+  ],
+  "Uid": "string"
+}

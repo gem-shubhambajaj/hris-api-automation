@@ -75,7 +75,7 @@ public class Utils extends GemjarTestngBase {
         request.setURL(url);
         request.setMethod("post");
         request.setRequestPayload("{\n" +
-                "  \"email\": \"ananya.jain@geminisolutions.com\",\n" +
+                "  \"email\": \"shubham.bajaj@geminisolutions.com\",\n" +
                 "  \"_id\": \"\"\n" +
                 "}");
         try {
@@ -98,15 +98,59 @@ public class Utils extends GemjarTestngBase {
     }
 
     //send APIwithoutPayload
-    public static Response apiWithoutPayloads(String urlNameFromConfig, String method, Map<String, String> headers, String step) throws Exception {
+    public static Response apiWithoutPayloads(String urlNameFromConfig, String method, Map<String, String> headers, String step,String api) throws Exception {
         Response response = new Response();
         try {
             Request request = new Request();
-            String url = ProjectConfigData.getProperty(urlNameFromConfig);
-            String url2 = GlobalVariable.baseURL + url;
+//            String url = ProjectConfigData.getProperty(urlNameFromConfig);
+//            String url2 = GlobalVariable.baseURL1 + url;
+            String url=null;
+            switch (api){
+                case "MasterTableApi":
+                {
+                    url = GlobalVariable.baseURL3;
+                    break;
+                }
+                case "HRGetDataApi":
+                {
+                    url = GlobalVariable.baseURL1;
+                    break;
+                }
+                case "ExitAutomationApi":
+                {
+                    url = GlobalVariable.baseURL4;
+                    break;
+                }
+                case "TrainingApi":
+                {
+                    url = GlobalVariable.baseURL6;
+                    break;
+                }
+                case "HRonboardCronApi":
+                {
+                    url = GlobalVariable.baseURL7;
+                    break;
+                }
+                case "accountsDataApi":
+                {
+                    url = GlobalVariable.baseURL8;
+                    break;
+                }
+                case "fresherAssignApi":
+                {
+                    url = GlobalVariable.baseURL9;
+                    break;
+                }
+                case "certificationApi":
+                {
+                    url = GlobalVariable.baseURL10;
+                    break;
+                }
+            }
+            url += ProjectConfigData.getProperty(urlNameFromConfig);
 
-            GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url2, STATUS.INFO);
-            request.setURL(url2);
+            GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url, STATUS.INFO);
+            request.setURL(url);
             request.setMethod(method);
             if (!headers.isEmpty()) {
                 request.setHeaders(headers);
@@ -133,12 +177,61 @@ public class Utils extends GemjarTestngBase {
     }
 
     //send APIwithPayload
-    public static Response apiWithPayloads(String urlNameFromConfig, String method, Map<String, String> headers, String step, String payloadName, String s) throws Exception {
+    public static Response apiWithPayloads(String urlNameFromConfig, String method, Map<String, String> headers, String step, String payloadName, String api) throws Exception {
         Response response = new Response();
         try {
             Request request = new Request();
-            String url = ProjectConfigData.getProperty(urlNameFromConfig);
-            url = GlobalVariable.baseURL2 + url;
+            String url=null;
+            switch (api){
+                case "MasterTableApi":
+                {
+                    url = GlobalVariable.baseURL3;
+                    break;
+                }
+                case "HRSaveDataApi":
+                {
+                    url = GlobalVariable.baseURL2;
+                    break;
+                }
+                case "ExitAutomationApi":
+                {
+                    url = GlobalVariable.baseURL4;
+                    break;
+                }
+                case "botAutomationApi":
+                {
+                    url = GlobalVariable.baseURL5;
+                    break;
+                }
+                 case "TrainingApi":
+                {
+                    url = GlobalVariable.baseURL6;
+                    break;
+                }
+                case "HRonboardCronApi":
+                {
+                    url = GlobalVariable.baseURL7;
+                    break;
+                }
+                case "accountsDataApi":
+                {
+                    url = GlobalVariable.baseURL8;
+                    break;
+                }
+                case "fresherAssignApi":
+                {
+                    url = GlobalVariable.baseURL9;
+                    break;
+                }
+                case "certificationApi":
+                {
+                    url = GlobalVariable.baseURL10;
+                    break;
+                }
+            }
+            url += ProjectConfigData.getProperty(urlNameFromConfig);
+//            url =  GlobalVariable.baseURL3+ url;
+
             GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url, STATUS.INFO);
             request.setURL(url);
             request.setMethod(method);

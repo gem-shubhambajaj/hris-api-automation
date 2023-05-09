@@ -1,0 +1,21 @@
+{
+  "resource": {
+    "name": "string",
+    "email": "string"
+  },
+  "department": {
+    "name": "string"
+  },
+  "team": {
+    "name": "string"
+  },
+  "certification": {
+    "name": "string",
+    "classification": "string",
+    "technology": "string",
+    "provider": "string",
+    "completionDate": "string",
+    "validthrough": "string"
+  },
+  "designation": "string"
+}

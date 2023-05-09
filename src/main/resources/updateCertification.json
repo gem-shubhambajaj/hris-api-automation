@@ -1,0 +1,12 @@
+{
+  "email": "string",
+  "_id": "string",
+  "certification": {
+    "name": "string",
+    "classification": "string",
+    "technology": "string",
+    "provider": "string",
+    "completionDate": "string",
+    "validthrough": "string"
+  }
+}

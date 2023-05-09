@@ -1,0 +1,10 @@
+{
+  "applicantDetails": {
+    "lastWorkingDate": "string",
+    "personalEmail": "string",
+    "reasonOfLeaving": "string",
+    "comment": "string"
+  },
+  "email": "string",
+  "screenId": "string"
+}

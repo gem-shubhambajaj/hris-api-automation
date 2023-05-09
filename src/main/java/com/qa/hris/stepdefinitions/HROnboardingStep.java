@@ -21,17 +21,17 @@ public class HROnboardingStep {
     Logger logger = LoggerFactory.getLogger(HROnboardingStep.class);
 
     //setting the endpoint and method for API
-    @Given("Set endpoint and method and Description {string} and {string} and {string}")
-    public void setEndpointAndMethodAndDescription(String url, String method, String Description) {
-        try{
-        Map<String, String> header = new HashMap<>();
-        header.put("Authorization", GlobalVariable.token);
-        System.out.println("TOKEN: " + GlobalVariable.token);
-            status=Utils.apiWithoutPayloads(url, method, header, Description).getStatus();
-            GemTestReporter.addTestStep("Hit the " + url + " API for " + Description, "API was successfully triggered", STATUS.PASS);
+    @Given("Set endpoint and method and Description {string} and {string} and {string} and {string}")
+    public void setEndpointAndMethodAndDescription(String url, String method, String Description, String api) {
+        try {
+            Map<String, String> header = new HashMap<>();
+            header.put("Authorization", GlobalVariable.token);
+            System.out.println("TOKEN: " + GlobalVariable.token);
+            status = Utils.apiWithoutPayloads(url, method, header, Description, api).getStatus();
+            GemTestReporter.addTestStep("Trigger " + url + " API for " + Description, "API was successfully triggered", STATUS.PASS);
         } catch (Exception e) {
             logger.info("API was not hit successfully", e);
-            GemTestReporter.addTestStep("Hit the " + url + " API for " + Description, "API was not successfully triggered", STATUS.FAIL);
+            GemTestReporter.addTestStep("Trigger " + url + " API for " + Description, "API was not successfully triggered", STATUS.FAIL);
         }
     }
 
@@ -40,17 +40,17 @@ public class HROnboardingStep {
         Utils.verifyStatusCode(Expected, status); //write in try catch
     }
 
-    @Given("Set endpoint and method and Description and payload {string} and {string} and {string} and {string}")
-    public void setEndpointAndMethodAndDescriptionAndPayloadEndpointAndMethodAndDescriptionAndPayload(String url, String method, String Description, String payload) throws Exception {
+    @Given("Set endpoint and method and Description and payload {string} and {string} and {string} and {string} and {string}")
+    public void setParameters(String urlNameConfig, String method, String Description, String payload, String api) throws Exception {
         HashMap<String, String> header = new HashMap<String, String>();
         header.put("Authorization", GlobalVariable.token);
-        String step="";
+        String step = "";
         try {
-            status=Utils.apiWithPayloads(url, method, header, step, payload, "").getStatus();
-            GemTestReporter.addTestStep("Hit the " + url + " API for " + Description, "API was successfully triggered", STATUS.PASS);
+            status = Utils.apiWithPayloads(urlNameConfig, method, header, step, payload, api).getStatus();
+            GemTestReporter.addTestStep("Trigger " + urlNameConfig + " API for " + Description, "API was successfully triggered", STATUS.PASS);
         } catch (Exception e) {
             logger.info("API was not hit successfully", e); //write for url
-            GemTestReporter.addTestStep("Hit the " + url + " API for " + Description, "API was not successfully triggered", STATUS.FAIL);
+            GemTestReporter.addTestStep("Trigger " + urlNameConfig + " API for " + Description, "API was not successfully triggered", STATUS.FAIL);
         }
     }
 

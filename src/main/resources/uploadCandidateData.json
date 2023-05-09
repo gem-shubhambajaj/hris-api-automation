@@ -1,0 +1,16 @@
+{
+  "collegeName": "string",
+  "otherCollege": "string",
+  "dateOfJoining": "string",
+  "participents": [
+    {
+      "name": "string",
+      "roll_no": 0,
+      "phoneNumber": "string",
+      "email": "string",
+      "entryType": "string",
+      "isBA": true,
+      "isBTech": true
+    }
+  ]
+}

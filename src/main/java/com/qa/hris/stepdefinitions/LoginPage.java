@@ -32,7 +32,7 @@ public class LoginPage {
         request.setURL(url);
         request.setMethod("POST");
         request.setRequestPayload("{\n" +
-                "  \"email\": \"ananya.jain@geminisolutions.com\",\n" +
+                "  \"email\": \"shubham.bajaj@geminisolutions.com\",\n" +
                 "  \"_id\": \"\"\n" +
                 "}");
 

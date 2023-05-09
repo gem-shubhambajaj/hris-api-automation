@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "employeeName": "string",
+      "department": "string",
+      "designation": "string",
+      "dob": "string",
+      "doj": "string",
+      "email": "string",
+      "empCode": "string"
+    }
+  ],
+  "screenId": "string",
+  "subject": "string"
+}

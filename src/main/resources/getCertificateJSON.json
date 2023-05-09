@@ -1,0 +1,22 @@
+[
+  {
+    "candidateName": "string",
+    "completionDate": "string",
+    "certificateID": "string",
+    "assesmentMonthYear": "string",
+    "to": "string",
+    "technology": "string",
+    "course": "string",
+    "classification": "string",
+    "provider": "string",
+    "validthrough": "string",
+    "duration": "string",
+    "candidateEmail": "string",
+    "department": "string",
+    "team": "string",
+    "rmName": "string",
+    "rmEmail": "string",
+    "spocName": "string",
+    "spocEmail": "string"
+  }
+]

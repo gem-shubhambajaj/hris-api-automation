@@ -1,0 +1,8 @@
+{
+  "emailId": "string",
+  "uploadedDocuments": [
+    {
+      "filename": "string"
+    }
+  ]
+}

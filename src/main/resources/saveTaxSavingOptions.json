@@ -1,0 +1,37 @@
+{
+  "employeeName": "string",
+  "department": "string",
+  "email": "string",
+  "empCode": "string",
+  "doj": "string",
+  "dob": "string",
+  "optForTaxSaving": "string",
+  "aadhaarNumber": "string",
+  "panNumber": "string",
+  "designation": "string",
+  "pfDetails": {
+    "pfStatus": "string",
+    "pfNumber": "string",
+    "pfScheme": "string",
+    "pfJoiningDate": "string",
+    "uanNumber": "string",
+    "pfEligibility": "string",
+    "wantPF": "string",
+    "pfTrustName": "string"
+  },
+  "npsEnrolment": {
+    "optfornps": true,
+    "deductedAmount": "string",
+    "pranNumber": "string"
+  },
+  "taxSavingOptions": {
+    "childEducationAllowance": true,
+    "availPaytmWalletOption": true,
+    "paytmNumber": "string",
+    "availLTAOptions": true,
+    "ltaLimit": "string",
+    "flexiBasketOption": [
+      "string"
+    ]
+  }
+}
