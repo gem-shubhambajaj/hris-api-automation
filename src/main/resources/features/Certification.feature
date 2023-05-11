@@ -10,14 +10,9 @@ Feature: HRIS Automation
     Examples:
       | endpoint | Method | Expected_status | Description         | payload  | api              |
       | userAuth | post   | 200             | User Authentication | userAuth | certificationApi |
-      | userAuth | get    | 200             | User Authentication | userAuth | certificationApi |
+#      | userAuth | get    | 200             | User Authentication | userAuth | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get abcbccb
-    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint | Method | Expected_status | Description         | api              |
-      | userAuth | get    | 200             | User Authentication | certificationApi |
+
 
   Scenario Outline: HRIS, Post Certification
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"

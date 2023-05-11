@@ -9,7 +9,7 @@
   "glueCode":"com.qa.hris.stepdefinitions",
   "email_report": null,
   "email_to": "shubham.bajaj@geminisolutions.com",
-  "email_cddc": "anshuman.singh@geminisolutions.com, divya.madan@geminisolutions.com, neetu.rishi@geminisolutions.com",
+  "email_cc": "anshuman.singh@geminisolutions.com, divya.madan@geminisolutions.com, neetu.rishi@geminisolutions.com",
   "uat": {
     "postApi": "https://dleae1blka.execute-api.ap-south-1.amazonaws.com/uat/users/auth",
     "masterTableApi": "https://j3b5pu2uol.execute-api.ap-south-1.amazonaws.com/uat",
