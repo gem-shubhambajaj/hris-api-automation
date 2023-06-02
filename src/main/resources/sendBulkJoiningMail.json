@@ -1,8 +1,8 @@
 {
   "data": [
     {
-      "_id": "string",
-      "currentScreenId": "string"
+      "_id": "{uid}",
+      "currentScreenId": "swm"
     }
   ]
 }

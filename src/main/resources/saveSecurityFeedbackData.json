@@ -1,1 +1,31 @@
-{}
+{
+
+  "name": "String",
+
+  "email": "String",
+
+  "department": "String",
+
+  "team": "String",
+
+  "weekNumber": "String",
+
+  "feedback": {
+
+    "experience": "String",
+
+    "moreMovie": Boolean,
+
+    "phishingAttack": Boolean,
+
+    "rateEvents": "String",
+
+    "rateGames": "String",
+
+    "rateMovieTheGrateHack": "String",
+
+    "suggestions": "String"
+
+  }
+
+}

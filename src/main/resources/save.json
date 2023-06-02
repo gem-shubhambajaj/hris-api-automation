@@ -1,49 +1,33 @@
 {
   "candidateDetails": {
+    "designation": "Assistant Manager - Accounts - L1",
+    "doj": "2023-05-18",
+    "email": "{email}",
     "name": {
-      "fullName": "string"
+      "fullName": "{name}"
     },
-    "marital_status": {
-      "status": "string",
-      "spouseName": "string",
-      "spouseDob": "string",
-      "isSpouseWorking": "string",
-      "spouseGender": "string"
-    },
-    "dob": "string",
-    "gender": "string",
-    "primaryContactNumber": "string",
-    "emergencyContactNumber": "string",
-    "email": "string",
-    "bloodGroup": "string",
-    "nationality": {
-      "country": "string",
-      "workPermitForIndia": true
-    },
-    "languageProficiency": "string",
-    "profile": "string",
+    "offerDate": "2023-05-04",
+    "primaryContactNumber": "{number}",
+    "professionalExperience": "l",
+    "profile": "abc",
     "profileStakeholder": {
-      "name": "string",
-      "email": "string"
+      "name": "Anil Pahal",
+      "email": "anil.pahal@geminisolutions.com"
     },
-    "offerDate": "string",
-    "doj": "string",
-    "dof": "string",
-    "professionalExperience": "string",
-    "resume": "string",
-    "hiringLocation": "string",
-    "candidateLocation": "string",
-    "createdAt": "string",
-    "ctc": "string",
-    "paytm_status": {
-      "status": "string",
-      "paytmNumber": "string"
-    },
-    "noOfCompanyWorkedWith": 0
+    "skipTraining": "true",
+    "trainingDuration": 0,
+    "gender": "M",
+    "noOfCompanyWorkedWith": 1
   },
-  "deskInfo": {
-    "tShirtSize": "string"
+  "hrSpokes": {
+    "name": "Akanksha Dubey",
+    "email": "akanksha.dubey@geminisolutions.com"
   },
-  "selfDescription": "string",
-  "_id": "string"
+  "source": {
+    "sourceName": "LinkedIn",
+    "campusName": "",
+    "campusLocation": ""
+  },
+  "currentScreenId": "sol",
+  "candidateId": null
 }

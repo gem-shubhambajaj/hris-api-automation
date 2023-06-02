@@ -1,16 +1,16 @@
 {
   "data": [
     {
-      "collegeName": "string",
-      "name": "string",
-      "email": "string",
-      "isBA": "string",
-      "isBTech": "string"
+      "collegeName": "Chitkara University",
+      "name": "{name1}",
+      "email": "{email1}",
+      "isBA": "No",
+      "isBTech": "Yes"
     }
   ],
-  "collegeName": "string",
-  "name": "string",
-  "email": "string",
-  "isBA": "string",
-  "isBTech": "string"
+  "collegeName": "Chitkara University",
+  "name": "{name2}",
+  "email": "{email2}",
+  "isBA": "Yes",
+  "isBTech": "No"
 }

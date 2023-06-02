@@ -1,6 +1,6 @@
 {
   "_id": [
-    "string"
+    "{uid}"
   ],
-  "screenId": "string"
+  "screenId": "pef"
 }

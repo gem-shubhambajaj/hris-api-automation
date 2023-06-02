@@ -1,7 +1,9 @@
 {
-  "_id": "string",
-  "reportingManager": {
-    "name": "string",
-    "email": "string"
-  }
+
+  "empId": "UzFA90CEwV8=",
+
+  "name": "Aadesh Kanna",
+
+  "email": "chandra.prakash@geminisolutions.com"
+
 }

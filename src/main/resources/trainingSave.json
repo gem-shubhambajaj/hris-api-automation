@@ -1,32 +1,63 @@
 {
-  "_id": "string",
-  "email": "string",
-  "name": "string",
-  "empCode": "string",
-  "screenId": "string",
+
+  "_id": "{uid}",
+
+  "email": "TestUser",
+
+  "name": "Test",
+
+  "empCode": "",
+
+  "screenId": "tf",
+
   "feedback": {
-    "technicalSupport": "string",
-    "wasContentRelevant": "string",
-    "difficultyLevel": "string",
-    "wasTimeSufficient": "string",
-    "additionalResouces": "string",
+
+    "technicalSupport": "Strongly Agree",
+
+    "wasContentRelevant": "Yes",
+
+    "difficultyLevel": "9",
+
+    "wasTimeSufficient": "Yes",
+
+    "additionalResouces": "No",
+
     "traineeAssesmetTest": {
-      "rating": "string",
-      "comment": "string"
+
+      "rating": "No",
+
+      "comment": ""
+
     },
-    "questionIrrelevant": "string",
-    "preMaterialProvided": "string",
-    "preTrainingPrep": "string",
-    "particpantsEnagagement": "string",
-    "interactivityFromParticipants": "string",
+
+    "questionIrrelevant": "yes",
+
+    "preMaterialProvided": "yes",
+
+    "preTrainingPrep": "good ",
+
+    "particpantsEnagagement": "yes",
+
+    "interactivityFromParticipants": "Yes",
+
     "anyExternalDistraction": {
-      "rating": "string",
-      "comment": "string"
+
+      "rating": "Yes",
+
+      "comment": "ddddddd"
+
     },
-    "participantsQueries": "string",
-    "courseContentChallenging": "string",
-    "obstaclesInTraining": "string",
-    "improvementPreTrainingPhase": "string",
-    "questionQualityByParticipants": "string"
+
+    "participantsQueries": "yes",
+
+    "courseContentChallenging": "yes",
+
+    "obstaclesInTraining": "dddd",
+
+    "improvementPreTrainingPhase": "ddddd",
+
+    "questionQualityByParticipants": "9"
+
   }
-}
+
+}l̥

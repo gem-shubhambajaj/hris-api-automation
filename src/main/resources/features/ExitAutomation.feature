@@ -24,5 +24,5 @@ Feature: HRIS Automation
     Examples:
       | endpoint           | Method | Expected_status | Description          | api               |
       | getResignationData | get    | 200             | get Resignation Data | ExitAutomationApi |
-
+#add page size,email,search query, dept
 

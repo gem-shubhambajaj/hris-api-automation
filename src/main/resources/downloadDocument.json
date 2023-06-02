@@ -1,8 +1,8 @@
 {
   "uploadedDocuments": [
     {
-      "filename": "string"
+      "filename": "abc.pdf"
     }
   ],
-  "Uid": "string"
+  "Uid": "{uid}"
 }

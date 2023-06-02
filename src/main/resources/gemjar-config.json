@@ -2,10 +2,10 @@
   "environment": "uat",
   "project_name": "HRIS",
   "report_name": "HRIS-API-Regression",
-  "enter_point": "https://apis.gemecosystem.com/enter-point",
-  "jewel_user": "shubham.bajaj",
+  "enter_point1": "https://apis.gemecosystem.com/enter-point",
+  "jewel_user1": "shubham.bajaj",
   "sub_id": "test_id",
-  "jewel_bridge_token": "dd2dc4aa-36ba-43c6-acdd-a8a80f8eeb141683217466639",
+  "jewel_bridge_token1": "6fce1c90-9eae-4cb1-8b66-707e7953984e1684149327505",
   "glueCode":"com.qa.hris.stepdefinitions",
   "email_report": null,
   "email_to": "shubham.bajaj@geminisolutions.com",
@@ -17,7 +17,7 @@
     "getAllHr": "/uat/hr/getallHr",
     "getRoles": "/uat/users/getRoles",
     "getDesignation": "/uat/users/getDesignation/string",
-    "getCandidate": "/uat/users/getCandidate/string",
+    "getCandidate": "/uat/users/getCandidate/",
     "getAllCandidate": "/uat/users/getAllCandidate",
     "getAllUsers": "/uat/users/getAllUsers",
     "getAllCandidateMaster": "/uat/users/getAllCandidateMaster",
@@ -32,7 +32,7 @@
     "getFeedbackData": "/uat/users/getFeedbackData",
     "validateTokenEmployee": "/uat/users/validateTokenEmployee",
     "validateToken": "/uat/users/validatetoken",
-    "deleteCandidate": "/uat/users/deleteCandidate/string",
+    "deleteCandidate": "/uat/users/deleteCandidate/{uid}",
     "getSkills": "/uat/users/getskills",
     "getEmployeeSkills": "/uat/users/getEmployeeSkills",
     "getMISDetail": "/uat/users/getMISdetail",
@@ -81,7 +81,7 @@
 
     "trainingUserAuth": "/uat/training/userauth",
     "trainingSave": "/uat/training/save",
-    "getTraining": "/uat/training/getTraining",
+    "getTraining": "/uat/training/getTraining?search=&status=comp&pageIndex=1&pageSize=20",
     "getTrainingCount": "/uat/training/getTrainingCount",
     "sendTrainingMail": "/uat/training/sendTrainingMail",
     "validateTokenTraining": "/uat/users/validateTokenTraining",
@@ -112,6 +112,8 @@
     "getTaxSavingAllData": "/uat/users/getTaxSavingAllData",
     "getTaxSavingExport": "/uat/users/getTaxSavingExport",
     "taxSavingReminderCron": "/uat/users/taxSavingReminderCron",
+    "taxSavingBiAnnual": "/uat/users/taxSavingBiannual",
+    "BiAnnualReminder": "/uat/users/biannualReminder",
 
     "saveBulkCandidateFresherAssign": "/uat/assignments/saveBulkCandidate",
     "validateTokenAssignments": "/uat/assignments/validateTokenAssignments",
@@ -143,5 +145,8 @@
     "deleteCertificate": "/uat/certifications/delete/{id}"
 
 
-  }
+
+
+  },
+  "save1": "save.json"
 }

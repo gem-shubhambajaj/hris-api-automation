@@ -18,12 +18,14 @@ Feature: HRIS Automation
       | endpoint           | Method | Expected_status | Description          | payload            | api              |
       | sendAssignmentMail | post   | 200             | Send Assignment Mail | sendAssignmentMail | fresherAssignApi |
 
+
   Scenario Outline: HRIS, User is able to upload assignments
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint          | Method | Expected_status | Description        | payload           | api              |
       | uploadAssignments | post   | 200             | Upload Assignments | uploadAssignments | fresherAssignApi |
+
 
   Scenario Outline: HRIS, User is able to download assignments
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"

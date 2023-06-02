@@ -1,10 +1,10 @@
 {
   "applicantDetails": {
-    "lastWorkingDate": "string",
-    "personalEmail": "string",
-    "reasonOfLeaving": "string",
-    "comment": "string"
+    "lastWorkingDate": "14-08-2023",
+    "personalEmail": "akash@gmail.com",
+    "reasonOfLeaving": "Better opportunity",
+    "comment": "no "
   },
-  "email": "string",
-  "screenId": "string"
+  "email": "tripta.sahni@geminisolutions.com",
+  "screenId": "arl"
 }

@@ -1,20 +1,25 @@
 {
-  "email": "string",
-  "name": "string",
-  "designation": "string",
-  "departmentName": "string",
+  "name": "Shubham Bajaj",
+  "email": "shubham.bajaj@geminisolutions.com",
   "primarySkills": [
     {
-      "skillType": "string",
-      "skill": "string",
-      "level": "string"
+      "level": "Intermediate(2-4)",
+      "skill": "Java",
+      "skillType": "Technical"
+    },
+    {
+      "level": "Proficient(4-8)",
+      "skill": "Google Ads",
+      "skillType": "Functional"
     }
   ],
   "secondarySkills": [
     {
-      "skillType": "string",
-      "skill": "string",
-      "level": "string"
+      "level": "Beginner(0-2)",
+      "skill": "MS Project",
+      "skillType": "Functional"
     }
-  ]
+  ],
+  "departmentName": "Quality Assurance",
+  "designation": "Technical Trainee"
 }

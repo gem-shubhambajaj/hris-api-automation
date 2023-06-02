@@ -1,10 +1,9 @@
 {
-  "docId": "string",
+  "Uid": "643fcb1f108d8b0008c34bd4",
+  "docId": "643fcb1f108d8b0008c34bd3",
   "uploadedDocuments": [
     {
-      "filename": "string",
-      "Uid": "string"
+      "filename": "Harry_Assignment.pdf"
     }
-  ],
-  "Uid": "string"
+  ]
 }

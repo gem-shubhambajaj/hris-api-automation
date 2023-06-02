@@ -1,7 +1,35 @@
 {
-  "screenId": "string",
-  "permission": "string",
-  "name": "string",
-  "displayName": "string",
-  "description": "string"
+
+  "name": "ROLE_QQQQQ",
+
+  "displayName": "qqqqq",
+
+  "description": "qqqqqqqqqqq",
+
+  "modulePermissions": [
+
+    {
+
+      "moduleName": "ATS",
+
+      "permissions": [
+
+        {
+
+          "name": "abc",
+
+          "value": "acb",
+
+          "valueCheck": true
+
+        }
+
+      ]
+
+    }
+
+  ],
+
+  "screenId": "cc"
+
 }

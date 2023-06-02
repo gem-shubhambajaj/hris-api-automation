@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.qa.hris.commonutils.GlobalVariable;
@@ -41,12 +42,19 @@ public class HROnboardingStep {
     }
 
     @Given("Set endpoint and method and Description and payload {string} and {string} and {string} and {string} and {string}")
-    public void setParameters(String urlNameConfig, String method, String Description, String payload, String api) throws Exception {
-        HashMap<String, String> header = new HashMap<String, String>();
+    public void setParameters(String urlNameConfig, String method, String Description, String payload, String api){
+        JSONObject jsonObject = Utils.updateDetails(payload);
+        HashMap<String, String> header = new HashMap<>();
         header.put("Authorization", GlobalVariable.token);
         String step = "";
         try {
-            status = Utils.apiWithPayloads(urlNameConfig, method, header, step, payload, api).getStatus();
+            Response response = Utils.apiWithPayloads(urlNameConfig, method, header, step, jsonObject, api);
+            System.out.println(urlNameConfig+ "---"+ response);
+            status = response.getStatus();
+//            System.out.println(response.getResponseBodyJson().getAsJsonObject().get("data"));
+            if(payload.equalsIgnoreCase("save")) {
+                GlobalVariable.uid = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("uid").getAsString();
+            }
             GemTestReporter.addTestStep("Trigger " + urlNameConfig + " API for " + Description, "API was successfully triggered", STATUS.PASS);
         } catch (Exception e) {
             logger.info("API was not hit successfully", e); //write for url
