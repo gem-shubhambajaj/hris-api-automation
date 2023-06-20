@@ -2,14 +2,10 @@
   "environment": "uat",
   "project_name": "HRIS",
   "report_name": "HRIS-API-Regression",
-  "enter_point1": "https://apis.gemecosystem.com/enter-point",
-  "jewel_user1": "shubham.bajaj",
-  "sub_id": "test_id",
-  "jewel_bridge_token1": "6fce1c90-9eae-4cb1-8b66-707e7953984e1684149327505",
   "glueCode":"com.qa.hris.stepdefinitions",
   "email_report": null,
   "email_to": "shubham.bajaj@geminisolutions.com",
-  "email_cc": "anshuman.singh@geminisolutions.com, divya.madan@geminisolutions.com, neetu.rishi@geminisolutions.com",
+  "email_cddc": "anshuman.singh@geminisolutions.com, divya.madan@geminisolutions.com, neetu.rishi@geminisolutions.com",
   "uat": {
     "postApi": "https://dleae1blka.execute-api.ap-south-1.amazonaws.com/uat/users/auth",
     "masterTableApi": "https://j3b5pu2uol.execute-api.ap-south-1.amazonaws.com/uat",
@@ -72,7 +68,7 @@
 
     "saveResignationData": "/uat/users/save",
     "sendReminder": "/uat/users/sendReminder",
-    "getResignationData": "/uat/users/getResignationData",
+    "getResignationData": "/uat/users/getResignationData?search=&pageNumber=1&pageSize=20&dept=exit&filter=&sort=&actions=&status=",
 
     "getBotChatData": "/uat/users/getChat",
     "finBotChatData": "/uat/users/finBotChat",
@@ -131,12 +127,12 @@
     "getCertificateJSON": "/uat/certifications/generatecertificatefromjson",
     "getCertificateUploadURL": "/uat/certifications/uploadCertificate",
     "getCertificateDownloadURL": "/uat/certifications/downloadCertificate",
-    "getCertificate": "/uat/certifications",
+    "getCertificate": "/uat/certifications?filter=true&search=&pageIndex=1&pageSize=5&technology=ASM%2FRAC%2FGrid%20Infrastructure&team=TechOps&classification=Technical&newSchema=true",
     "GetCertificationsType": "/uat/certificationsType",
-    "getCertificationEmployee": "/uat/certifications/shubham.bajaj%40geminisolutions.com",
+    "getCertificationEmployee": "/uat/certifications/",
     "getEmployeeDetailMIS": "/uat/certifications/misdetails",
-    "getManagementCertification": "/uat/certifications/management/shubham.bajaj%40geminisolutions.com",
-    "getCertificationByTime": "/uat/certifications/export",
+    "getManagementCertification": "/uat/certifications/management/shubham.bajaj@geminisolutions.com",
+    "getCertificationByTime": "/uat/certifications/export?startDate=2022-01-01&endDate=2023-01-01",
     "teamCertificationReminder": "/uat/certifications/remindercron",
     "getTechDetails": "/uat/certifications/technology",
     "generateCertificate": "/uat/certifications/generateCertificate",
@@ -144,9 +140,5 @@
     "updateCertification": "/uat/certifications",
     "deleteCertificate": "/uat/certifications/delete/{id}"
 
-
-
-
-  },
-  "save1": "save.json"
+  }
 }

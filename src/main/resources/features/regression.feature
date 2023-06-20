@@ -236,6 +236,133 @@ Feature: HRIS Automation
     Examples:
       | endpoint         | Method | Expected_status | Description        | payload          | api         |
       | sendTrainingMail | post   | 200             | send Training Mail | sendTrainingMail | TrainingApi |
-
-
 # --
+#Certification
+  Scenario Outline: User Authentication
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint | Method | Expected_status | Description         | payload  | api              |
+      | userAuth | post   | 200             | User Authentication | userAuth | certificationApi |
+
+  Scenario Outline: Get certifications
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint       | Method | Expected_status | Description        | api              |
+      | getCertificate | get    | 200             | Get certifications | certificationApi |
+
+  Scenario Outline: Get certifications type
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint              | Method | Expected_status | Description           | api              |
+      | GetCertificationsType | get    | 200             | GetCertificationsType | certificationApi |
+
+  Scenario Outline: Get employees details from MIS
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint             | Method | Expected_status | Description                    | api              |
+      | getEmployeeDetailMIS | get    | 200             | Get employees details from MIS | certificationApi |
+
+  Scenario Outline: Get certifications by time
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint               | Method | Expected_status | Description                | api              |
+      | getCertificationByTime | get    | 200             | Get certifications by time | certificationApi |
+
+  Scenario Outline: Get technology details
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint       | Method | Expected_status | Description            | api              |
+      | getTechDetails | get    | 200             | Get Technology Details | certificationApi |
+
+  Scenario Outline: Get certifications mail status
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint                   | Method | Expected_status | Description                    | api              |
+      | getCertificationMailStatus | get    | 200             | Get certifications Mail status | certificationApi |
+
+#HROnboardCron
+  Scenario Outline: HRIS, Hiring Manager Reminder
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint              | Method | Expected_status | Description             | api              |
+      | hiringManagerReminder | get    | 200             | Hiring Manager Reminder | HRonboardCronApi |
+
+  Scenario Outline: HRIS, Hiring Flyer
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint    | Method | Expected_status | Description  | api              |
+      | hiringFlyer | get    | 200             | Hiring Flyer | HRonboardCronApi |
+
+  Scenario Outline: HRIS, User is able to update LWF Data Cron
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint      | Method | Expected_status | Description          | api              |
+      | updateLWFCron | get    | 200             | update LWF Data Cron | HRonboardCronApi |
+
+  Scenario Outline: HRIS, mis Sync Cron
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint         | Method | Expected_status | Description   | api              |
+      | syncOfficialInfo | get    | 200             | mis Sync Cron | HRonboardCronApi |
+
+  Scenario Outline: HRIS, tnp Report Last Month Cron
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint               | Method | Expected_status | Description                | api              |
+      | tnpReportLastMonthCron | get    | 200             | tnp Report Last Month Cron | HRonboardCronApi |
+
+  Scenario Outline: HRIS, Training Probation Report Cron
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint                    | Method | Expected_status | Description                    | api              |
+      | trainingProbationReportCron | get    | 200             | Training Probation Report Cron | HRonboardCronApi |
+
+  Scenario Outline: HRIS, First Training End Cron
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint             | Method | Expected_status | Description             | api              |
+      | firstTrainingEndCron | get    | 200             | First Training End Cron | HRonboardCronApi |
+
+  Scenario Outline: HRIS, Training End Cron
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint        | Method | Expected_status | Description       | api              |
+      | trainingEndCron | get    | 200             | Training End Cron | HRonboardCronApi |
+
+  Scenario Outline: HRIS, Probation End Cron
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint         | Method | Expected_status | Description        | api              |
+      | probationEndCron | get    | 200             | Probation End Cron | HRonboardCronApi |
+
+  Scenario Outline: HRIS, Welcome Mail Cron
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint        | Method | Expected_status | Description       | api              |
+      | welcomeMailCron | get    | 200             | Welcome Mail Cron | HRonboardCronApi |
+
+#ExitAutomation
+  Scenario Outline: HRIS, User is able to get Resignation data
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint           | Method | Expected_status | Description          | api               |
+      | getResignationData | get    | 200             | get Resignation Data | ExitAutomationApi |
+

@@ -75,10 +75,10 @@ public class Utils extends GemjarTestngBase {
             if (!step.isEmpty()) {
                 request.setStep(step);
             }
-            String payload = ProjectSampleJson.getSampleDataString(sample);
-            System.out.println(payload);
-
-            request.setRequestPayload(payload);
+//            String payload = ProjectSampleJson.getSampleDataString(sample);
+            String filePath = "src/main/resources/login.json";
+            String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
+            request.setRequestPayload(jsonString);
             response = ApiInvocation.handleRequest(request);
             if (response.getStatus() == HttpStatus.SC_OK) {
                 GlobalVariable.token = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("token").getAsString();
@@ -181,7 +181,7 @@ public class Utils extends GemjarTestngBase {
             }
             response = ApiInvocation.handleRequest(request);
             System.out.println();
-            System.out.println(urlNameFromConfig+"---"+response.getResponseBody());
+            System.out.println(urlNameFromConfig + "---" + response.getResponseBody());
             System.out.println();
             GemTestReporter.addTestStep(method.toUpperCase() + " Request Verification ", method.toUpperCase() + " Request Executed Successfully", STATUS.PASS);
             if (step.isEmpty()) {
@@ -201,7 +201,7 @@ public class Utils extends GemjarTestngBase {
     }
 
     //send APIwithPayload
-    public static Response apiWithPayloads(String urlNameFromConfig, String method, Map<String, String> headers, String step, JSONObject payloadName, String api){
+    public static Response apiWithPayloads(String urlNameFromConfig, String method, Map<String, String> headers, String step, JSONObject payloadName, String api) {
         Response response = new Response();
         try {
             Request request = new Request();
@@ -263,7 +263,7 @@ public class Utils extends GemjarTestngBase {
 
             response = ApiInvocation.handleRequest(request);
             System.out.println();
-            System.out.println(urlNameFromConfig+"---"+response.getResponseBody());
+            System.out.println(urlNameFromConfig + "---" + response.getResponseBody());
             System.out.println();
             GemTestReporter.addTestStep("Response Message", response.getResponseMessage(), STATUS.INFO);
 
@@ -382,7 +382,8 @@ public class Utils extends GemjarTestngBase {
         System.out.println(sb);
         return sb.toString();
     }
-    public static String generatePhoneNumber(){
+
+    public static String generatePhoneNumber() {
         Random random = new Random();
         StringBuilder num = new StringBuilder();
         num.append(9);
@@ -395,10 +396,11 @@ public class Utils extends GemjarTestngBase {
 
     public static JSONObject updateDetails(String payload) {
         JSONObject jsonFile = new JSONObject();
-        String filePath = "src/main/resources/"+payload+".json";
+        String filePath = "src/main/resources/" + payload + ".json";
         try {
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
             switch (payload) {
+                case "userAuth":
                 case "triggerMail":
                 case "taxSavingSetVerified":
                 case "sendTrainingMail":
@@ -422,18 +424,17 @@ public class Utils extends GemjarTestngBase {
                     break;
                 }
 
-                case "saveBulkCandidate":{
+                case "saveBulkCandidate": {
                     String name1 = generateName();
                     String name2 = generateName();
-                    jsonString = jsonString.replace("{name1}",name1).replace("{name2}",name2).replace("{email1}",name1+"@gmail.com").replace("{email2}",name2+"@gmail.com");
+                    jsonString = jsonString.replace("{name1}", name1).replace("{name2}", name2).replace("{email1}", name1 + "@gmail.com").replace("{email2}", name2 + "@gmail.com");
                     break;
                 }
             }
             jsonFile = new JSONObject(jsonString);
 //            String payloadString = ProjectSampleJson.getSampleDataString(payload);
 //            payloadString.replace("name", sb.toString());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return jsonFile;
@@ -451,21 +452,20 @@ public class Utils extends GemjarTestngBase {
             }
             System.out.println(sb);
             StringBuilder num = new StringBuilder();
-            for(int i =0;i<9;i++){
+            for (int i = 0; i < 9; i++) {
                 int randomNum = random.nextInt(9);
                 num.append("9").append(randomNum);
             }
 
             System.out.println(num);
-            String filePath = "src/main/resources/"+payload+".json";
+            String filePath = "src/main/resources/" + payload + ".json";
             JSONParser parser = new JSONParser();
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
-            jsonString.replace("{name}",sb.toString()).replace("{email}",sb+"@gmail.com").replace("{number}",num);
+            jsonString.replace("{name}", sb.toString()).replace("{email}", sb + "@gmail.com").replace("{number}", num);
 //            String payloadString = ProjectSampleJson.getSampleDataString(payload);
 //            payloadString.replace("name", sb.toString());
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 

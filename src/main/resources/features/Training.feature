@@ -10,8 +10,8 @@ Feature: HRIS Automation
     Examples:
       | endpoint         | Method | Expected_status | Description        | payload          | api         |
       | trainingUserAuth | post   | 200             | User Authorization | trainingUserAuth | TrainingApi |
-##Response body is null
-#
+#Response body is null
+
   Scenario Outline: HRIS, User is able to save training
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
