@@ -72,7 +72,7 @@
 
     "saveResignationData": "/uat/users/save",
     "sendReminder": "/uat/users/sendReminder",
-    "getResignationData": "/uat/users/getResignationData?search=&pageNumber=1&pageSize=20&dept=exit&filter=&sort=&actions=&status=",
+    "getResignationData": "/uat/users/getResignationData?email=shubham.bajaj@geminisolutions.com&dept=Quality%20Assurance",
 
     "getBotChatData": "/uat/users/getChat",
     "finBotChatData": "/uat/users/finBotChat",
