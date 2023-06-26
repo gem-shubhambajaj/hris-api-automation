@@ -16,5 +16,6 @@ public class GlobalVariable {
     public static String token = "";
     public static String user = "shubham.bajaj@geminisolutions.com";
     public static String uid = "";
+    public static String tpoId = "";
 }
 

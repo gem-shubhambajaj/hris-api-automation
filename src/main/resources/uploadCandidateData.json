@@ -1,16 +1,25 @@
 {
-  "collegeName": "string",
-  "otherCollege": "string",
-  "dateOfJoining": "string",
+  "collegeName": "GLA Mathura",
+  "otherCollege": "",
+  "dateOfJoining": "2023-06-29",
   "participents": [
     {
-      "name": "string",
-      "roll_no": 0,
-      "phoneNumber": "string",
-      "email": "string",
-      "entryType": "string",
-      "isBA": true,
+      "name": "abc",
+      "roll_no": 181500567,
+      "phoneNumber": "8789778890",
+      "email": "abc@gmail.com",
+      "entryType": "BTech",
+      "isBA": false,
       "isBTech": true
+    },
+    {
+      "name": "def",
+      "roll_no": 17889900,
+      "phoneNumber": "8798908090",
+      "email": "def@gmail.com",
+      "entryType": "BA",
+      "isBA": true,
+      "isBTech": false
     }
   ]
 }

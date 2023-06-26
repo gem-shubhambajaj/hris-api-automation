@@ -5,7 +5,7 @@ Feature: HRIS_API
     Then Verify dashboard status code 200
 
 
-     #savedata
+    #savedata
   Scenario: HRIS, User is able to save the candidate
     When Set endpoint and method and Description and payload "save" and "post" and "Save Candidate" and "save" and "HRSaveDataApi"
     Then Verify Status code 200
@@ -87,13 +87,15 @@ Feature: HRIS_API
       | endpoint               | Method | Expected_status | Description              | payload                | api           |
       | updateFeedbackReminder | post   | 200             | Update Feedback Reminder | updateFeedbackReminder | HRSaveDataApi |
 
+#Krishan
   Scenario Outline: HRIS, User is able to sync official info
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint         | Method | Expected_status | Description        | payload          | api           |
       | syncOfficialInfo | post   | 200             | Sync Official Info | syncOfficialInfo | HRSaveDataApi |
-
+#
+  #Krishan
   Scenario Outline: HRIS, User is able to save tpo
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
@@ -101,6 +103,7 @@ Feature: HRIS_API
       | endpoint | Method | Expected_status | Description | payload | api           |
       | saveTpo  | post   | 200             | Save TPO    | savetpo | HRSaveDataApi |
 
+    #Krishan
   Scenario Outline: HRIS, User is able to send mail to tpo
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
@@ -130,7 +133,7 @@ Feature: HRIS_API
       | endpoint           | Method | Expected_status | Description         | payload            | api           |
       | saveUserAccessData | post   | 200             | User access details | saveUserAccessData | HRSaveDataApi |
 #
-
+   #Krishan
   Scenario Outline: HRIS, User is able to save system config
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
@@ -152,12 +155,14 @@ Feature: HRIS_API
       | endpoint                      | Method | Expected_status | Description                           | payload                       | api           |
       | bulkProbationCompletionLetter | post   | 200             | Send Bulk Probation Completion Letter | bulkProbationCompletionLetter | HRSaveDataApi |
 
+  #Krishan
   Scenario Outline: HRIS, User is able to save mail templates
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint          | Method | Expected_status | Description         | payload           | api           |
       | saveMailTemplates | post   | 200             | Save Mail Templates | saveMailTemplates | HRSaveDataApi |
+
 #getdata
   Scenario Outline: HRIS, User is able to get data for new candidate
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"

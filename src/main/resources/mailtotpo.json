@@ -1,5 +1,5 @@
 {
-  "_id": "string",
-  "entryType": "string",
-  "doj": "string"
+  "_id": "{uid}",
+  "entryType": "BA",
+  "doj": "20221010"
 }

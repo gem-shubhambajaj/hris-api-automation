@@ -49,11 +49,14 @@ public class HROnboardingStep {
         String step = "";
         try {
             Response response = Utils.apiWithPayloads(urlNameConfig, method, header, step, jsonObject, api);
+            System.out.println("-----------------------------------------------------------------------------------------------------------------------------------");
             System.out.println(urlNameConfig+ "---"+ response);
-            status = response.getStatus();
+            status = Integer.parseInt(response.getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\\[|\\]", ""));
 //            System.out.println(response.getResponseBodyJson().getAsJsonObject().get("data"));
             if(payload.equalsIgnoreCase("save")) {
                 GlobalVariable.uid = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("uid").getAsString();
+            } else if (payload.equalsIgnoreCase("savetpo")) {
+                GlobalVariable.tpoId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("_id").getAsString();
             }
             GemTestReporter.addTestStep("Trigger " + urlNameConfig + " API for " + Description, "API was successfully triggered", STATUS.PASS);
         } catch (Exception e) {
