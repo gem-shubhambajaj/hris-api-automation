@@ -206,13 +206,13 @@ Feature: HRIS Automation
       | endpoint              | Method | Expected_status | Description              | api             |
       | taxSavingReminderCron | get    | 200             | Tax saving reminder cron | accountsDataApi |
 
-  Scenario Outline: HRIS, User is able to set taxSavingOptions to verified
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint             | Method | Expected_status | Description                      | payload              | api             |
-      | taxSavingSetVerified | post   | 200             | Set taxSavingOptions to verified | taxSavingSetVerified | accountsDataApi |
-#--
+#  Scenario Outline: HRIS, User is able to set taxSavingOptions to verified
+#    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+#    Then Verify Status code <Expected_status>
+#    Examples:
+#      | endpoint             | Method | Expected_status | Description                      | payload              | api             |
+#      | taxSavingSetVerified | post   | 200             | Set taxSavingOptions to verified | taxSavingSetVerified | accountsDataApi |
+##--
 #  Training
   Scenario Outline: HRIS, User is able to save training
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
@@ -285,6 +285,14 @@ Feature: HRIS Automation
       | endpoint | Method | Expected_status | Description         | payload  | api              |
       | userAuth | post   | 200             | User Authentication | userAuth | certificationApi |
 
+  Scenario Outline: HRIS, User is able to post certification reminder mail
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint              | Method | Expected_status | Description                      | payload               | api              |
+      | certificationReminder | post   | 200             | Post certification reminder mail | certificationReminder | certificationApi |
+
+
   Scenario Outline: Get certifications
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
@@ -326,6 +334,49 @@ Feature: HRIS Automation
     Examples:
       | endpoint                   | Method | Expected_status | Description                    | api              |
       | getCertificationMailStatus | get    | 200             | Get certifications Mail status | certificationApi |
+
+  Scenario Outline: HRIS, User is able to get certificate download Url
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint                  | Method | Expected_status | Description                  | payload                   | api              |
+      | getCertificateDownloadURL | post   | 200             | Get Certificate Download Url | getCertificateDownloadURL | certificationApi |
+
+  Scenario Outline: HRIS, User is able to get certificate upload URL
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint                | Method | Expected_status | Description                | payload                 | api              |
+      | getCertificateUploadURL | post   | 200             | Get Certificate Upload URL | getCertificateUploadURL | certificationApi |
+
+  Scenario Outline: HRIS, User is able to generate certificate
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint            | Method | Expected_status | Description          | api              |
+      | generateCertificate | get    | 200             | Generate Certificate | certificationApi |
+
+  Scenario Outline: HRIS, User is able to get employees by manager
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint     | Method | Expected_status | Description              | payload      | api              |
+      | getEmployees | post   | 200             | Get employees by manager | getEmployees | certificationApi |
+
+  Scenario Outline: HRIS, User is able to get certifications of employee
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint                 | Method | Expected_status | Description                    | api              |
+      | getCertificationEmployee | get    | 200             | Get certifications of employee | certificationApi |
+
+  Scenario Outline: HRIS, User is able to get management for certifications
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint                   | Method | Expected_status | Description                       | api              |
+      | getManagementCertification | get    | 200             | Get management for certifications | certificationApi |
+
 
 #HROnboardCron
   Scenario Outline: HRIS, Hiring Manager Reminder

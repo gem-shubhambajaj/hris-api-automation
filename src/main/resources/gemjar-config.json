@@ -3,6 +3,10 @@
   "project_name": "HRIS",
   "report_name": "HRIS-API-Regression",
   "glueCode":"com.qa.hris.stepdefinitions",
+  "entry_point": "https://apis.gemecosystem.com/enter-point",
+  "jewel_user": "shubham.bajaj",
+  "sub_id": "test_id",
+  "jewel_bridge_token": "f88bc18b-e9b3-4bf4-961e-dc6fd38f203a1686037386787",
   "email_report": null,
   "email_to": "shubham.bajaj@geminisolutions.com",
   "email_cddc": "anshuman.singh@geminisolutions.com, divya.madan@geminisolutions.com, neetu.rishi@geminisolutions.com",
@@ -68,7 +72,7 @@
 
     "saveResignationData": "/uat/users/save",
     "sendReminder": "/uat/users/sendReminder",
-    "getResignationData": "/uat/users/getResignationData?search=&pageNumber=1&pageSize=20&dept=exit&filter=&sort=&actions=&status=",
+    "getResignationData": "/uat/users/getResignationData?email=shubham.bajaj@geminisolutions.com&dept=Quality%20Assurance",
 
     "getBotChatData": "/uat/users/getChat",
     "finBotChatData": "/uat/users/finBotChat",
@@ -120,12 +124,12 @@
     "validateTokenFresherAssign": "/uat/assignments/validateTokenAssignments",
 
     "userAuth": "/uat/users/auth",
-    "postCertification": "/uat/certifications",
+    "postCertification": "/uat/certifications?newSchema=true",
     "createCertificationType": "/uat/certificationsType",
     "certificationReminder": "/uat/certifications/reminder",
     "getEmployees": "/uat/certifications/employees",
     "getCertificateJSON": "/uat/certifications/generatecertificatefromjson",
-    "getCertificateUploadURL": "/uat/certifications/uploadCertificate",
+    "getCertificateUploadURL": "/uat/certifications/uploadCertificate?newSchema=true",
     "getCertificateDownloadURL": "/uat/certifications/downloadCertificate",
     "getCertificate": "/uat/certifications?filter=true&search=&pageIndex=1&pageSize=5&technology=ASM%2FRAC%2FGrid%20Infrastructure&team=TechOps&classification=Technical&newSchema=true",
     "GetCertificationsType": "/uat/certificationsType",
@@ -137,7 +141,7 @@
     "getTechDetails": "/uat/certifications/technology",
     "generateCertificate": "/uat/certifications/generateCertificate",
     "getCertificationMailStatus": "/uat/certifications/getCertificationsStatus",
-    "updateCertification": "/uat/certifications",
+    "updateCertification": "/uat/certifications?newSchema=true",
     "deleteCertificate": "/uat/certifications/delete/{id}"
 
   }

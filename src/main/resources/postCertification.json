@@ -1,21 +1,22 @@
 {
   "resource": {
-    "name": "string",
-    "email": "string"
+    "name": "Shubham Bajaj",
+    "email": "shubham.bajaj@geminisolutions.com"
   },
   "department": {
-    "name": "string"
+    "name": "Application Development"
   },
   "team": {
-    "name": "string"
+    "name": "Quant Research Platform"
   },
   "certification": {
-    "name": "string",
-    "classification": "string",
-    "technology": "string",
-    "provider": "string",
-    "completionDate": "string",
-    "validthrough": "string"
+    "name": "hrtrt",
+    "classification": "Functional",
+    "technology": "ASM/RAC/Grid Infrastructure",
+    "provider": "rrrrr",
+    "completionDate": "20230609",
+    "validthrough": "",
+    "certificateLink": "f9b488cc-49be-4b85-92af-8abc77bab514MicrosoftTeams-image.png"
   },
-  "designation": "string"
+  "designation": "Business Analyst L2"
 }
