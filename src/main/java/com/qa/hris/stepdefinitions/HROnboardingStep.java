@@ -28,7 +28,7 @@ public class HROnboardingStep {
             Map<String, String> header = new HashMap<>();
             header.put("Authorization", GlobalVariable.token);
             System.out.println("TOKEN: " + GlobalVariable.token);
-            status = Utils.apiWithoutPayloads(url, method, header, Description, api).getStatus();
+            status = Integer.parseInt(Utils.apiWithoutPayloads(url, method, header, Description, api).getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\"","").replace("[","").replace("]",""));
             GemTestReporter.addTestStep("Trigger " + url + " API for " + Description, "API was successfully triggered", STATUS.PASS);
         } catch (Exception e) {
             logger.info("API was not hit successfully", e);
@@ -50,7 +50,7 @@ public class HROnboardingStep {
         try {
             Response response = Utils.apiWithPayloads(urlNameConfig, method, header, step, jsonObject, api);
             System.out.println(urlNameConfig+ "---"+ response);
-            status = response.getStatus();
+            status = Integer.parseInt(response.getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\"","").replace("[","").replace("]",""));
 //            System.out.println(response.getResponseBodyJson().getAsJsonObject().get("data"));
             if(payload.equalsIgnoreCase("save")) {
                 GlobalVariable.uid = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("uid").getAsString();

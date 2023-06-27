@@ -400,6 +400,7 @@ public class Utils extends GemjarTestngBase {
         try {
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
             switch (payload) {
+                case "updateCertification":
                 case "userAuth":
                 case "triggerMail":
                 case "taxSavingSetVerified":
