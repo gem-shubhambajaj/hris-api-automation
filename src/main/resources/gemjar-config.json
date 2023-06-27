@@ -110,7 +110,7 @@
     "saveTaxSavingOptions": "/uat/users/savetaxSavingOptions",
     "validateTokenSaving": "/uat/users/validateTokenSaving",
     "getTaxSavingAllData": "/uat/users/getTaxSavingAllData",
-    "getTaxSavingExport": "/uat/users/getTaxSavingExport",
+    "getTaxSavingExport": "/uat/users/getTaxSavingExport?startDate=2023-06-19&endDate=2023-06-26&optForTaxSaving=yes",
     "taxSavingReminderCron": "/uat/users/taxSavingReminderCron",
     "taxSavingBiAnnual": "/uat/users/taxSavingBiannual",
     "BiAnnualReminder": "/uat/users/biannualReminder",

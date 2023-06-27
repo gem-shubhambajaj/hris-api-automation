@@ -121,6 +121,46 @@ Feature: HRIS Automation
       | endpoint    | Method | Expected_status | Description        | payload     | api           |
       | triggerMail | post   | 200             | Send Mail Manually | triggerMail | HRSaveDataApi |
 
+    #Krishan
+  Scenario Outline: HRIS, User is able to sync official info
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint         | Method | Expected_status | Description        | payload          | api           |
+      | syncOfficialInfo | post   | 200             | Sync Official Info | syncOfficialInfo | HRSaveDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to save tpo
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint | Method | Expected_status | Description | payload | api           |
+      | saveTpo  | post   | 200             | Save TPO    | savetpo | HRSaveDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to save system config
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint         | Method | Expected_status | Description        | payload          | api           |
+      | saveSystemConfig | post   | 200             | Save System Config | saveSystemConfig | HRSaveDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to send mail to tpo
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint  | Method | Expected_status | Description      | payload   | api           |
+      | mailToTpo | post   | 200             | Send Mail To TPO | mailtotpo | HRSaveDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to save mail templates
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint          | Method | Expected_status | Description         | payload           | api           |
+      | saveMailTemplates | post   | 200             | Save Mail Templates | saveMailTemplates | HRSaveDataApi |
+
 #---
  # BotAutomate
   Scenario Outline: Get Bot Chat data
@@ -416,4 +456,45 @@ Feature: HRIS Automation
     Examples:
       | endpoint           | Method | Expected_status | Description          | api               |
       | getResignationData | get    | 200             | get Resignation Data | ExitAutomationApi |
+
+#FresherAssignment
+     #Krishan
+  Scenario Outline: HRIS, User is able to upload candidate data
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint                       | Method | Expected_status | Description           | payload             | api              |
+      | saveBulkCandidateFresherAssign | post   | 200             | Upload candidate data | uploadCandidateData | fresherAssignApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to send assignment mail
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint           | Method | Expected_status | Description          | payload            | api              |
+      | sendAssignmentMail | post   | 200             | Send Assignment Mail | sendAssignmentMail | fresherAssignApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to upload assignments
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint          | Method | Expected_status | Description        | payload           | api              |
+      | uploadAssignments | post   | 200             | Upload Assignments | uploadAssignments | fresherAssignApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to download assignments
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint            | Method | Expected_status | Description          | payload             | api              |
+      | downloadAssignments | post   | 200             | Download Assignments | downloadAssignments | fresherAssignApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get fresher assignment data
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint                   | Method | Expected_status | Description                 | api              |
+      | getCandidatesFresherAssign | get    | 200             | Get fresher assignment data | fresherAssignApi |
 

@@ -1,8 +1,8 @@
 {
-  "collegeName": "string",
-  "tpoName": "string",
-  "tpoEmail": "string",
+  "collegeName": "GLA",
+  "tpoName": "Rahul",
+  "tpoEmail": "rahul@gmail.com",
   "isBA": true,
   "isBTech": true,
-  "_id": "string"
+  "_id": "{uid}"
 }

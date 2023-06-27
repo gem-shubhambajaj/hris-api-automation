@@ -401,6 +401,9 @@ public class Utils extends GemjarTestngBase {
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
             switch (payload) {
                 case "updateCertification":
+                case "savetpo":
+                case "syncOfficialInfo":
+
                 case "userAuth":
                 case "triggerMail":
                 case "taxSavingSetVerified":
@@ -429,6 +432,11 @@ public class Utils extends GemjarTestngBase {
                     String name1 = generateName();
                     String name2 = generateName();
                     jsonString = jsonString.replace("{name1}", name1).replace("{name2}", name2).replace("{email1}", name1 + "@gmail.com").replace("{email2}", name2 + "@gmail.com");
+                    break;
+                }
+                case "mailtotpo":
+                {
+                    jsonString = jsonString.replace("{uid}", GlobalVariable.tpoId);
                     break;
                 }
             }
