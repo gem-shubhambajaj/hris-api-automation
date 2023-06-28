@@ -164,20 +164,24 @@ Feature: HRIS_API
       | saveMailTemplates | post   | 200             | Save Mail Templates | saveMailTemplates | HRSaveDataApi |
 
 #getdata
+
+  #Krishan
   Scenario Outline: HRIS, User is able to get data for new candidate
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint | Method | Expected_status | Description                | api          |
       | addNew   | get    | 200             | Get data for new candidate | HRGetDataApi |
-#
+
+  #Krishan
   Scenario Outline: HRIS, User is able to get data for all HRs
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint | Method | Expected_status | Description          | api          |
       | getAllHr | get    | 200             | Get data for all HRs | HRGetDataApi |
-#
+
+    #Krishan
   Scenario Outline: HRIS, User is able to get data for all roles
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
