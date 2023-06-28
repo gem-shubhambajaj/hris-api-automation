@@ -206,12 +206,12 @@ Feature: HRIS Automation
       | endpoint              | Method | Expected_status | Description              | api             |
       | taxSavingReminderCron | get    | 200             | Tax saving reminder cron | accountsDataApi |
 
-#  Scenario Outline: HRIS, User is able to set taxSavingOptions to verified
-#    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-#    Then Verify Status code <Expected_status>
-#    Examples:
-#      | endpoint             | Method | Expected_status | Description                      | payload              | api             |
-#      | taxSavingSetVerified | post   | 200             | Set taxSavingOptions to verified | taxSavingSetVerified | accountsDataApi |
+  Scenario Outline: HRIS, User is able to set taxSavingOptions to verified
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint             | Method | Expected_status | Description                      | payload              | api             |
+      | taxSavingSetVerified | post   | 200             | Set taxSavingOptions to verified | taxSavingSetVerified | accountsDataApi |
 ##--
 #  Training
   Scenario Outline: HRIS, User is able to save training
