@@ -161,6 +161,215 @@ Feature: HRIS Automation
       | endpoint          | Method | Expected_status | Description         | payload           | api           |
       | saveMailTemplates | post   | 200             | Save Mail Templates | saveMailTemplates | HRSaveDataApi |
 
+
+#HROnboardingGetData
+   #Krishan
+  Scenario Outline: HRIS, User is able to get data for new candidate
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint | Method | Expected_status | Description                | api          |
+      | addNew   | get    | 200             | Get data for new candidate | HRGetDataApi |
+
+  #Krishan
+  Scenario Outline: HRIS, User is able to get data for all HRs
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint | Method | Expected_status | Description          | api          |
+      | getAllHr | get    | 200             | Get data for all HRs | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get data for all roles
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint | Method | Expected_status | Description            | api          |
+      | getRoles | get    | 200             | Get data for all roles | HRGetDataApi |
+
+     #Krishan
+  Scenario Outline: HRIS, User is able to get data for all candidates
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint        | Method | Expected_status | Description                 | api          |
+      | getAllCandidate | get    | 200             | Get data for all candidates | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get data of all users
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint    | Method | Expected_status | Description           | api          |
+      | getAllUsers | get    | 200             | Get data of all users | HRGetDataApi |
+
+      #Krishan
+  Scenario Outline: HRIS, User is able to get documents to be uploaded
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint                 | Method | Expected_status | Description             | api          |
+      | getDocumentsToBeUploaded | get    | 200             | Get docs to be uploaded | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get number of employees in different employee onboarding processes
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint | Method | Expected_status | Description                                               | api          |
+      | getCount | get    | 200             | Get no of employees in diff employee onboarding processes | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get Reporting Manager data
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint    | Method | Expected_status | Description | api          |
+      | getRmDetail | get    | 200             | Get RM data | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get buddy details
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint       | Method | Expected_status | Description       | api          |
+      | getBuddyDetail | get    | 200             | Get buddy details | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get data from MIS
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint       | Method | Expected_status | Description       | api          |
+      | getDataFromMis | get    | 200             | Get data from MIS | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get data of employees in Administration department
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint       | Method | Expected_status | Description                         | api          |
+      | getAdminDetail | get    | 200             | Get data of employees in Admin dept | HRGetDataApi |
+
+  #Krishan
+  Scenario Outline: HRIS, User is able to get data of employees in IT department
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint    | Method | Expected_status | Description                      | api          |
+      | getItDetail | get    | 200             | Get data of employees in IT dept | HRGetDataApi |
+
+      #Krishan
+  Scenario Outline: HRIS, User is able to get all skill types
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint  | Method | Expected_status | Description         | api          |
+      | getSkills | get    | 200             | Get all skill types | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get employee skills data
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint          | Method | Expected_status | Description              | api          |
+      | getEmployeeSkills | get    | 200             | Get employee skills data | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get MIS detail of all employees
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint     | Method | Expected_status | Description                     | api          |
+      | getMISDetail | get    | 200             | Get MIS detail of all employees | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get skills mail status
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint        | Method | Expected_status | Description            | api          |
+      | getSkillsStatus | get    | 200             | Get skills mail status | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get lwf data
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint   | Method | Expected_status | Description  | api          |
+      | getLwfData | get    | 200             | Get lwf data | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get tpo details
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint   | Method | Expected_status | Description     | api          |
+      | tpoDetails | get    | 200             | Get tpo details | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get all permission types
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint         | Method | Expected_status | Description              | api          |
+      | getAllPermission | get    | 200             | Get all permission types | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get address details
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint         | Method | Expected_status | Description              | api          |
+      | getAddressDetails | get    | 200             | Get address details | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get designation details
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint         | Method | Expected_status | Description              | api          |
+      | getDesignationDetails | get    | 200             | Get designation details | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get tech list
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint         | Method | Expected_status | Description              | api          |
+      | getTechList | get    | 200             | Get tech list | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get mentor list
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint         | Method | Expected_status | Description              | api          |
+      | getMentorList | get    | 200             | Get mentor list | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get System Configuration data
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint        | Method | Expected_status | Description            | api          |
+      | getSystemConfig | get    | 200             | Get System Config data | HRGetDataApi |
+
+    #Krishan
+  Scenario Outline: HRIS, User is able to get logs data
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint       | Method | Expected_status | Description   | api          |
+      | getTriggerLogs | get    | 200             | Get logs data | HRGetDataApi |
+
+      #Krishan
+  Scenario Outline: HRIS, User is able to get mail templates
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint         | Method | Expected_status | Description        | api          |
+      | getMailTemplates | get    | 200             | Get mail templates | HRGetDataApi |
 #---
  # BotAutomate
   Scenario Outline: Get Bot Chat data
