@@ -80,6 +80,7 @@ public class Utils extends GemjarTestngBase {
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
             request.setRequestPayload(jsonString);
             response = ApiInvocation.handleRequest(request);
+            System.out.println("Response--------------------------"+response.getResponseBody());
             if (response.getStatus() == HttpStatus.SC_OK) {
                 GlobalVariable.token = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("token").getAsString();
             }
@@ -103,10 +104,7 @@ public class Utils extends GemjarTestngBase {
         GemTestReporter.addTestStep("Url for Auth Request", url, STATUS.INFO);
         request.setURL(url);
         request.setMethod("post");
-        request.setRequestPayload("{\n" +
-                "  \"email\": \"shubham.bajaj@geminisolutions.com\",\n" +
-                "  \"_id\": \"\"\n" +
-                "}");
+        request.setRequestPayload("{\n" + "  \"email\": \"shubham.bajaj@geminisolutions.com\",\n" + "  \"_id\": \"\"\n" + "}");
         try {
             Response response = ApiInvocation.handleRequest(request);
             authToken = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("token").getAsString();
@@ -169,7 +167,19 @@ public class Utils extends GemjarTestngBase {
                 }
             }
             url += ProjectConfigData.getProperty(urlNameFromConfig);
-
+            switch(urlNameFromConfig){
+                case "deleteCandidate":
+                case "getCandidate":
+                {
+                    url = url.replace("{uid}",GlobalVariable.uid);
+                    break;
+                }
+                case "getAllCandidateMaster":
+                {
+                    url = url.replace("{authToken}",GlobalVariable.token);
+                    break;
+                }
+            }
             GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url, STATUS.INFO);
             request.setURL(url);
             request.setMethod(method);
@@ -400,13 +410,12 @@ public class Utils extends GemjarTestngBase {
         try {
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
             switch (payload) {
+                case "acceptOffer":
                 case "updateCertification":
                 case "savetpo":
                 case "syncOfficialInfo":
-
                 case "userAuth":
                 case "triggerMail":
-                case "taxSavingSetVerified":
                 case "sendTrainingMail":
                 case "trainingSave":
                 case "downloadDocument":
@@ -434,20 +443,38 @@ public class Utils extends GemjarTestngBase {
                     jsonString = jsonString.replace("{name1}", name1).replace("{name2}", name2).replace("{email1}", name1 + "@gmail.com").replace("{email2}", name2 + "@gmail.com");
                     break;
                 }
-                case "mailtotpo":
-                {
+                case "mailtotpo": {
                     jsonString = jsonString.replace("{uid}", GlobalVariable.tpoId);
+                    break;
+                }
+                case "saveTaxSavingOptions": {
+                    String name = generateName();
+                    String empCode = generateEmpCode();
+                    jsonString = jsonString.replace("{name}", name).replace("{code}", empCode);
+                    break;
+                }
+                case "taxSavingSetVerified": {
+                    jsonString = jsonString.replace("{email}", GlobalVariable.taxSaving_emailId).replace("{uid}", GlobalVariable.taxSaving_id);
                     break;
                 }
             }
             jsonFile = new JSONObject(jsonString);
-//            String payloadString = ProjectSampleJson.getSampleDataString(payload);
-//            payloadString.replace("name", sb.toString());
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return jsonFile;
 
+    }
+
+    public static String generateEmpCode() {
+        Random random = new Random();
+        StringBuilder num = new StringBuilder();
+        for (int i = 0; i < 4; i++) {
+            int randomNum = random.nextInt(9);
+            num.append(randomNum);
+        }
+        return num.toString();
     }
 
     @When("Update name, email and phone number of User in payload {string}")

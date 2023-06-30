@@ -1,0 +1,59 @@
+{
+  "statusCode": "[200]",
+  "message": "Tax Saving Option Data Updated Sucessfully for Employee with Email ID: HEZXEX@geminisolutions.com",
+  "data": {
+    "npsEnrolment": {
+      "optfornps": true,
+      "deductedAmount": "5%",
+      "pranNumber": "232323289798"
+    },
+    "pfDetails": {
+      "pfStatus": "1",
+      "pfNumber": "BFHFBDSJHF473847387484",
+      "pfScheme": "Govt Scheme",
+      "pfJoiningDate": "2020-03-23T00:00:00.000Z",
+      "uanNumber": "437344334344",
+      "pfEligibility": "1",
+      "wantPF": "Yes",
+      "pfTrustName": "GOVT"
+    },
+    "isDeleted": false,
+    "isFresher": false,
+    "_id": "649bd86f5481f0043a7a0642",
+    "email": "HEZXEX@geminisolutions.com",
+    "__v": 0,
+    "aadhaarNumber": "987654321234",
+    "createdAt": "2023-06-28T06:51:27.322Z",
+    "department": "Quality Assurance",
+    "designation": "Software Engineer L1",
+    "dob": "2000-03-28T00:00:00.000Z",
+    "dobString": "20000328",
+    "doj": "2022-10-03T00:00:00.000Z",
+    "dojString": "20221003",
+    "empCode": "GSI T 2288",
+    "employeeName": "HEZXEX",
+    "optForTaxSaving": true,
+    "panNumber": "CHJDH6754A",
+    "submitedAt": "2023-06-28T06:51:27.304Z",
+    "taxSavingOptions": [
+      {
+        "isVerified": false,
+        "_id": "649bd86f4217b70008fd1e94",
+        "childEducationAllowance": true,
+        "annualYear": "shubham.bajaj@geminisolutions.com",
+        "availPaytmWalletOption": true,
+        "paytmNumber": "8797347844",
+        "availLTAOptions": true,
+        "ltaLimit": "98059543548",
+        "flexiBasketOption": [
+          {
+            "_id": "6346b1046a4ac500097b830e",
+            "name": "Telephone & Internet Expense",
+            "limit": "222"
+          }
+        ]
+      }
+    ],
+    "updatedAt": "2023-06-28T06:51:27.322Z"
+  }
+}

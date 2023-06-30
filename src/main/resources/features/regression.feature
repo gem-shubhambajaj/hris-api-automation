@@ -9,12 +9,21 @@ Feature: HRIS Automation
     When Set endpoint and method and Description and payload "save" and "post" and "Save Candidate" and "save" and "HRSaveDataApi"
     Then Verify Status code 200
 
+
   Scenario Outline: Update candidate details
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint | Method | Expected_status | Description              | payload | api           |
       | update   | post   | 200             | Update Candidate Details | update  | HRSaveDataApi |
+#
+  Scenario Outline: HRIS, User is able to get data for a candidate
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint     | Method | Expected_status | Description              | api          |
+      | getCandidate | get    | 200             | Get data for a candidate | HRGetDataApi |
+
 
   Scenario Outline: Get all skill types
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
@@ -37,6 +46,14 @@ Feature: HRIS Automation
       | endpoint     | Method | Expected_status | Description                     | api          |
       | getMISDetail | get    | 200             | Get MIS detail of all employees | HRGetDataApi |
 
+  #Krishan
+  Scenario Outline: HRIS, User is able to get data for training probation candidate
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint                         | Method | Expected_status | Description                               | api          |
+      | getAllTrainingProbationCandidate | get    | 200             | Get data for training probation candidate | HRGetDataApi |
+#
   Scenario Outline: Get skills mail status
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
@@ -121,6 +138,13 @@ Feature: HRIS Automation
       | endpoint    | Method | Expected_status | Description        | payload     | api           |
       | triggerMail | post   | 200             | Send Mail Manually | triggerMail | HRSaveDataApi |
 
+  Scenario Outline: HRIS, User is able to delete a candidate through Uid
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint        | Method | Expected_status | Description               | api          |
+      | deleteCandidate | get    | 200             | Delete a candidate through Uid | HRGetDataApi |
+
     #Krishan
   Scenario Outline: HRIS, User is able to sync official info
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
@@ -176,8 +200,29 @@ Feature: HRIS Automation
     Examples:
       | endpoint       | Method | Expected_status | Description   | payload        | api              |
       | finBotChatData | post   | 200             | Find Bot Chat | finBotChatData | botAutomationApi |
+
+  Scenario Outline: HRIS, User is able to set Bot Context
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint      | Method | Expected_status | Description        | payload       | api              |
+      | botContextSet | post   | 200             | Set Context of bot | botContextSet | botAutomationApi |
 #--
 #Accounts
+  Scenario Outline: HRIS, User is able to save tax saving options
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint             | Method | Expected_status | Description             | payload              | api             |
+      | saveTaxSavingOptions | post   | 200             | Save tax saving options | saveTaxSavingOptions | accountsDataApi |
+
+  Scenario Outline: HRIS, User is able to set taxSavingOptions to verified
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint             | Method | Expected_status | Description                      | payload              | api             |
+      | taxSavingSetVerified | post   | 200             | Set taxSavingOptions to verified | taxSavingSetVerified | accountsDataApi |
+
   Scenario Outline: Get all tax saving data
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
@@ -206,12 +251,6 @@ Feature: HRIS Automation
       | endpoint              | Method | Expected_status | Description              | api             |
       | taxSavingReminderCron | get    | 200             | Tax saving reminder cron | accountsDataApi |
 
-  Scenario Outline: HRIS, User is able to set taxSavingOptions to verified
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint             | Method | Expected_status | Description                      | payload              | api             |
-      | taxSavingSetVerified | post   | 200             | Set taxSavingOptions to verified | taxSavingSetVerified | accountsDataApi |
 ##--
 #  Training
   Scenario Outline: HRIS, User is able to save training
@@ -377,6 +416,19 @@ Feature: HRIS Automation
       | endpoint                   | Method | Expected_status | Description                       | api              |
       | getManagementCertification | get    | 200             | Get management for certifications | certificationApi |
 
+  Scenario Outline: HRIS, User is able to generate certificate from JSON
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint           | Method | Expected_status | Description                    | payload            | api              |
+      | getCertificateJSON | post   | 200             | Generate certificate from JSON | getCertificateJSON | certificationApi |
+
+  Scenario Outline: HRIS, User is able to get employees by manager
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint     | Method | Expected_status | Description              | payload      | api              |
+      | getEmployees | post   | 200             | Get employees by manager | getEmployees | certificationApi |
 
 #HROnboardCron
   Scenario Outline: HRIS, Hiring Manager Reminder
@@ -450,12 +502,34 @@ Feature: HRIS Automation
       | welcomeMailCron | get    | 200             | Welcome Mail Cron | HRonboardCronApi |
 
 #ExitAutomation
+  Scenario Outline: HRIS, User is able to save Resignation data
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<url>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint            | Method | Expected_status | Description           | payload             | url               |
+      | saveResignationData | post   | 200             | Save Resignation Data | saveResignationData | ExitAutomationApi |
+
   Scenario Outline: HRIS, User is able to get Resignation data
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint           | Method | Expected_status | Description          | api               |
       | getResignationData | get    | 200             | get Resignation Data | ExitAutomationApi |
+
+
+  Scenario Outline: HRIS, User is able to send Reminder
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint     | Method | Expected_status | Description   | api               |
+      | sendReminder | post   | 200             | Send Reminder | ExitAutomationApi |
+
+  Scenario Outline: HRIS, User is able to revoke Resignation
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<url>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint | Method | Expected_status | Description        | payload           | url               |
+      | save     | post   | 200             | revoke Resignation | revokeResignation | ExitAutomationApi |
 
 #FresherAssignment
      #Krishan

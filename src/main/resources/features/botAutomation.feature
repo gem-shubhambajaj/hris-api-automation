@@ -18,16 +18,16 @@ Feature: HRIS Automation
       | endpoint       | Method | Expected_status | Description   | payload        | api              |
       | finBotChatData | post   | 200             | Find Bot Chat | finBotChatData | botAutomationApi |
 
-#  Scenario Outline: HRIS, User is able to set Bot Context
-#    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-#    Then Verify Status code <Expected_status>
-#    Examples:
-#      | endpoint      | Method | Expected_status | Description        | payload       | api              |
-#      | botContextSet | post   | 200             | Set Context of bot | botContextSet | botAutomationApi |
-#
-#  Scenario Outline: HRIS, User is able to find Bot Chat Context
-#    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-#    Then Verify Status code <Expected_status>
-#    Examples:
-#      | endpoint         | Method | Expected_status | Description               | payload          | api              |
-#      | finBotContextSet | post   | 200             | Find Bot Chat Context Set | finBotContextSet | botAutomationApi |
+  Scenario Outline: HRIS, User is able to set Bot Context
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint      | Method | Expected_status | Description        | payload       | api              |
+      | botContextSet | post   | 200             | Set Context of bot | botContextSet | botAutomationApi |
+
+  Scenario Outline: HRIS, User is able to find Bot Chat Context
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint         | Method | Expected_status | Description               | payload          | api              |
+      | finBotContextSet | post   | 200             | Find Bot Chat Context Set | finBotContextSet | botAutomationApi |

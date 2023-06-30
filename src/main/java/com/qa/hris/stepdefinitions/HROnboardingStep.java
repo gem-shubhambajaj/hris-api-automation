@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,10 +26,11 @@ public class HROnboardingStep {
     @Given("Set endpoint and method and Description {string} and {string} and {string} and {string}")
     public void setEndpointAndMethodAndDescription(String url, String method, String Description, String api) {
         try {
+
             Map<String, String> header = new HashMap<>();
             header.put("Authorization", GlobalVariable.token);
             System.out.println("TOKEN: " + GlobalVariable.token);
-            status = Integer.parseInt(Utils.apiWithoutPayloads(url, method, header, Description, api).getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\"","").replace("[","").replace("]",""));
+            status = Integer.parseInt(Utils.apiWithoutPayloads(url, method, header, Description, api).getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\\[|\\]", ""));
             GemTestReporter.addTestStep("Trigger " + url + " API for " + Description, "API was successfully triggered", STATUS.PASS);
         } catch (Exception e) {
             logger.info("API was not hit successfully", e);
@@ -42,7 +44,7 @@ public class HROnboardingStep {
     }
 
     @Given("Set endpoint and method and Description and payload {string} and {string} and {string} and {string} and {string}")
-    public void setParameters(String urlNameConfig, String method, String Description, String payload, String api){
+    public void setParameters(String urlNameConfig, String method, String Description, String payload, String api) {
         JSONObject jsonObject = Utils.updateDetails(payload);
         HashMap<String, String> header = new HashMap<>();
         header.put("Authorization", GlobalVariable.token);
@@ -50,13 +52,19 @@ public class HROnboardingStep {
         try {
             Response response = Utils.apiWithPayloads(urlNameConfig, method, header, step, jsonObject, api);
             System.out.println("-----------------------------------------------------------------------------------------------------------------------------------");
-            System.out.println(urlNameConfig+ "---"+ response);
-            status = Integer.parseInt(response.getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\"","").replace("[","").replace("]",""));
-//            System.out.println(response.getResponseBodyJson().getAsJsonObject().get("data"));
-            if(payload.equalsIgnoreCase("save")) {
+            System.out.println(urlNameConfig + "---" + response);
+            status = Integer.parseInt(response.getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\\[|\\]", ""));
+            if (payload.equalsIgnoreCase("save")) {
                 GlobalVariable.uid = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("uid").getAsString();
             } else if (payload.equalsIgnoreCase("savetpo")) {
                 GlobalVariable.tpoId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("_id").getAsString();
+            } else if (payload.equalsIgnoreCase("saveTaxSavingOptions")) {
+                GlobalVariable.taxSaving_emailId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("email").getAsString();
+
+                JSONObject result = new JSONObject(response.getResponseBody());
+                JSONArray taxSavingOptions = result.getJSONObject("data").getJSONArray("taxSavingOptions");
+                JSONObject firstOption = taxSavingOptions.getJSONObject(0);
+                GlobalVariable.taxSaving_id = firstOption.getString("_id");
             }
             GemTestReporter.addTestStep("Trigger " + urlNameConfig + " API for " + Description, "API was successfully triggered", STATUS.PASS);
         } catch (Exception e) {

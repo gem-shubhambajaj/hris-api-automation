@@ -110,12 +110,12 @@ Feature: HRIS Automation
       | endpoint               | Method | Expected_status | Description                | api              |
       | getCertificationByTime | get    | 200             | Get certifications by time | certificationApi |
 
-#  Scenario Outline: HRIS, Team certification reminder
-#    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
-#    Then Verify Status code <Expected_status>
-#    Examples:
-#      | endpoint                  | Method | Expected_status | Description                 | api              |
-#      | teamCertificationReminder | get    | 200             | Team certification reminder | certificationApi |
+  Scenario Outline: HRIS, Team certification reminder
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint                  | Method | Expected_status | Description                 | api              |
+      | teamCertificationReminder | get    | 200             | Team certification reminder | certificationApi |
 
   Scenario Outline: HRIS, User is able to get technology details
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
