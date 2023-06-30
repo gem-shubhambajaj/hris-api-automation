@@ -457,6 +457,10 @@ public class Utils extends GemjarTestngBase {
                     jsonString = jsonString.replace("{email}", GlobalVariable.taxSaving_emailId).replace("{uid}", GlobalVariable.taxSaving_id);
                     break;
                 }
+                case "saveGapAnalysisForm":{
+                    jsonString = jsonString.replace("{num}", generatePhoneNumber());
+                    break;
+                }
             }
             jsonFile = new JSONObject(jsonString);
 

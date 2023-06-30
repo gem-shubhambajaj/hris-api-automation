@@ -60,13 +60,13 @@ Feature: HRIS Automation
 #      | endpoint         | Method | Expected_status | Description        | api             |
 #      | BiAnnualReminder | get    | 200             | Bi-Annual Reminder | accountsDataApi |
 ##
-#  Scenario Outline: HRIS, User is able to tax saving reminder cron
-#    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
-#    Then Verify Status code <Expected_status>
-#    Examples:
-#      | endpoint              | Method | Expected_status | Description              | api         |
-#      | taxSavingReminderCron | get    | 200             | Tax saving reminder cron | accountsDataApi |
-##
+  Scenario Outline: HRIS, User is able to tax saving reminder cron
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint              | Method | Expected_status | Description              | api         |
+      | taxSavingReminderCron | get    | 200             | Tax saving reminder cron | accountsDataApi |
+#
 #  Scenario Outline: HRIS, User is able to sync official info
 #    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
 #    Then Verify Status code <Expected_status>
