@@ -25,7 +25,7 @@ Feature: HRIS-API
       | endpoint              | Method | Expected_status | Description              | payload               | url            |
       | updateMasterTableData | post   | 200             | Update Master Table Data | updateMasterTableData | MasterTableApi |
 
-Negative_scenarios
+#Negative_scenarios
   Scenario Outline: HRIS, User is not able to update Master Table data
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<url>"
     Then Verify Status code <Expected_status>

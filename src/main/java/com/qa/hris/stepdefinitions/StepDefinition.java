@@ -1,8 +1,5 @@
 package com.qa.hris.stepdefinitions;
 
-import com.gemini.generic.api.utils.ApiInvocationImpl;
-import com.gemini.generic.api.utils.ProjectSampleJson;
-import com.gemini.generic.api.utils.Request;
 import com.gemini.generic.api.utils.Response;
 import com.qa.hris.commonutils.Utils;
 import io.cucumber.java.en.Given;
@@ -18,15 +15,14 @@ import com.qa.hris.commonutils.GlobalVariable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HROnboardingStep {
+public class StepDefinition {
     int status;
-    Logger logger = LoggerFactory.getLogger(HROnboardingStep.class);
+    Logger logger = LoggerFactory.getLogger(StepDefinition.class);
 
     //setting the endpoint and method for API
     @Given("Set endpoint and method and Description {string} and {string} and {string} and {string}")
     public void setEndpointAndMethodAndDescription(String url, String method, String Description, String api) {
         try {
-
             Map<String, String> header = new HashMap<>();
             header.put("Authorization", GlobalVariable.token);
             System.out.println("TOKEN: " + GlobalVariable.token);

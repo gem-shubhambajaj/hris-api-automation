@@ -21,7 +21,7 @@ public class LoginPage {
     }
 
     @Then("Verify dashboard status code {int}")
-    public void checkStatusCode(int Expected) throws Exception {
+    public void checkStatusCode(int Expected) {
         Utils.verifyStatusCode(Expected, status);
     }
 

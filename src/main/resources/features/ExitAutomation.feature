@@ -32,6 +32,3 @@ Feature: HRIS Automation
       | endpoint | Method | Expected_status | Description        | payload           | url               |
       | save     | post   | 200             | revoke Resignation | revokeResignation | ExitAutomationApi |
 
-
-#add page size,email,search query, dept
-
