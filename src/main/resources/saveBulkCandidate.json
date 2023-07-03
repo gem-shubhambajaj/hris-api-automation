@@ -1,16 +1,17 @@
+
 {
-  "data": [
+  "collegeName": "new clg",
+  "otherCollege": "new clg",
+  "dateOfJoining": "2023-07-06",
+  "participents": [
     {
-      "collegeName": "Chitkara University",
-      "name": "{name1}",
-      "email": "{email1}",
-      "isBA": "No",
-      "isBTech": "Yes"
+      "name": "new can",
+      "roll_no": 233344,
+      "phoneNumber": "8765433344",
+      "email": "prat@mail.com",
+      "entryType": "BTech",
+      "isBA": false,
+      "isBTech": true
     }
-  ],
-  "collegeName": "Chitkara University",
-  "name": "{name2}",
-  "email": "{email2}",
-  "isBA": "Yes",
-  "isBTech": "No"
+  ]
 }
