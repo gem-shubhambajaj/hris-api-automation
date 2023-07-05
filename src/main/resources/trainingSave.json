@@ -2,9 +2,9 @@
 
   "_id": "{uid}",
 
-  "email": "TestUser",
+  "email": "{name}@geminisolutions.com",
 
-  "name": "Test",
+  "name": "{name}",
 
   "empCode": "",
 

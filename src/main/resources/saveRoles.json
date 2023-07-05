@@ -1,8 +1,8 @@
 {
 
-  "name": "ROLE",
+  "name": "{name}",
 
-  "displayName": "abcd",
+  "displayName": "{name}",
 
   "description": "qqqqqqqqqqq",
 
@@ -16,9 +16,9 @@
 
         {
 
-          "name": "abc",
+          "name": "{name}",
 
-          "value": "acb",
+          "value": "{name}",
 
           "valueCheck": true
 

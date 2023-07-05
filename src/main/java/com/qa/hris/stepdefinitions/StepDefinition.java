@@ -25,7 +25,6 @@ public class StepDefinition {
         try {
             Map<String, String> header = new HashMap<>();
             header.put("Authorization", GlobalVariable.token);
-            System.out.println("TOKEN: " + GlobalVariable.token);
             status = Integer.parseInt(Utils.apiWithoutPayloads(url, method, header, Description, api).getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\\[|\\]", ""));
             GemTestReporter.addTestStep("Trigger " + url + " API for " + Description, "API was successfully triggered", STATUS.PASS);
         } catch (Exception e) {
@@ -47,8 +46,6 @@ public class StepDefinition {
         String step = "";
         try {
             Response response = Utils.apiWithPayloads(urlNameConfig, method, header, step, jsonObject, api);
-            System.out.println("-----------------------------------------------------------------------------------------------------------------------------------");
-            System.out.println(urlNameConfig + "---" + response);
             status = Integer.parseInt(response.getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\\[|\\]", ""));
             if (payload.equalsIgnoreCase("save")) {
                 GlobalVariable.uid = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("uid").getAsString();

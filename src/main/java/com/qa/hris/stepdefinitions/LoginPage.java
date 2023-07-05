@@ -38,7 +38,6 @@ public class LoginPage {
 
         try{
             response = ApiInvocation.handleRequest(request);
-            System.out.println(response);
         }
         catch(Exception e ){
             Assert.fail("Failed to generate Auth token due to exception: "+e);
