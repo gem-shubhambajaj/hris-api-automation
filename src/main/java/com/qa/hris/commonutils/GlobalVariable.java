@@ -17,8 +17,12 @@ public class GlobalVariable {
     public static String user = "shubham.bajaj@geminisolutions.com";
     public static String uid = "";
     public static String tpoId = "";
-
     public static String taxSaving_emailId = "";
     public static String taxSaving_id = "";
+    public static String certificationUid = "";
+
+    public static String masterId = "";
+
+    public static String masterName = "";
 }
 

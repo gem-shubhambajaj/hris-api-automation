@@ -16,9 +16,9 @@
 
         {
 
-          "name": "abc",
+          "name": "{name1}",
 
-          "value": "acb",
+          "value": "{name2}",
 
           "valueCheck": true
 

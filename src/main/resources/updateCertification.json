@@ -1,12 +1,12 @@
 {
-  "email": "aayush.garg@geminisolutions.com",
+  "email": "abhishek.singh@geminisolutions.com",
   "_id": "{uid}",
   "certification": {
-    "name": "Azure DevOps",
-    "classification": "Behaviour",
-    "technology": "ASM/RAC/Grid Infrastructure",
-    "provider": "hvihsbcjbh",
-    "completionDate": "20220817",
-    "validthrough": "Invalid date"
+    "name": "Selenium Testing",
+    "classification": "Technical",
+    "technology": "Illustrator",
+    "provider": "Gemini",
+    "completionDate": "20230701",
+    "validthrough": ""
   }
 }

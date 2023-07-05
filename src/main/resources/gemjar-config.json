@@ -26,7 +26,7 @@
     "getDataFromMis": "/uat/users/getDataFromMis",
     "getAdminDetail": "/uat/users/getadmindetail",
     "getItDetail": "/uat/users/getitdetail",
-    "getFeedbackData": "/uat/users/getFeedbackData",
+    "getFeedbackData": "/uat/users/getFeedbackData?startDate=2023-06-05&endDate=2023-07-01",
     "validateTokenEmployee": "/uat/users/validateTokenEmployee",
     "validateToken": "/uat/users/validatetoken",
     "deleteCandidate": "/uat/users/deleteCandidate/{uid}",
@@ -144,7 +144,7 @@
     "generateCertificate": "/uat/certifications/generateCertificate",
     "getCertificationMailStatus": "/uat/certifications/getCertificationsStatus",
     "updateCertification": "/uat/certifications?newSchema=true",
-    "deleteCertificate": "/uat/certifications/delete/{id}"
+    "deleteCertificate": "/uat/certifications/delete?newSchema=true"
 
   }
 }

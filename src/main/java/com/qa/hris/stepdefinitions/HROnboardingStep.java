@@ -60,11 +60,19 @@ public class HROnboardingStep {
                 GlobalVariable.tpoId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("_id").getAsString();
             } else if (payload.equalsIgnoreCase("saveTaxSavingOptions")) {
                 GlobalVariable.taxSaving_emailId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("email").getAsString();
-
                 JSONObject result = new JSONObject(response.getResponseBody());
                 JSONArray taxSavingOptions = result.getJSONObject("data").getJSONArray("taxSavingOptions");
                 JSONObject firstOption = taxSavingOptions.getJSONObject(0);
                 GlobalVariable.taxSaving_id = firstOption.getString("_id");
+            } else if (payload.equalsIgnoreCase("postCertification")) {
+                JSONObject result = new JSONObject(response.getResponseBody());
+                JSONArray certification = result.getJSONObject("data").getJSONArray("certification");
+                JSONObject firstOption = certification.getJSONObject(0);
+                GlobalVariable.certificationUid = firstOption.getString("_id");
+            }
+            else if (payload.equalsIgnoreCase("saveMasterTableData")) {
+                GlobalVariable.masterId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("_id").getAsString();
+                GlobalVariable.masterName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("fullName").getAsString();
             }
             GemTestReporter.addTestStep("Trigger " + urlNameConfig + " API for " + Description, "API was successfully triggered", STATUS.PASS);
         } catch (Exception e) {

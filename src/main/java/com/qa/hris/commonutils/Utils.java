@@ -411,7 +411,6 @@ public class Utils extends GemjarTestngBase {
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
             switch (payload) {
                 case "acceptOffer":
-                case "updateCertification":
                 case "savetpo":
                 case "syncOfficialInfo":
                 case "userAuth":
@@ -421,14 +420,16 @@ public class Utils extends GemjarTestngBase {
                 case "downloadDocument":
                 case "uploadDocument":
                 case "sendBulkJoiningMail":
-                case "allDataUpdate": {
+                case "allDataUpdate":
+                case "updateFeedbackReminder":{
                     jsonString = jsonString.replace("{uid}", GlobalVariable.uid);
                     break;
                 }
                 case "update": {
                     jsonString = jsonString.replace("{uid}", GlobalVariable.uid);
                 }
-                case "save": {
+                case "save":
+                case "saveMasterTableData": {
                     String sb = generateName();
                     System.out.println(sb);
                     String num = generatePhoneNumber();
@@ -447,7 +448,8 @@ public class Utils extends GemjarTestngBase {
                     jsonString = jsonString.replace("{uid}", GlobalVariable.tpoId);
                     break;
                 }
-                case "saveTaxSavingOptions": {
+                case "saveTaxSavingOptions":
+                {
                     String name = generateName();
                     String empCode = generateEmpCode();
                     jsonString = jsonString.replace("{name}", name).replace("{code}", empCode);
@@ -461,6 +463,24 @@ public class Utils extends GemjarTestngBase {
                     jsonString = jsonString.replace("{num}", generatePhoneNumber());
                     break;
                 }
+                case "deleteCertificate":
+                case "updateCertification": {
+                    jsonString = jsonString.replace("{uid}", GlobalVariable.certificationUid);
+                    break;
+                }
+                case "saveRoles" :{
+                    String name1 = generateName();
+                    String name2 = generateName();
+                    jsonString = jsonString.replace("{name1}", name1).replace("{name2}", name2);
+                    break;
+                }
+                case "updateMasterTableData":{
+                    String phoneNumber = generatePhoneNumber();
+                    String name = generateName();
+                    jsonString = jsonString.replace("{name}",GlobalVariable.masterName).replace("{number}",phoneNumber).replace("{email1}", name + "@gmail.com");
+                    break;
+                }
+
             }
             jsonFile = new JSONObject(jsonString);
 
