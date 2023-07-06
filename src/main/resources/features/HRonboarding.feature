@@ -224,7 +224,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint              | Method | Expected_status | Description        | api          |
-      | getAllCandidateMaster | get    | 200             | Get all candidates | HRGetDataApi |
+      | getAllCandidateMaster | get    | 200             | Get all candidates | hrGetDataApi |
 
   Scenario Outline: HRIS, User is able to get data for training probation candidate
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"

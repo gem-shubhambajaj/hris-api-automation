@@ -28,7 +28,7 @@ public class StepDefinition {
             status = Integer.parseInt(Utils.apiWithoutPayloads(url, method, header, Description, api).getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\\[|\\]", ""));
             GemTestReporter.addTestStep("Trigger " + url + " API for " + Description, "API was successfully triggered", STATUS.PASS);
         } catch (Exception e) {
-            logger.info("API was not hit successfully", e);
+            logger.error("API was not hit successfully", e);
             GemTestReporter.addTestStep("Trigger " + url + " API for " + Description, "API was not successfully triggered", STATUS.FAIL);
         }
     }
@@ -52,16 +52,16 @@ public class StepDefinition {
             } else if (payload.equalsIgnoreCase("savetpo")) {
                 GlobalVariable.tpoId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("_id").getAsString();
             } else if (payload.equalsIgnoreCase("saveTaxSavingOptions")) {
-                GlobalVariable.taxSaving_emailId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("email").getAsString();
+                GlobalVariable.taxSavingEmailId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("email").getAsString();
 
                 JSONObject result = new JSONObject(response.getResponseBody());
                 JSONArray taxSavingOptions = result.getJSONObject("data").getJSONArray("taxSavingOptions");
                 JSONObject firstOption = taxSavingOptions.getJSONObject(0);
-                GlobalVariable.taxSaving_id = firstOption.getString("_id");
+                GlobalVariable.taxSavingId = firstOption.getString("_id");
             }
             GemTestReporter.addTestStep("Trigger " + urlNameConfig + " API for " + Description, "API was successfully triggered", STATUS.PASS);
         } catch (Exception e) {
-            logger.info("API was not hit successfully", e); //write for url
+            logger.error("API was not hit successfully", e); //write for url
             GemTestReporter.addTestStep("Trigger " + urlNameConfig + " API for " + Description, "API was not successfully triggered", STATUS.FAIL);
         }
     }

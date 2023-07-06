@@ -5,11 +5,9 @@ import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.tdd.GemjarTestngBase;
 import com.gemini.generic.utils.ProjectConfigData;
-import io.github.classgraph.ScanResult;
 import org.json.*;
 import com.qa.hris.stepdefinitions.StepDefinition;
 import org.apache.http.HttpStatus;
-import org.testng.Assert;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -32,18 +30,6 @@ public class Utils extends GemjarTestngBase {
         }
     }
 
-    public static String getAuthorization() {
-        return Utils.generateAuthToken();
-    }
-
-    public static String getUser() {
-        return GlobalVariable.user;
-    }
-
-    public static String apiCalling() {
-        return "https://dleae1blka.execute-api.ap-south-1.amazonaws.com/uat/users/auth";
-    }
-
     public static Response loginUser(String urlNameFromConfig, String method, String sample, String step) {
         Response response = new Response();
         try {
@@ -54,9 +40,7 @@ public class Utils extends GemjarTestngBase {
             request.setMethod(method);
             if (!step.isEmpty()) {
                 request.setStep(step);
-            }
-//            String payload = ProjectSampleJson.getSampleDataString(sample);
-            String filePath = "src/main/resources/login.json";
+            }String filePath = "src/main/resources/login.json";
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
             request.setRequestPayload(jsonString);
             response = ApiInvocation.handleRequest(request);
@@ -76,24 +60,6 @@ public class Utils extends GemjarTestngBase {
         return response;
     }
 
-    public static String generateAuthToken() {
-        String authToken;
-        Request request = new Request();
-        String url = apiCalling();
-        GemTestReporter.addTestStep("Url for Auth Request", url, STATUS.INFO);
-        request.setURL(url);
-        request.setMethod("post");
-        request.setRequestPayload("{\n" + "  \"email\": \"shubham.bajaj@geminisolutions.com\",\n" + "  \"_id\": \"\"\n" + "}");
-        try {
-            Response response = ApiInvocation.handleRequest(request);
-            authToken = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("token").getAsString();
-            return authToken;
-        } catch (Exception e) {
-            Assert.fail("Failed to generate Auth token due to exception: " + e);
-            return null;
-        }
-    }
-
     // check the response
     public static void responseCheck(Response response) {
         if ((response.getResponseBody()) != null) {
@@ -111,22 +77,18 @@ public class Utils extends GemjarTestngBase {
             String url = null;
             switch (api) {
                 case "masterTableApi" -> url = GlobalVariable.masterTable;
-                case "hrGetDataApi" -> url = GlobalVariable.HRGetData;
+                case "hrGetDataApi" -> url = GlobalVariable.hrGetData;
                 case "exitAutomationApi" -> url = GlobalVariable.exit;
                 case "trainingApi" -> url = GlobalVariable.training;
-                case "hrOnboardCronApi" -> url = GlobalVariable.HROnboardCron;
+                case "hrOnboardCronApi" -> url = GlobalVariable.hrOnboardCron;
                 case "accountsDataApi" -> url = GlobalVariable.accountsData;
                 case "fresherAssignApi" -> url = GlobalVariable.fresherAssign;
                 case "certificationApi" -> url = GlobalVariable.certification;
             }
             url += ProjectConfigData.getProperty(urlNameFromConfig);
             switch (urlNameFromConfig) {
-                case "deleteCandidate", "getCandidate" -> {
-                    url = url.replace("{uid}", GlobalVariable.uid);
-                }
-                case "getAllCandidateMaster" -> {
-                    url = url.replace("{authToken}", GlobalVariable.token);
-                }
+                case "deleteCandidate", "getCandidate" -> url = url.replace("{uid}", GlobalVariable.uid);
+                case "getAllCandidateMaster" -> url = url.replace("{authToken}", GlobalVariable.token);
             }
             GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url, STATUS.INFO);
             request.setURL(url);
@@ -167,13 +129,12 @@ public class Utils extends GemjarTestngBase {
                 case "exitAutomationApi" -> url = GlobalVariable.exit;
                 case "botAutomationApi" -> url = GlobalVariable.botAutomate;
                 case "trainingApi" -> url = GlobalVariable.training;
-                case "hrOnboardCronApi" -> url = GlobalVariable.HROnboardCron;
+                case "hrOnboardCronApi" -> url = GlobalVariable.hrOnboardCron;
                 case "accountsDataApi" -> url = GlobalVariable.accountsData;
                 case "fresherAssignApi" -> url = GlobalVariable.fresherAssign;
                 case "certificationApi" -> url = GlobalVariable.certification;
             }
             url += ProjectConfigData.getProperty(urlNameFromConfig);
-
             GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url, STATUS.INFO);
             request.setURL(url);
             request.setMethod(method);
@@ -183,14 +144,13 @@ public class Utils extends GemjarTestngBase {
             if (!step.isEmpty()) {
                 request.setStep(step);
             }
-//            String jsonObj = ProjectSampleJson.getSampleDataString(payloadName);
             String jsonObj = payloadName.toString();
             request.setRequestPayload(jsonObj);
             response = ApiInvocation.handleRequest(request);
             GemTestReporter.addTestStep("Response Message", response.getResponseMessage(), STATUS.INFO);
             responseCheck(response);
         } catch (Exception exception) {
-            logger.info("Request doesn't Executed Successfully ");
+            logger.error("Request doesn't Executed Successfully ");
             if ((response.getResponseBody()) != null) {
                 GemTestReporter.addTestStep("Response Body", response.getResponseBody(), STATUS.INFO);
             } else {
@@ -199,7 +159,6 @@ public class Utils extends GemjarTestngBase {
         }
         return response;
     }
-
     public static String generateName() {
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
@@ -209,7 +168,6 @@ public class Utils extends GemjarTestngBase {
         }
         return sb.toString();
     }
-
     public static String generatePhoneNumber() {
         Random random = new Random();
         StringBuilder num = new StringBuilder();
@@ -227,9 +185,7 @@ public class Utils extends GemjarTestngBase {
         try {
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
             switch (payload) {
-                case "trainingSave" ->{
-                    jsonString = jsonString.replace("{uid}", GlobalVariable.uid).replace("{name}",generateName());
-                }
+                case "trainingSave" -> jsonString = jsonString.replace("{uid}", GlobalVariable.uid).replace("{name}",generateName());
                 case "save"                 -> {
                     String sb = generateName();
                     String num = generatePhoneNumber();
@@ -246,7 +202,7 @@ public class Utils extends GemjarTestngBase {
                     jsonString = jsonString.replace("{name}", name).replace("{code}", empCode);
                 }
                 case "mailtotpo"           -> jsonString = jsonString.replace("{uid}", GlobalVariable.tpoId);
-                case "taxSavingSetVerified"-> jsonString = jsonString.replace("{email}", GlobalVariable.taxSaving_emailId).replace("{uid}", GlobalVariable.taxSaving_id);
+                case "taxSavingSetVerified"-> jsonString = jsonString.replace("{email}", GlobalVariable.taxSavingEmailId).replace("{uid}", GlobalVariable.taxSavingId);
                 case "saveGapAnalysisForm" -> jsonString = jsonString.replace("{num}", generatePhoneNumber());
                 case "saveRoles"           -> jsonString = jsonString.replace("{name}", generateName());
                 default                    -> jsonString = jsonString.replace("{uid}", GlobalVariable.uid);

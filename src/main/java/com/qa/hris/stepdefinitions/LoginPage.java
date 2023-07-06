@@ -8,14 +8,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.testng.Assert;
 
-import java.util.HashMap;
-
 public class LoginPage {
 
     int status;
     static Response response;
     @Given("Set endpoint {string} and method {string} and payload {string} for Login Dashboard Authentication")
-    public void loginDashboardAuth(String url, String method, String payload) throws Exception {
+    public void loginDashboardAuth(String url, String method, String payload) {
         response = Utils.loginUser(url, method, payload, "LoginUser");
         status = response.getStatus();
     }
