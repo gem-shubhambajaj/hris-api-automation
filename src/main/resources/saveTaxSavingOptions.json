@@ -1,0 +1,41 @@
+{
+  "employeeName": "{name}",
+  "department": "Quality Assurance",
+  "email": "{name}@geminisolutions.com",
+  "empCode": "GSI T {code}",
+  "doj": "2022-10-03T00:00:00.000Z",
+  "dob": "2000-03-28T00:00:00.000Z",
+  "optForTaxSaving": true,
+  "aadhaarNumber": "987654321234",
+  "panNumber": "CHJDH6754A",
+  "designation": "Software Engineer L1",
+  "pfDetails": {
+    "pfStatus": "1",
+    "pfNumber": "BFHFBDSJHF473847387484",
+    "pfScheme": "Govt Scheme",
+    "pfJoiningDate": "2020-03-23T00:00:00.000Z",
+    "uanNumber": "437344334344",
+    "pfEligibility": "1",
+    "wantPF": "Yes",
+    "pfTrustName": "GOVT"
+  },
+  "npsEnrolment": {
+    "optfornps": true,
+    "deductedAmount": "5%",
+    "pranNumber": "232323289798"
+  },
+  "taxSavingOptions": {
+    "childEducationAllowance": true,
+    "availPaytmWalletOption": true,
+    "paytmNumber": "8797347844",
+    "availLTAOptions": true,
+    "ltaLimit": "98059543548",
+    "flexiBasketOption": [
+      {
+        "_id": "6346b1046a4ac500097b830e",
+        "name": "Telephone & Internet Expense",
+        "limit": "222"
+      }
+    ]
+  }
+}

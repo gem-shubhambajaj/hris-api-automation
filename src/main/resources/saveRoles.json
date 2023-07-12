@@ -1,0 +1,35 @@
+{
+
+  "name": "{name}",
+
+  "displayName": "{name}",
+
+  "description": "qqqqqqqqqqq",
+
+  "modulePermissions": [
+
+    {
+
+      "moduleName": "ATS",
+
+      "permissions": [
+
+        {
+
+          "name": "{name}",
+
+          "value": "{name}",
+
+          "valueCheck": true
+
+        }
+
+      ]
+
+    }
+
+  ],
+
+  "screenId": "cc"
+
+}

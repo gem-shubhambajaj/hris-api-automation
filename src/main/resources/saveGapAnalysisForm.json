@@ -1,0 +1,14 @@
+{
+  "id": "trainingGapForm_{num}",
+  "name": "Abcd",
+  "email": "shubham@geminisolutions.com",
+  "department": "Application",
+  "team": "Digital",
+  "targetedLearnerGroup": "",
+  "trainingGapAnalysis": false,
+  "technicalSkills": [],
+  "softSkills": [],
+  "skillRequirementFromQA": "",
+  "skillRequirementFromBA": "",
+  "suggestion": ""
+}

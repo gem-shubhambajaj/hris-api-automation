@@ -1,0 +1,8 @@
+{
+  "screen": "string",
+  "action": "string",
+  "data": "string",
+  "createdBy": "string",
+  "ipAddress": "string",
+  "device": "string"
+}
