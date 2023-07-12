@@ -9,81 +9,81 @@ Feature: HRIS Automation
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint  | Method | Expected_status | Description | payload       | api              |
-      | scheduler | post   | 200             | Scheduler   | cronScheduler | HRonboardCronApi |
-#
+      | scheduler | post   | 200             | Scheduler   | cronScheduler | hrOnboardCronApi |
+
   Scenario Outline: HRIS, User is able to upload docs mail
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint           | Method | Expected_status | Description           | api              |
-      | uploadDocsMailCron | get    | 200             | Upload Docs Mail Cron | HRonboardCronApi |
-#
+      | uploadDocsMailCron | get    | 200             | Upload Docs Mail Cron | hrOnboardCronApi |
+
   Scenario Outline: HRIS, Welcome Mail Cron
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint        | Method | Expected_status | Description       | api              |
-      | welcomeMailCron | get    | 200             | Welcome Mail Cron | HRonboardCronApi |
-#
+      | welcomeMailCron | get    | 200             | Welcome Mail Cron | hrOnboardCronApi |
+
   Scenario Outline: HRIS, Probation End Cron
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint         | Method | Expected_status | Description        | api              |
-      | probationEndCron | get    | 200             | Probation End Cron | HRonboardCronApi |
-#
+      | probationEndCron | get    | 200             | Probation End Cron | hrOnboardCronApi |
+
   Scenario Outline: HRIS, Training End Cron
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint        | Method | Expected_status | Description       | api              |
-      | trainingEndCron | get    | 200             | Training End Cron | HRonboardCronApi |
-#
+      | trainingEndCron | get    | 200             | Training End Cron | hrOnboardCronApi |
+
   Scenario Outline: HRIS, First Training End Cron
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint             | Method | Expected_status | Description             | api              |
-      | firstTrainingEndCron | get    | 200             | First Training End Cron | HRonboardCronApi |
-#
+      | firstTrainingEndCron | get    | 200             | First Training End Cron | hrOnboardCronApi |
+
   Scenario Outline: HRIS, Training Probation Report Cron
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint                    | Method | Expected_status | Description                    | api              |
-      | trainingProbationReportCron | get    | 200             | Training Probation Report Cron | HRonboardCronApi |
-#
+      | trainingProbationReportCron | get    | 200             | Training Probation Report Cron | hrOnboardCronApi |
+
   Scenario Outline: HRIS, tnp Report Last Month Cron
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint               | Method | Expected_status | Description                | api              |
-      | tnpReportLastMonthCron | get    | 200             | tnp Report Last Month Cron | HRonboardCronApi |
-#
+      | tnpReportLastMonthCron | get    | 200             | tnp Report Last Month Cron | hrOnboardCronApi |
+
   Scenario Outline: HRIS, mis Sync Cron
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint         | Method | Expected_status | Description   | api              |
-      | syncOfficialInfo | get    | 200             | mis Sync Cron | HRonboardCronApi |
-#
+      | syncOfficialInfo | get    | 200             | mis Sync Cron | hrOnboardCronApi |
+
   Scenario Outline: HRIS, User is able to update LWF Data Cron
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint      | Method | Expected_status | Description          | api              |
-      | updateLWFCron | get    | 200             | update LWF Data Cron | HRonboardCronApi |
-#
+      | updateLWFCron | get    | 200             | update LWF Data Cron | hrOnboardCronApi |
+
   Scenario Outline: HRIS, Hiring Flyer
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint    | Method | Expected_status | Description  | api              |
-      | hiringFlyer | get    | 200             | Hiring Flyer | HRonboardCronApi |
-#
+      | hiringFlyer | get    | 200             | Hiring Flyer | hrOnboardCronApi |
+
   Scenario Outline: HRIS, Hiring Manager Reminder
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint              | Method | Expected_status | Description             | api              |
-      | hiringManagerReminder | get    | 200             | Hiring Manager Reminder | HRonboardCronApi |
+      | hiringManagerReminder | get    | 200             | Hiring Manager Reminder | hrOnboardCronApi |

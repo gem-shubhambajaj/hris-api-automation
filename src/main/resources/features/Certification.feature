@@ -11,6 +11,13 @@ Feature: HRIS Automation
       | endpoint | Method | Expected_status | Description         | payload  | api              |
       | userAuth | post   | 200             | User Authentication | userAuth | certificationApi |
 
+  Scenario Outline: HRIS, Update Certification
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint            | Method | Expected_status | Description          | payload             | api              |
+      | updateCertification | put    | 200             | Update Certification | updateCertification | certificationApi |
+
   Scenario Outline: HRIS, Post Certification
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
@@ -18,13 +25,6 @@ Feature: HRIS Automation
       | endpoint          | Method | Expected_status | Description        | payload           | api              |
       | postCertification | post   | 200             | Post Certification | postCertification | certificationApi |
 
-  Scenario Outline: HRIS, Update Certification
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint            | Method | Expected_status | Description          | payload             | api              |
-      | updateCertification | put    | 200             | Update Certification | updateCertification | certificationApi |
-#
   Scenario Outline: HRIS, User is able to create certification type
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
@@ -38,13 +38,6 @@ Feature: HRIS Automation
     Examples:
       | endpoint              | Method | Expected_status | Description                      | payload               | api              |
       | certificationReminder | post   | 200             | Post certification reminder mail | certificationReminder | certificationApi |
-#
-  Scenario Outline: HRIS, User is able to delete certifications of employee
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint          | Method | Expected_status | Description                    |payload| api              |
-      | deleteCertificate | DELETE | 200             | Get certifications of employee | deleteCertificate|certificationApi |
 
   Scenario Outline: HRIS, User is able to get employees by manager
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
@@ -101,7 +94,7 @@ Feature: HRIS Automation
     Examples:
       | endpoint             | Method | Expected_status | Description                    | api              |
       | getEmployeeDetailMIS | get    | 200             | Get employees details from MIS | certificationApi |
-#
+
   Scenario Outline: HRIS, User is able to get management for certifications
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
@@ -143,4 +136,11 @@ Feature: HRIS Automation
     Examples:
       | endpoint                   | Method | Expected_status | Description                    | api              |
       | getCertificationMailStatus | get    | 200             | Get certifications Mail status | certificationApi |
+
+  Scenario Outline: HRIS, User is able to delete certifications of employee
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint          | Method | Expected_status | Description                    | api              |
+      | deleteCertificate | delete | 200             | Get certifications of employee | certificationApi |
 

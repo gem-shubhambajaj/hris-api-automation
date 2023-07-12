@@ -20,28 +20,27 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HROnboardingStep {
+public class StepDefinition {
     int status;
 
     JSONObject jsonObject;
 
     String getResponse;
-    Logger logger = LoggerFactory.getLogger(HROnboardingStep.class);
+    Logger logger = LoggerFactory.getLogger(StepDefinition.class);
+    Response response;
+    String message;
 
     //setting the endpoint and method for API
     @Given("Set endpoint and method and Description {string} and {string} and {string} and {string}")
     public void setEndpointAndMethodAndDescription(String url, String method, String Description, String api) {
-        JsonElement response;
         try {
             Map<String, String> header = new HashMap<>();
             header.put("Authorization", GlobalVariable.token);
-            System.out.println("TOKEN: " + GlobalVariable.token);
-            response = Utils.apiWithoutPayloads(url, method, header, Description, api).getResponseBodyJson();
-            getResponse = String.valueOf(response);
-            status = Integer.parseInt(response.getAsJsonObject().get("statusCode").getAsString().replaceAll("\\[|\\]", ""));
+            response = Utils.apiWithoutPayloads(url, method, header, Description, api);
+            status = Integer.parseInt(response.getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\\[|\\]", ""));
             GemTestReporter.addTestStep("Trigger " + url + " API for " + Description, "API was successfully triggered", STATUS.PASS);
         } catch (Exception e) {
-            logger.info("API was not hit successfully", e);
+            logger.error("API was not hit successfully", e);
             GemTestReporter.addTestStep("Trigger " + url + " API for " + Description, "API was not successfully triggered", STATUS.FAIL);
         }
     }
@@ -58,21 +57,18 @@ public class HROnboardingStep {
         header.put("Authorization", GlobalVariable.token);
         String step = "";
         try {
-            Response response = Utils.apiWithPayloads(urlNameConfig, method, header, step, jsonObject, api);
-            getResponse = String.valueOf(response);
-            System.out.println("-----------------------------------------------------------------------------------------------------------------------------------");
-            System.out.println(urlNameConfig + "---" + response);
+            response = Utils.apiWithPayloads(urlNameConfig, method, header, step, jsonObject, api);
             status = Integer.parseInt(response.getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\\[|\\]", ""));
             if (payload.equalsIgnoreCase("save")) {
                 GlobalVariable.uid = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("uid").getAsString();
             } else if (payload.equalsIgnoreCase("savetpo")) {
                 GlobalVariable.tpoId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("_id").getAsString();
             } else if (payload.equalsIgnoreCase("saveTaxSavingOptions")) {
-                GlobalVariable.taxSaving_emailId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("email").getAsString();
+                GlobalVariable.taxSavingEmailId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("email").getAsString();
                 JSONObject result = new JSONObject(response.getResponseBody());
                 JSONArray taxSavingOptions = result.getJSONObject("data").getJSONArray("taxSavingOptions");
                 JSONObject firstOption = taxSavingOptions.getJSONObject(0);
-                GlobalVariable.taxSaving_id = firstOption.getString("_id");
+                GlobalVariable.taxSavingId = firstOption.getString("_id");
             } else if (payload.equalsIgnoreCase("postCertification")) {
                 JSONObject result = new JSONObject(response.getResponseBody());
                 JSONArray certification = result.getJSONObject("data").getJSONArray("certification");
@@ -85,7 +81,7 @@ public class HROnboardingStep {
             }
             GemTestReporter.addTestStep("Trigger " + urlNameConfig + " API for " + Description, "API was successfully triggered", STATUS.PASS);
         } catch (Exception e) {
-            logger.info("API was not hit successfully", e); //write for url
+            logger.error("API was not hit successfully", e); //write for url
             GemTestReporter.addTestStep("Trigger " + urlNameConfig + " API for " + Description, "API was not successfully triggered", STATUS.FAIL);
         }
     }
@@ -116,5 +112,14 @@ public class HROnboardingStep {
         }else {
             GemTestReporter.addTestStep("Verify candidate uploaded document is present","Candidate uploaded document is not present",STATUS.FAIL);
         }
+    }
+    @Then("Validate response message {string}")
+    public void validateResponseMsgFor(String responseMessage) {
+        message = response.getResponseBodyJson().getAsJsonObject().get("message").getAsString().replaceAll("\\[|\\]", "");
+        if(responseMessage.equalsIgnoreCase(message))
+            GemTestReporter.addTestStep("Validate response message","Successfully validated message",STATUS.PASS);
+        else
+            GemTestReporter.addTestStep("Validate response message","Unable to validate message. Expected is '"+responseMessage+"'. Actual is '"+message+"'.",STATUS.FAIL);
+
     }
 }

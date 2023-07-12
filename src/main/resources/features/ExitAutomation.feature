@@ -9,29 +9,26 @@ Feature: HRIS Automation
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint            | Method | Expected_status | Description           | payload             | url               |
-      | saveResignationData | post   | 200             | Save Resignation Data | saveResignationData | ExitAutomationApi |
+      | saveResignationData | post   | 200             | Save Resignation Data | saveResignationData | exitAutomationApi |
 
   Scenario Outline: HRIS, User is able to send Reminder
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint     | Method | Expected_status | Description   | api               |
-      | sendReminder | post   | 200             | Send Reminder | ExitAutomationApi |
+      | sendReminder | post   | 200             | Send Reminder | exitAutomationApi |
 
   Scenario Outline: HRIS, User is able to get Resignation data
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint           | Method | Expected_status | Description          | api               |
-      | getResignationData | get    | 200             | get Resignation Data | ExitAutomationApi |
+      | getResignationData | get    | 200             | get Resignation Data | exitAutomationApi |
 
   Scenario Outline: HRIS, User is able to revoke Resignation
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<url>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint | Method | Expected_status | Description        | payload           | url               |
-      | save     | post   | 200             | revoke Resignation | revokeResignation | ExitAutomationApi |
-
-
-#add page size,email,search query, dept
+      | save     | post   | 200             | revoke Resignation | revokeResignation | exitAutomationApi |
 

@@ -1,39 +1,16 @@
 package com.qa.hris.commonutils;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.gemini.generic.api.utils.*;
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.tdd.GemjarTestngBase;
-import com.gemini.generic.ui.utils.DriverAction;
 import com.gemini.generic.utils.ProjectConfigData;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.json.JSONException;
 import org.json.*;
-import com.qa.hris.stepdefinitions.HROnboardingStep;
+import com.qa.hris.stepdefinitions.StepDefinition;
 import org.apache.http.HttpStatus;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-import org.testng.Assert;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-
-import java.io.*;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -41,7 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Utils extends GemjarTestngBase {
-    static Logger logger = LoggerFactory.getLogger(HROnboardingStep.class);
+    static Logger logger = LoggerFactory.getLogger(StepDefinition.class);
 
 
     public static void verifyStatusCode(int expected, int actual) {
@@ -52,20 +29,8 @@ public class Utils extends GemjarTestngBase {
         }
     }
 
-    public static String getAuthorization() {
-        return Utils.generateAuthToken();
-    }
-
-    public static String getUser() {
-        return GlobalVariable.user;
-    }
-
-    public static String apiCalling() {
-        return "https://dleae1blka.execute-api.ap-south-1.amazonaws.com/uat/users/auth";
-    }
-
-    public static Response loginUser(String urlNameFromConfig, String method, String sample, String step) throws Exception {
-       Response response = new Response();
+    public static Response loginUser(String urlNameFromConfig, String method, String sample, String step) {
+        Response response = new Response();
         try {
             Request request = new Request();
             String url = ProjectConfigData.getProperty(urlNameFromConfig);
@@ -74,12 +39,10 @@ public class Utils extends GemjarTestngBase {
             request.setMethod(method);
             if (!step.isEmpty()) {
                 request.setStep(step);
-            }
-            String filePath = "src/main/resources/login.json";
+            }String filePath = "src/main/resources/login.json";
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
             request.setRequestPayload(jsonString);
             response = ApiInvocation.handleRequest(request);
-            System.out.println("Response--------------------------"+response.getResponseBody());
             if (response.getStatus() == HttpStatus.SC_OK) {
                 GlobalVariable.token = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("token").getAsString();
             }
@@ -90,28 +53,10 @@ public class Utils extends GemjarTestngBase {
                 GemTestReporter.addTestStep("Response Body", "No-Response", STATUS.INFO);
             }
         } catch (Exception e) {
-            logger.info("Some Error Occurred", e);
+            logger.error("Some error occurred", e);
             GemTestReporter.addTestStep(method.toUpperCase() + " Request Verification ", method.toUpperCase() + " Request Did not Executed Successfully", STATUS.FAIL);
         }
         return response;
-    }
-
-    public static String generateAuthToken() {
-        String authToken;
-        Request request = new Request();
-        String url = apiCalling();
-        GemTestReporter.addTestStep("Url for Auth Request", url, STATUS.INFO);
-        request.setURL(url);
-        request.setMethod("post");
-        request.setRequestPayload("{\n" + "  \"email\": \"shubham.bajaj@geminisolutions.com\",\n" + "  \"_id\": \"\"\n" + "}");
-        try {
-            Response response = ApiInvocation.handleRequest(request);
-            authToken = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("token").getAsString();
-            return authToken;
-        } catch (Exception e) {
-            Assert.fail("Failed to generate Auth token due to exception: " + e);
-            return null;
-        }
     }
 
     // check the response
@@ -124,51 +69,25 @@ public class Utils extends GemjarTestngBase {
     }
 
     //send APIwithoutPayload
-    public static Response apiWithoutPayloads(String urlNameFromConfig, String method, Map<String, String> headers, String step, String api) throws Exception {
+    public static Response apiWithoutPayloads(String urlNameFromConfig, String method, Map<String, String> headers, String step, String api) {
         Response response = new Response();
         try {
             Request request = new Request();
             String url = null;
             switch (api) {
-                case "MasterTableApi": {
-                    url = GlobalVariable.baseURL3;
-                    break;
-                }
-                case "HRGetDataApi": {
-                    url = GlobalVariable.baseURL1;
-                    break;
-                }
-                case "ExitAutomationApi": {
-                    url = GlobalVariable.baseURL4;
-                    break;
-                }
-                case "TrainingApi": {
-                    url = GlobalVariable.baseURL6;
-                    break;
-                }
-                case "HRonboardCronApi": {
-                    url = GlobalVariable.baseURL7;
-                    break;
-                }
-                case "accountsDataApi": {
-                    url = GlobalVariable.baseURL8;
-                    break;
-                }
-                case "fresherAssignApi": {
-                    url = GlobalVariable.baseURL9;
-                    break;
-                }
-                case "certificationApi": {
-                    url = GlobalVariable.baseURL10;
-                    break;
-                }
+                case "masterTableApi" -> url = GlobalVariable.masterTable;
+                case "hrGetDataApi" -> url = GlobalVariable.hrGetData;
+                case "exitAutomationApi" -> url = GlobalVariable.exit;
+                case "trainingApi" -> url = GlobalVariable.training;
+                case "hrOnboardCronApi" -> url = GlobalVariable.hrOnboardCron;
+                case "accountsDataApi" -> url = GlobalVariable.accountsData;
+                case "fresherAssignApi" -> url = GlobalVariable.fresherAssign;
+                case "certificationApi" -> url = GlobalVariable.certification;
             }
             url += ProjectConfigData.getProperty(urlNameFromConfig);
             switch (urlNameFromConfig) {
-                case "deleteCandidate", "getCandidate" ->
-                    url = url.replace("{uid}", GlobalVariable.uid);
-                case "getAllCandidateMaster" ->
-                    url = url.replace("{auth}", GlobalVariable.token);
+                case "deleteCandidate", "getCandidate" -> url = url.replace("{uid}", GlobalVariable.uid);
+                case "getAllCandidateMaster" -> url = url.replace("{authToken}", GlobalVariable.token);
             }
             GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url, STATUS.INFO);
             request.setURL(url);
@@ -180,9 +99,6 @@ public class Utils extends GemjarTestngBase {
                 request.setStep(step);
             }
             response = ApiInvocation.handleRequest(request);
-            System.out.println();
-            System.out.println(urlNameFromConfig + "---" + response.getResponseBody());
-            System.out.println();
             GemTestReporter.addTestStep(method.toUpperCase() + " Request Verification ", method.toUpperCase() + " Request Executed Successfully", STATUS.PASS);
             if (step.isEmpty()) {
                 GemTestReporter.addTestStep("Message", response.getErrorMessage(), STATUS.INFO);
@@ -194,7 +110,7 @@ public class Utils extends GemjarTestngBase {
                 GemTestReporter.addTestStep("Response Body", "No-Response", STATUS.INFO);
             }
         } catch (Exception exception) {
-            logger.info("Request didn't Execute Successfully ", exception);
+            logger.error("Request didn't Execute Successfully ", exception);
             GemTestReporter.addTestStep(method.toUpperCase() + " Request Verification ", method.toUpperCase() + " Request Did not Executed Successfully", STATUS.FAIL);
         }
         return response;
@@ -207,45 +123,17 @@ public class Utils extends GemjarTestngBase {
             Request request = new Request();
             String url = null;
             switch (api) {
-                case "MasterTableApi": {
-                    url = GlobalVariable.baseURL3;
-                    break;
-                }
-                case "HRSaveDataApi": {
-                    url = GlobalVariable.baseURL2;
-                    break;
-                }
-                case "ExitAutomationApi": {
-                    url = GlobalVariable.baseURL4;
-                    break;
-                }
-                case "botAutomationApi": {
-                    url = GlobalVariable.baseURL5;
-                    break;
-                }
-                case "TrainingApi": {
-                    url = GlobalVariable.baseURL6;
-                    break;
-                }
-                case "HRonboardCronApi": {
-                    url = GlobalVariable.baseURL7;
-                    break;
-                }
-                case "accountsDataApi": {
-                    url = GlobalVariable.baseURL8;
-                    break;
-                }
-                case "fresherAssignApi": {
-                    url = GlobalVariable.baseURL9;
-                    break;
-                }
-                case "certificationApi": {
-                    url = GlobalVariable.baseURL10;
-                    break;
-                }
+                case "masterTableApi" -> url = GlobalVariable.masterTable;
+                case "hrSaveDataApi" -> url = GlobalVariable.hrSaveData;
+                case "exitAutomationApi" -> url = GlobalVariable.exit;
+                case "botAutomationApi" -> url = GlobalVariable.botAutomate;
+                case "trainingApi" -> url = GlobalVariable.training;
+                case "hrOnboardCronApi" -> url = GlobalVariable.hrOnboardCron;
+                case "accountsDataApi" -> url = GlobalVariable.accountsData;
+                case "fresherAssignApi" -> url = GlobalVariable.fresherAssign;
+                case "certificationApi" -> url = GlobalVariable.certification;
             }
             url += ProjectConfigData.getProperty(urlNameFromConfig);
-
             GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url, STATUS.INFO);
             request.setURL(url);
             request.setMethod(method);
@@ -258,13 +146,10 @@ public class Utils extends GemjarTestngBase {
             String jsonObj = payloadName.toString();
             request.setRequestPayload(jsonObj);
             response = ApiInvocation.handleRequest(request);
-            System.out.println();
-            System.out.println(urlNameFromConfig + "---" + response.getResponseBody());
-            System.out.println();
             GemTestReporter.addTestStep("Response Message", response.getResponseMessage(), STATUS.INFO);
             responseCheck(response);
         } catch (Exception exception) {
-            logger.info("Request doesn't Executed Successfully ");
+            logger.error("Request doesn't Executed Successfully ");
             if ((response.getResponseBody()) != null) {
                 GemTestReporter.addTestStep("Response Body", response.getResponseBody(), STATUS.INFO);
             } else {
@@ -273,55 +158,6 @@ public class Utils extends GemjarTestngBase {
         }
         return response;
     }
-
-    @Then("check new user json")
-    public static void newUser() throws IOException, ParseException {
-        jsonUpdated();
-    }
-
-    public static void updateJsonValue(String filePath, String[] keys, String newValue) {
-        try {
-            // Read the JSON file
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode jsonNode = objectMapper.readTree(new File(filePath));
-
-            // Traverse the JSON tree to find the node with the specified keys
-            JsonNode nodeToUpdate = jsonNode;
-            for (String key : keys) {
-                nodeToUpdate = nodeToUpdate.get(key);
-                if (nodeToUpdate == null) {
-                    System.out.println("Key path not found in JSON file.");
-                    return;
-                }
-            }
-
-            // Update the value
-            if (nodeToUpdate.isObject()) {
-                ObjectNode objectNode = (ObjectNode) nodeToUpdate;
-                objectNode.put(keys[keys.length - 1], newValue);
-            } else {
-                System.out.println("The value associated with the key path is not an object.");
-                return;
-            }
-            // Write the updated JSON back to the file
-            objectMapper.writeValue(new File(filePath), jsonNode);
-            System.out.println("Nested JSON value updated successfully.");
-        } catch (IOException e) {
-            System.out.println("Error occurred while updating nested JSON value: " + e.getMessage());
-        }
-    }
-
-    public static void jsonUpdated() throws IOException, ParseException {
-        String filePath = "src/main/resources/update.json";
-        JSONParser parser = new JSONParser();
-        String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
-        String newValue = "new value";
-        jsonString = jsonString.replace("{uid}", newValue);
-        System.out.println(jsonString);
-        JSONObject json = new JSONObject(jsonString);
-        System.out.println(json);
-    }
-
     public static String generateName() {
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
@@ -329,10 +165,8 @@ public class Utils extends GemjarTestngBase {
             char randomAlphabet = (char) (random.nextInt(26) + 'A');
             sb.append(randomAlphabet);
         }
-        System.out.println(sb);
         return sb.toString();
     }
-
     public static String generatePhoneNumber() {
         Random random = new Random();
         StringBuilder num = new StringBuilder();
@@ -437,32 +271,6 @@ public class Utils extends GemjarTestngBase {
             num.append(randomNum);
         }
         return num.toString();
-    }
-
-    @When("Update name, email and phone number of User in payload {string}")
-    public void updateNameEmailAndPhoneNumberOfUserInPayload(String payload) {
-        try {
-            StringBuilder sb = new StringBuilder();
-            Random random = new Random();
-            for (int i = 0; i < 6; i++) {
-                char randomAlphabet = (char) (random.nextInt(26) + 'A');
-                sb.append(randomAlphabet);
-            }
-            System.out.println(sb);
-            StringBuilder num = new StringBuilder();
-            for (int i = 0; i < 9; i++) {
-                int randomNum = random.nextInt(9);
-                num.append("9").append(randomNum);
-            }
-            System.out.println(num);
-            String filePath = "src/main/resources/" + payload + ".json";
-            JSONParser parser = new JSONParser();
-            String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
-            jsonString.replace("{name}", sb.toString()).replace("{email}", sb + "@gmail.com").replace("{number}", num);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
     }
 
 }
