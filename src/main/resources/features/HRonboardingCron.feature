@@ -4,12 +4,12 @@ Feature: HRIS Automation
     Given Set endpoint "postApi" and method "post" and payload "login" for Login Dashboard Authentication
     Then Verify dashboard status code 200
 
-#  Scenario Outline: HRIS, User is able to schedule
-#    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-#    Then Verify Status code <Expected_status>
-#    Examples:
-#      | endpoint  | Method | Expected_status | Description | payload       | api              |
-#      | scheduler | post   | 200             | Scheduler   | cronScheduler | HRonboardCronApi |
+  Scenario Outline: HRIS, User is able to schedule
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint  | Method | Expected_status | Description | payload       | api              |
+      | scheduler | post   | 200             | Scheduler   | cronScheduler | HRonboardCronApi |
 #
   Scenario Outline: HRIS, User is able to upload docs mail
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"

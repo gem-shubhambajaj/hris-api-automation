@@ -1,9 +1,7 @@
 {
-
-  "empId": "UzFA90CEwV8=",
-
-  "name": "Aadesh Kanna",
-
-  "email": "aadesh.khanna@geminisolutions.com"
-
+  "_id": "{uid}",
+  "reportingManager": {
+    "name": "updateTest",
+    "email": "update@gmail.com"
+  }
 }

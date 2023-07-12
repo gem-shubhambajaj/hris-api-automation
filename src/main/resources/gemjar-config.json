@@ -17,7 +17,7 @@
     "getCandidate": "/uat/users/getCandidate/{uid}",
     "getAllCandidate": "/uat/users/getAllCandidate",
     "getAllUsers": "/uat/users/getAllUsers",
-    "getAllCandidateMaster": "/uat/users/getAllCandidateMaster",
+    "getAllCandidateMaster": "/uat/users/getAllCandidateMaster?token={auth}",
     "getAllTrainingProbationCandidate": "/uat/users/getAllTrainingProbationCandidate?search=&feedback=all&status=post_p&pageIndex=1&pageSize=20&startDate=&endDate=",
     "getDocumentsToBeUploaded": "/uat/users/getdocumentstobeuploaded/pdf",
     "getCount": "/uat/users/getCount",

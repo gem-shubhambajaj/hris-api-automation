@@ -24,7 +24,7 @@ Feature: HRIS Automation
     Examples:
       | endpoint            | Method | Expected_status | Description          | payload             | api              |
       | updateCertification | put    | 200             | Update Certification | updateCertification | certificationApi |
-
+#
   Scenario Outline: HRIS, User is able to create certification type
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
@@ -38,7 +38,7 @@ Feature: HRIS Automation
     Examples:
       | endpoint              | Method | Expected_status | Description                      | payload               | api              |
       | certificationReminder | post   | 200             | Post certification reminder mail | certificationReminder | certificationApi |
-
+#
   Scenario Outline: HRIS, User is able to delete certifications of employee
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>

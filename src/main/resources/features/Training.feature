@@ -53,13 +53,13 @@ Feature: HRIS Automation
     Examples:
       | endpoint         | Method | Expected_status | Description        | api         |
       | getTrainingCount | get    | 200             | Get Training Count | TrainingApi |
-#
-#  Scenario Outline: HRIS, User is able to validate token trainingz
-#    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
-#    Then Verify Status code <Expected_status>
-#    Examples:
-#      | endpoint              | Method | Expected_status | Description             | api         |
-#      | validateTokenTraining | get    | 200             | Validate Token Training | TrainingApi |
+
+  Scenario Outline: HRIS, User is able to validate token trainingz
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint              | Method | Expected_status | Description             | api         |
+      | validateTokenTraining | get    | 200             | Validate Token Training | TrainingApi |
 #
   Scenario Outline: HRIS, User is able to send feedback reminder
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
@@ -88,11 +88,11 @@ Feature: HRIS Automation
     Examples:
       | endpoint               | Method | Expected_status | Description            | api         |
       | trainingGapMailTrigger | get    | 200             | Send Training Gap Mail | TrainingApi |
-#
-#  Scenario Outline: HRIS, User is able to validate token training gap
-#    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
-#    Then Verify Status code <Expected_status>
-#    Examples:
-#      | endpoint                 | Method | Expected_status | Description                 | api         |
-#      | validateTokenTrainingGap | get    | 200             | Validate Token Training GAP | TrainingApi |
-#
+
+  Scenario Outline: HRIS, User is able to validate token training gap
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint                 | Method | Expected_status | Description                 | api         |
+      | validateTokenTrainingGap | get    | 200             | Validate Token Training GAP | TrainingApi |
+

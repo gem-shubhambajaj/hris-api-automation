@@ -65,7 +65,7 @@ public class Utils extends GemjarTestngBase {
     }
 
     public static Response loginUser(String urlNameFromConfig, String method, String sample, String step) throws Exception {
-        Response response = new Response();
+       Response response = new Response();
         try {
             Request request = new Request();
             String url = ProjectConfigData.getProperty(urlNameFromConfig);
@@ -75,7 +75,6 @@ public class Utils extends GemjarTestngBase {
             if (!step.isEmpty()) {
                 request.setStep(step);
             }
-//            String payload = ProjectSampleJson.getSampleDataString(sample);
             String filePath = "src/main/resources/login.json";
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
             request.setRequestPayload(jsonString);
@@ -129,8 +128,6 @@ public class Utils extends GemjarTestngBase {
         Response response = new Response();
         try {
             Request request = new Request();
-//            String url = ProjectConfigData.getProperty(urlNameFromConfig);
-//            String url2 = GlobalVariable.baseURL1 + url;
             String url = null;
             switch (api) {
                 case "MasterTableApi": {
@@ -167,18 +164,11 @@ public class Utils extends GemjarTestngBase {
                 }
             }
             url += ProjectConfigData.getProperty(urlNameFromConfig);
-            switch(urlNameFromConfig){
-                case "deleteCandidate":
-                case "getCandidate":
-                {
-                    url = url.replace("{uid}",GlobalVariable.uid);
-                    break;
-                }
-                case "getAllCandidateMaster":
-                {
-                    url = url.replace("{authToken}",GlobalVariable.token);
-                    break;
-                }
+            switch (urlNameFromConfig) {
+                case "deleteCandidate", "getCandidate" ->
+                    url = url.replace("{uid}", GlobalVariable.uid);
+                case "getAllCandidateMaster" ->
+                    url = url.replace("{auth}", GlobalVariable.token);
             }
             GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url, STATUS.INFO);
             request.setURL(url);
@@ -255,7 +245,6 @@ public class Utils extends GemjarTestngBase {
                 }
             }
             url += ProjectConfigData.getProperty(urlNameFromConfig);
-//            url =  GlobalVariable.baseURL3+ url;
 
             GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url, STATUS.INFO);
             request.setURL(url);
@@ -266,17 +255,13 @@ public class Utils extends GemjarTestngBase {
             if (!step.isEmpty()) {
                 request.setStep(step);
             }
-//            String jsonObj = ProjectSampleJson.getSampleDataString(payloadName);
             String jsonObj = payloadName.toString();
             request.setRequestPayload(jsonObj);
-
-
             response = ApiInvocation.handleRequest(request);
             System.out.println();
             System.out.println(urlNameFromConfig + "---" + response.getResponseBody());
             System.out.println();
             GemTestReporter.addTestStep("Response Message", response.getResponseMessage(), STATUS.INFO);
-
             responseCheck(response);
         } catch (Exception exception) {
             logger.info("Request doesn't Executed Successfully ");
@@ -291,7 +276,6 @@ public class Utils extends GemjarTestngBase {
 
     @Then("check new user json")
     public static void newUser() throws IOException, ParseException {
-//        updateJsonValue("src/main/resources/update.json", new String[]{"_id"}, GlobalVariable.uid);
         jsonUpdated();
     }
 
@@ -334,54 +318,10 @@ public class Utils extends GemjarTestngBase {
         String newValue = "new value";
         jsonString = jsonString.replace("{uid}", newValue);
         System.out.println(jsonString);
-//        Gson gson = new Gson();
         JSONObject json = new JSONObject(jsonString);
         System.out.println(json);
-//        Files.write(Paths.get(filePath), jsonString.getBytes());
-
-
     }
 
-    //    public static void jsonUpdate() throws IOException {
-//
-//        FileInputStream inFile = new FileInputStream("File_Location");
-//        byte[] str = new byte[inFile.available()];
-//        inFile.read(str);
-//        String string = new String(str);
-//        JSONObject json = JSONEdit.createJSONObject(string);
-//        System.out.println(JSONEdit.replacekeyInJSONObject(json,"Address","Addressxxxxxx"));
-//    }
-//
-//    private static JSONObject replacekeyInJSONObject(JSONObject jsonObject, String jsonKey,
-//                                                     String jsonValue) {
-//
-//        for (Object key : jsonObject.keySet()) {
-//            if (key.equals(jsonKey) && ((jsonObject.get(jsonKey) instanceof String)||(jsonObject.get(jsonKey) instanceof Number)||jsonObject.get(jsonKey) ==null)) {
-//                jsonObject.put(jsonKey, jsonValue);
-//                return jsonObject;
-//            } else if (jsonObject.get(jsonKey) instanceof JSONObject) {
-//                JSONObject modifiedJsonobject = (JSONObject) jsonObject.get(jsonKey);
-//                if (modifiedJsonobject != null) {
-//                    replacekeyInJSONObject(modifiedJsonobject, jsonKey, jsonValue);
-//                }
-//            }
-//
-//        }
-//        return jsonObject;
-//    }
-//
-//    private static JSONObject createJSONObject(String jsonString){
-//        JSONObject jsonObject=new JSONObject();
-//        JSONParser jsonParser=new  JSONParser();
-//        if ((jsonString != null) && !(jsonString.isEmpty())) {
-//            try {
-//                jsonObject=(JSONObject) jsonParser.parse(jsonString);
-//            } catch (org.json.simple.parser.ParseException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return jsonObject;
-//    }
     public static String generateName() {
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
@@ -437,7 +377,6 @@ public class Utils extends GemjarTestngBase {
                     jsonString = jsonString.replace("{name}", sb).replace("{email}", sb + "@gmail.com").replace("{number}", num);
                     break;
                 }
-
                 case "saveBulkCandidate": {
                     String name1 = generateName();
                     String name2 = generateName();
@@ -469,9 +408,8 @@ public class Utils extends GemjarTestngBase {
                     break;
                 }
                 case "saveRoles" :{
-                    String name1 = generateName();
-                    String name2 = generateName();
-                    jsonString = jsonString.replace("{name1}", name1).replace("{name2}", name2);
+                    String name = generateName();
+                    jsonString = jsonString.replace("{name}", name);
                     break;
                 }
                 case "updateMasterTableData":{
@@ -516,18 +454,15 @@ public class Utils extends GemjarTestngBase {
                 int randomNum = random.nextInt(9);
                 num.append("9").append(randomNum);
             }
-
             System.out.println(num);
             String filePath = "src/main/resources/" + payload + ".json";
             JSONParser parser = new JSONParser();
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
             jsonString.replace("{name}", sb.toString()).replace("{email}", sb + "@gmail.com").replace("{number}", num);
-//            String payloadString = ProjectSampleJson.getSampleDataString(payload);
-//            payloadString.replace("name", sb.toString());
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
     }
+
 }

@@ -1,4 +1,8 @@
 {
-  "sessionId": "shubham.bajaj",
-  "context": {}
+  "context": {
+    "name": "projects/onboardingbot-lnac/agent/sessions/shubham.bajaj/contexts/joining",
+    "lifespanCount": 2,
+    "parameters": null
+  },
+  "sessionId": "shubham.bajaj"
 }

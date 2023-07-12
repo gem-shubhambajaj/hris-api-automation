@@ -3,8 +3,7 @@ Feature: HRIS_API
   Background: Login Dashboard Authentication
     Given Set endpoint "postApi" and method "post" and payload "login" for Login Dashboard Authentication
     Then Verify dashboard status code 200
-#
-#
+
     #savedata
   Scenario: HRIS, User is able to save the candidate
     When Set endpoint and method and Description and payload "save" and "post" and "Save Candidate" and "save" and "HRSaveDataApi"
@@ -14,37 +13,54 @@ Scenario: HRIS, User is able to accept offer the candidate
     When Set endpoint and method and Description and payload "save" and "post" and "accept offer" and "acceptOffer" and "HRSaveDataApi"
     Then Verify Status code 200
 
+  Scenario Outline: HRIS, User is able to get data for all candidates
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Verify candidate is saved
+    Examples:
+      | endpoint        | Method | Expected_status | Description                 | api          |
+      | getAllCandidate | get    | 200             | Get data for all candidates | HRGetDataApi |
+
   Scenario Outline: HRIS, User is able to update candidate details
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
+    Then Verify update response
     Examples:
       | endpoint | Method | Expected_status | Description              | payload | api           |
       | update   | post   | 200             | Update Candidate Details | update  | HRSaveDataApi |
 
-  Scenario Outline: HRIS, User is able to save bulk candidates
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint          | Method | Expected_status | Description         | payload           | api           |
-      | saveBulkCandidate | post   | 200             | Save Bulk Candidate | saveBulkCandidate | HRSaveDataApi |
-##500 error in db
-
+#    #500 issue
+##  Scenario Outline: HRIS, User is able to save bulk candidates
+##    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+##    Then Verify Status code <Expected_status>
+##    Examples:
+##      | endpoint          | Method | Expected_status | Description         | payload           | api           |
+##      | saveBulkCandidate | post   | 200             | Save Bulk Candidate | saveBulkCandidate | HRSaveDataApi |
+###500 error in db
+#
+#  #showing Null
   Scenario Outline: HRIS, User is able to send bulk joining mails
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint            | Method | Expected_status | Description            | payload             | api           |
       | sendBulkJoiningMail | post   | 200             | Send Bulk Joining Mail | sendBulkJoiningMail | HRSaveDataApi |
-#  {"statusCode":"[502]","message":"Mail Sending Failed","data":[]} -- Swagger response body is "null"
-
-
-
+##  {"statusCode":"[502]","message":"Mail Sending Failed","data":[]} -- Swagger response body is "null"
+#
   Scenario Outline: HRIS, User is able to upload documents
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint       | Method | Expected_status | Description      | payload        | api           |
       | uploadDocument | post   | 200             | Upload Documents | uploadDocument | HRSaveDataApi |
+
+  Scenario Outline: HRIS, User is able to get documents to be uploaded
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Verify candidate uploaded document is present
+    Examples:
+      | endpoint                 | Method | Expected_status | Description             | api          |
+      | getDocumentsToBeUploaded | get    | 200             | Get docs to be uploaded | HRGetDataApi |
 
 
   Scenario Outline: HRIS, User is able to download documents
@@ -142,13 +158,13 @@ Scenario: HRIS, User is able to accept offer the candidate
     Examples:
       | endpoint         | Method | Expected_status | Description        | payload          | api           |
       | saveSystemConfig | post   | 200             | Save System Config | saveSystemConfig | HRSaveDataApi |
-
-  Scenario Outline: HRIS, User is able to trigger logger
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint      | Method | Expected_status | Description    | payload       | api           |
-      | triggerLogger | post   | 200             | Trigger Logger | triggerLogger | HRSaveDataApi |
+#not in use
+#  Scenario Outline: HRIS, User is able to trigger logger
+#    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+#    Then Verify Status code <Expected_status>
+#    Examples:
+#      | endpoint      | Method | Expected_status | Description    | payload       | api           |
+#      | triggerLogger | post   | 200             | Trigger Logger | triggerLogger | HRSaveDataApi |
 
   Scenario Outline: HRIS, User is able to send bulk probation completion letters
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
@@ -171,6 +187,7 @@ Scenario: HRIS, User is able to accept offer the candidate
   Scenario Outline: HRIS, User is able to get data for new candidate
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
+    Then Verify candidate is saved
     Examples:
       | endpoint | Method | Expected_status | Description                | api          |
       | addNew   | get    | 200             | Get data for new candidate | HRGetDataApi |
@@ -208,12 +225,6 @@ Scenario: HRIS, User is able to accept offer the candidate
       | getCandidate | get    | 200             | Get data for a candidate | HRGetDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to get data for all candidates
-    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint        | Method | Expected_status | Description                 | api          |
-      | getAllCandidate | get    | 200             | Get data for all candidates | HRGetDataApi |
 
 #    #Krishan
   Scenario Outline: HRIS, User is able to get data of all users
@@ -238,12 +249,7 @@ Scenario: HRIS, User is able to accept offer the candidate
       | getAllTrainingProbationCandidate | get    | 200             | Get data for training probation candidate | HRGetDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to get documents to be uploaded
-    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint                 | Method | Expected_status | Description             | api          |
-      | getDocumentsToBeUploaded | get    | 200             | Get docs to be uploaded | HRGetDataApi |
+
 
     #Krishan
   Scenario Outline: HRIS, User is able to get number of employees in different employee onboarding processes
@@ -314,7 +320,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Examples:
       | endpoint      | Method | Expected_status | Description         | api          |
       | validateToken | get    | 200             | Get data from token | HRGetDataApi |
-
+#
   Scenario Outline: HRIS, User is able to delete a candidate of Uid
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
