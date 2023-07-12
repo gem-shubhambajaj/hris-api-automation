@@ -17,6 +17,9 @@ import java.util.Map;
 
 public class StepDefinition {
     int status;
+    Response response;
+    String message;
+    JSONObject jsonObject;
     Logger logger = LoggerFactory.getLogger(StepDefinition.class);
 
     //setting the endpoint and method for API
@@ -25,7 +28,8 @@ public class StepDefinition {
         try {
             Map<String, String> header = new HashMap<>();
             header.put("Authorization", GlobalVariable.token);
-            status = Integer.parseInt(Utils.apiWithoutPayloads(url, method, header, Description, api).getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\\[|\\]", ""));
+            response = Utils.apiWithoutPayloads(url, method, header, Description, api);
+            status = Integer.parseInt(response.getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\\[|\\]", ""));
             GemTestReporter.addTestStep("Trigger " + url + " API for " + Description, "API was successfully triggered", STATUS.PASS);
         } catch (Exception e) {
             logger.error("API was not hit successfully", e);
@@ -40,12 +44,12 @@ public class StepDefinition {
 
     @Given("Set endpoint and method and Description and payload {string} and {string} and {string} and {string} and {string}")
     public void setParameters(String urlNameConfig, String method, String Description, String payload, String api) {
-        JSONObject jsonObject = Utils.updateDetails(payload);
+        jsonObject = Utils.updateDetails(payload);
         HashMap<String, String> header = new HashMap<>();
         header.put("Authorization", GlobalVariable.token);
         String step = "";
         try {
-            Response response = Utils.apiWithPayloads(urlNameConfig, method, header, step, jsonObject, api);
+            response = Utils.apiWithPayloads(urlNameConfig, method, header, step, jsonObject, api);
             status = Integer.parseInt(response.getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\\[|\\]", ""));
             if (payload.equalsIgnoreCase("save")) {
                 GlobalVariable.uid = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("uid").getAsString();
@@ -66,4 +70,13 @@ public class StepDefinition {
         }
     }
 
+    @Then("Validate response message {string}")
+    public void validateResponseMsgFor(String responseMessage) {
+        message = response.getResponseBodyJson().getAsJsonObject().get("message").getAsString().replaceAll("\\[|\\]", "");
+        if(responseMessage.equalsIgnoreCase(message))
+            GemTestReporter.addTestStep("Validate response message","Successfully validated message",STATUS.PASS);
+        else
+            GemTestReporter.addTestStep("Validate response message","Unable to validate message. Expected is '"+responseMessage+"'. Actual is '"+message+"'.",STATUS.FAIL);
+
+    }
 }

@@ -169,7 +169,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint | Method | Expected_status | Description                | api          |
-      | addNew   | get    | 200             | Get data for new candidate | HRGetDataApi |
+      | addNew   | get    | 200             | Get data for new candidate | hrGetDataApi |
 
   #Krishan
   Scenario Outline: HRIS, User is able to get data for all HRs
@@ -177,7 +177,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint | Method | Expected_status | Description          | api          |
-      | getAllHr | get    | 200             | Get data for all HRs | HRGetDataApi |
+      | getAllHr | get    | 200             | Get data for all HRs | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get data for all roles
@@ -185,7 +185,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint | Method | Expected_status | Description            | api          |
-      | getRoles | get    | 200             | Get data for all roles | HRGetDataApi |
+      | getRoles | get    | 200             | Get data for all roles | hrGetDataApi |
 
   #todo
   Scenario Outline: HRIS, User is able to get data for a designation
@@ -193,7 +193,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint       | Method | Expected_status | Description                | api          |
-      | getDesignation | get    | 200             | Get data for a designation | HRGetDataApi |
+      | getDesignation | get    | 200             | Get data for a designation | hrGetDataApi |
 
     #todo
   Scenario Outline: HRIS, User is able to get data for a candidate
@@ -201,7 +201,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint     | Method | Expected_status | Description              | api          |
-      | getCandidate | get    | 200             | Get data for a candidate | HRGetDataApi |
+      | getCandidate | get    | 200             | Get data for a candidate | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get data for all candidates
@@ -209,7 +209,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint        | Method | Expected_status | Description                 | api          |
-      | getAllCandidate | get    | 200             | Get data for all candidates | HRGetDataApi |
+      | getAllCandidate | get    | 200             | Get data for all candidates | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get data of all users
@@ -217,7 +217,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint    | Method | Expected_status | Description           | api          |
-      | getAllUsers | get    | 200             | Get data of all users | HRGetDataApi |
+      | getAllUsers | get    | 200             | Get data of all users | hrGetDataApi |
 
   Scenario Outline: HRIS, User is able to get all candidates
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
@@ -231,7 +231,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint                         | Method | Expected_status | Description                               | api          |
-      | getAllTrainingProbationCandidate | get    | 200             | Get data for training probation candidate | HRGetDataApi |
+      | getAllTrainingProbationCandidate | get    | 200             | Get data for training probation candidate | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get documents to be uploaded
@@ -239,7 +239,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint                 | Method | Expected_status | Description             | api          |
-      | getDocumentsToBeUploaded | get    | 200             | Get docs to be uploaded | HRGetDataApi |
+      | getDocumentsToBeUploaded | get    | 200             | Get docs to be uploaded | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get number of employees in different employee onboarding processes
@@ -247,7 +247,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint | Method | Expected_status | Description                                               | api          |
-      | getCount | get    | 200             | Get no of employees in diff employee onboarding processes | HRGetDataApi |
+      | getCount | get    | 200             | Get no of employees in diff employee onboarding processes | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get Reporting Manager data
@@ -255,7 +255,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint    | Method | Expected_status | Description | api          |
-      | getRmDetail | get    | 200             | Get RM data | HRGetDataApi |
+      | getRmDetail | get    | 200             | Get RM data | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get buddy details
@@ -263,7 +263,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint       | Method | Expected_status | Description       | api          |
-      | getBuddyDetail | get    | 200             | Get buddy details | HRGetDataApi |
+      | getBuddyDetail | get    | 200             | Get buddy details | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get data from MIS
@@ -271,7 +271,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint       | Method | Expected_status | Description       | api          |
-      | getDataFromMis | get    | 200             | Get data from MIS | HRGetDataApi |
+      | getDataFromMis | get    | 200             | Get data from MIS | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get data of employees in Administration department
@@ -279,7 +279,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint       | Method | Expected_status | Description                         | api          |
-      | getAdminDetail | get    | 200             | Get data of employees in Admin dept | HRGetDataApi |
+      | getAdminDetail | get    | 200             | Get data of employees in Admin dept | hrGetDataApi |
 
   #Krishan
   Scenario Outline: HRIS, User is able to get data of employees in IT department
@@ -287,35 +287,35 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint    | Method | Expected_status | Description                      | api          |
-      | getItDetail | get    | 200             | Get data of employees in IT dept | HRGetDataApi |
+      | getItDetail | get    | 200             | Get data of employees in IT dept | hrGetDataApi |
 
   Scenario Outline: HRIS, User is able to get feedback data
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint        | Method | Expected_status | Description       | api          |
-      | getFeedbackData | get    | 200             | Get feedback data | HRGetDataApi |
+      | getFeedbackData | get    | 200             | Get feedback data | hrGetDataApi |
 
   Scenario Outline: HRIS, User is able to get data of employee from token
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint              | Method | Expected_status | Description                     | api          |
-      | validateTokenEmployee | get    | 200             | Get data of employee from token | HRGetDataApi |
+      | validateTokenEmployee | get    | 200             | Get data of employee from token | hrGetDataApi |
 
   Scenario Outline: HRIS, User is able to get data from token
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint      | Method | Expected_status | Description         | api          |
-      | validateToken | get    | 200             | Get data from token | HRGetDataApi |
+      | validateToken | get    | 200             | Get data from token | hrGetDataApi |
 
   Scenario Outline: HRIS, User is able to delete a candidate of Uid
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint        | Method | Expected_status | Description               | api          |
-      | deleteCandidate | get    | 200             | Delete a candidate of Uid | HRGetDataApi |
+      | deleteCandidate | get    | 200             | Delete a candidate of Uid | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get all skill types
@@ -323,7 +323,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint  | Method | Expected_status | Description         | api          |
-      | getSkills | get    | 200             | Get all skill types | HRGetDataApi |
+      | getSkills | get    | 200             | Get all skill types | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get employee skills data
@@ -331,7 +331,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint          | Method | Expected_status | Description              | api          |
-      | getEmployeeSkills | get    | 200             | Get employee skills data | HRGetDataApi |
+      | getEmployeeSkills | get    | 200             | Get employee skills data | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get MIS detail of all employees
@@ -339,7 +339,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint     | Method | Expected_status | Description                     | api          |
-      | getMISDetail | get    | 200             | Get MIS detail of all employees | HRGetDataApi |
+      | getMISDetail | get    | 200             | Get MIS detail of all employees | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get skills mail status
@@ -347,7 +347,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint        | Method | Expected_status | Description            | api          |
-      | getSkillsStatus | get    | 200             | Get skills mail status | HRGetDataApi |
+      | getSkillsStatus | get    | 200             | Get skills mail status | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get lwf data
@@ -355,7 +355,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint   | Method | Expected_status | Description  | api          |
-      | getLwfData | get    | 200             | Get lwf data | HRGetDataApi |
+      | getLwfData | get    | 200             | Get lwf data | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get tpo details
@@ -363,7 +363,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint   | Method | Expected_status | Description     | api          |
-      | tpoDetails | get    | 200             | Get tpo details | HRGetDataApi |
+      | tpoDetails | get    | 200             | Get tpo details | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get all permission types
@@ -371,7 +371,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint         | Method | Expected_status | Description              | api          |
-      | getAllPermission | get    | 200             | Get all permission types | HRGetDataApi |
+      | getAllPermission | get    | 200             | Get all permission types | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get address details
@@ -379,7 +379,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint         | Method | Expected_status | Description              | api          |
-      | getAddressDetails | get    | 200             | Get address details | HRGetDataApi |
+      | getAddressDetails | get    | 200             | Get address details | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get designation details
@@ -387,7 +387,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint         | Method | Expected_status | Description              | api          |
-      | getDesignationDetails | get    | 200             | Get designation details | HRGetDataApi |
+      | getDesignationDetails | get    | 200             | Get designation details | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get tech list
@@ -395,7 +395,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint         | Method | Expected_status | Description              | api          |
-      | getTechList | get    | 200             | Get tech list | HRGetDataApi |
+      | getTechList | get    | 200             | Get tech list | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get mentor list
@@ -403,7 +403,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint         | Method | Expected_status | Description              | api          |
-      | getMentorList | get    | 200             | Get mentor list | HRGetDataApi |
+      | getMentorList | get    | 200             | Get mentor list | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get System Configuration data
@@ -411,7 +411,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint        | Method | Expected_status | Description            | api          |
-      | getSystemConfig | get    | 200             | Get System Config data | HRGetDataApi |
+      | getSystemConfig | get    | 200             | Get System Config data | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get logs data
@@ -419,7 +419,7 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint       | Method | Expected_status | Description   | api          |
-      | getTriggerLogs | get    | 200             | Get logs data | HRGetDataApi |
+      | getTriggerLogs | get    | 200             | Get logs data | hrGetDataApi |
 
     #Krishan
   Scenario Outline: HRIS, User is able to get mail templates
@@ -427,6 +427,6 @@ Scenario: HRIS, User is able to accept offer the candidate
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint         | Method | Expected_status | Description        | api          |
-      | getMailTemplates | get    | 200             | Get mail templates | HRGetDataApi |
+      | getMailTemplates | get    | 200             | Get mail templates | hrGetDataApi |
 
 

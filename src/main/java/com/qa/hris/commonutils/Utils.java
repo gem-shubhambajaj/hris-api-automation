@@ -185,11 +185,11 @@ public class Utils extends GemjarTestngBase {
         try {
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
             switch (payload) {
-                case "trainingSave" -> jsonString = jsonString.replace("{uid}", GlobalVariable.uid).replace("{name}",generateName());
+                case "trainingSave"         -> jsonString = jsonString.replace("{uid}", GlobalVariable.uid).replace("{name}",GlobalVariable.newSavedName);
                 case "save"                 -> {
-                    String sb = generateName();
+                    GlobalVariable.newSavedName = generateName();
                     String num = generatePhoneNumber();
-                    jsonString = jsonString.replace("{name}", sb).replace("{email}", sb + "@gmail.com").replace("{number}", num);
+                    jsonString = jsonString.replace("{name}", GlobalVariable.newSavedName).replace("{email}", GlobalVariable.newSavedName + "@gmail.com").replace("{number}", num);
                 }
                 case "saveBulkCandidate"    -> {
                     String name1 = generateName();

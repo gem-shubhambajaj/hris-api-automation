@@ -4,16 +4,14 @@ Feature: HRIS Automation
     Given Set endpoint "postApi" and method "post" and payload "login" for Login Dashboard Authentication
     Then Verify dashboard status code 200
 
-  Scenario Outline: HRIS, User is able to authorize user
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint         | Method | Expected_status | Description        | payload          | api         |
-      | trainingUserAuth | post   | 200             | User Authorization | trainingUserAuth | trainingApi |
-
+  Scenario: HRIS, User is able to save the candidate
+    When Set endpoint and method and Description and payload "save" and "post" and "Save Candidate" and "save" and "hrSaveDataApi"
+    Then Verify Status code 200
+#
   Scenario Outline: HRIS, User is able to save training
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
+#    Then Validate response data after training data is saved
     Examples:
       | endpoint     | Method | Expected_status | Description   | payload      | api         |
       | trainingSave | post   | 200             | Save Training | trainingSave | trainingApi |

@@ -18,5 +18,6 @@ public class GlobalVariable {
     public static String tpoId = "";
     public static String taxSavingEmailId = "";
     public static String taxSavingId = "";
+    public static String newSavedName = "";
 }
 
