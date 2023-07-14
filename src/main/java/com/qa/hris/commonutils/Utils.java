@@ -11,6 +11,7 @@ import org.apache.http.HttpStatus;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
 
@@ -271,6 +272,13 @@ public class Utils extends GemjarTestngBase {
             num.append(randomNum);
         }
         return num.toString();
+    }
+
+    public static void compareJson(ArrayList<String> expected,ArrayList<String> actual){
+        if (expected.equals(actual)){
+            GemTestReporter.addTestStep("Compare expected values with actual values","Values matched",STATUS.PASS);
+        }else
+            GemTestReporter.addTestStep("Compare expected values with actual values","Values not matched",STATUS.FAIL);
     }
 
 }

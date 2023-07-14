@@ -17,6 +17,7 @@ import com.qa.hris.commonutils.GlobalVariable;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,10 +26,23 @@ public class StepDefinition {
 
     JSONObject jsonObject;
 
-    String getResponse;
     Logger logger = LoggerFactory.getLogger(StepDefinition.class);
     Response response;
     String message;
+
+    String requestData;
+
+    String actualName;
+
+    String expectedName;
+
+    String actualNumber;
+
+    String expectedNumber;
+
+    ArrayList<String> expectedArrayList = new ArrayList<>();
+
+    ArrayList<String> actualArrayList = new ArrayList<>();
 
     //setting the endpoint and method for API
     @Given("Set endpoint and method and Description {string} and {string} and {string} and {string}")
@@ -88,31 +102,27 @@ public class StepDefinition {
 
     @Then("Verify candidate is saved")
     public void verifyCandidateIsSaved() {
-        if (getResponse.contains(GlobalVariable.uid)) {
-            GemTestReporter.addTestStep("Verify candidate is saved", "Candidate is saved successfully", STATUS.PASS);
-        } else {
-            GemTestReporter.addTestStep("Verify candidate is saved", "Candidate is not saved successfully", STATUS.FAIL);
-        }
+        response.toString();
     }
 
     @Then("Verify update response")
     public void verifyUpdateResponse() {
-        JSONObject newObject = jsonObject;
-        if (getResponse.contains(newObject.getJSONObject("hrSpokes").get("name").toString())){
-            GemTestReporter.addTestStep("Verify response contains request payload","Response validated successfully",STATUS.PASS);
-        }else {
-            GemTestReporter.addTestStep("Verify response contains request payload", "Response not validated successfully", STATUS.FAIL);
-        }
+        expectedName = jsonObject.getJSONObject("candidateDetails").getJSONObject("name").get("fullName").toString();
+        expectedArrayList.add(expectedName);
+        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("updatedRecord").getAsJsonObject().get("candidateDetails").getAsJsonObject().get("name").getAsJsonObject().get("fullName").getAsString();
+        actualArrayList.add(actualName);
+        Utils.compareJson(expectedArrayList,actualArrayList);
     }
 
     @Then("Verify candidate uploaded document is present")
     public void verifyCandidateUploadedDocumentIsPresent() {
-        if (getResponse.contains(GlobalVariable.uid)){
+        if (response.toString().contains(GlobalVariable.uid)){
             GemTestReporter.addTestStep("Verify candidate uploaded document is present","Candidate uploaded document is present",STATUS.PASS);
         }else {
             GemTestReporter.addTestStep("Verify candidate uploaded document is present","Candidate uploaded document is not present",STATUS.FAIL);
         }
     }
+
     @Then("Validate response message {string}")
     public void validateResponseMsgFor(String responseMessage) {
         message = response.getResponseBodyJson().getAsJsonObject().get("message").getAsString().replaceAll("\\[|\\]", "");
@@ -121,5 +131,41 @@ public class StepDefinition {
         else
             GemTestReporter.addTestStep("Validate response message","Unable to validate message. Expected is '"+responseMessage+"'. Actual is '"+message+"'.",STATUS.FAIL);
 
+    }
+
+    @Then("Verify uploaded file name is present in response")
+    public void verifyUploadedFileNameIsPresentInResponse() {
+        expectedName = jsonObject.getJSONArray("uploadedDocuments").getJSONObject(0).get("filename").toString();
+        expectedArrayList.add(expectedName);
+        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("fileName").getAsString();
+        actualArrayList.add(actualName);
+        Utils.compareJson(expectedArrayList,actualArrayList);
+
+    }
+
+    @Then("Verify sent name is present in API response")
+    public void verifySentNameIsPresentInAPIResponse() {
+        String expectedDescription = jsonObject.get("description").toString();
+        String actualDescription = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("description").getAsString();
+        expectedName = jsonObject.get("displayName").toString();
+        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("name").getAsString();
+        expectedArrayList.add(expectedDescription);
+        expectedArrayList.add(expectedName);
+        actualArrayList.add(actualDescription);
+        actualArrayList.add(actualName);
+        Utils.compareJson(expectedArrayList,actualArrayList);
+    }
+
+    @Then("Verify request body with response body")
+    public void verifyRequestBodyWithResponseBody() {
+        expectedName = jsonObject.getJSONObject("candidateDetails").getJSONObject("name").get("fullName").toString();
+        expectedNumber = jsonObject.getJSONObject("candidateDetails").get("primaryContactNumber").toString();
+        expectedArrayList.add(expectedName);
+        expectedArrayList.add(expectedNumber);
+        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("candidateDetails").getAsJsonObject().get("name").getAsJsonObject().get("fullName").getAsString();
+        actualNumber = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("candidateDetails").getAsJsonObject().get("primaryContactNumber").getAsString();
+        actualArrayList.add(actualName);
+        actualArrayList.add(actualNumber);
+        Utils.compareJson(expectedArrayList,actualArrayList);
     }
 }

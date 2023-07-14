@@ -9,7 +9,6 @@ Feature: HRIS Automation
     When Set endpoint and method and Description and payload "save" and "post" and "Save Candidate" and "save" and "hrSaveDataApi"
     Then Verify Status code 200
 
-
   Scenario Outline: Update candidate details
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
