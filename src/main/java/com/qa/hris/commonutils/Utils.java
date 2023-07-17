@@ -87,7 +87,7 @@ public class Utils extends GemjarTestngBase {
             }
             url += ProjectConfigData.getProperty(urlNameFromConfig);
             switch (urlNameFromConfig) {
-                case "deleteCandidate", "getCandidate" -> url = url.replace("{uid}", GlobalVariable.uid);
+                case "deleteCandidate", "getCandidate", "tpoDetails" -> url = url.replace("{uid}", GlobalVariable.uid);
                 case "getAllCandidateMaster" -> url = url.replace("{authToken}", GlobalVariable.token);
             }
             GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url, STATUS.INFO);
@@ -276,7 +276,7 @@ public class Utils extends GemjarTestngBase {
 
     public static void compareJson(ArrayList<String> expected,ArrayList<String> actual){
         if (expected.equals(actual)){
-            GemTestReporter.addTestStep("Compare expected values with actual values","Values matched",STATUS.PASS);
+            GemTestReporter.addTestStep("Compare expected values with actual values","Expected values are same as actual values",STATUS.PASS);
         }else
             GemTestReporter.addTestStep("Compare expected values with actual values","Values not matched",STATUS.FAIL);
     }

@@ -40,6 +40,14 @@ public class StepDefinition {
 
     String expectedNumber;
 
+    String actualEmail;
+
+    String expectedEmail;
+
+    String expectedId;
+
+    String actualId;
+
     ArrayList<String> expectedArrayList = new ArrayList<>();
 
     ArrayList<String> actualArrayList = new ArrayList<>();
@@ -133,7 +141,7 @@ public class StepDefinition {
 
     }
 
-    @Then("Verify uploaded file name is present in response")
+    @Then("Validate response data of upload documents")
     public void verifyUploadedFileNameIsPresentInResponse() {
         expectedName = jsonObject.getJSONArray("uploadedDocuments").getJSONObject(0).get("filename").toString();
         expectedArrayList.add(expectedName);
@@ -143,12 +151,12 @@ public class StepDefinition {
 
     }
 
-    @Then("Verify sent name is present in API response")
+    @Then("Validate response data of roles")
     public void verifySentNameIsPresentInAPIResponse() {
         String expectedDescription = jsonObject.get("description").toString();
-        String actualDescription = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("description").getAsString();
+        String actualDescription = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("description").getAsString();
         expectedName = jsonObject.get("displayName").toString();
-        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("name").getAsString();
+        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("name").getAsString();
         expectedArrayList.add(expectedDescription);
         expectedArrayList.add(expectedName);
         actualArrayList.add(actualDescription);
@@ -166,6 +174,90 @@ public class StepDefinition {
         actualNumber = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("candidateDetails").getAsJsonObject().get("primaryContactNumber").getAsString();
         actualArrayList.add(actualName);
         actualArrayList.add(actualNumber);
+        Utils.compareJson(expectedArrayList,actualArrayList);
+    }
+
+    @Then("Validate response data of save skills")
+    public void verifyPostRequestInPresentInGetResponse() {
+        expectedName = jsonObject.getString("name");
+        expectedEmail = jsonObject.getString("email");
+        expectedArrayList.add(expectedName);
+        expectedArrayList.add(expectedEmail);
+        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("name").getAsString();
+        actualEmail = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("email").getAsString();
+        actualArrayList.add(actualName);
+        actualArrayList.add(actualEmail);
+        Utils.compareJson(expectedArrayList,actualArrayList);
+    }
+
+    @Then("Validate response data of tpoDetails")
+    public void verifyRequestWithGetResponse() {
+        expectedName = jsonObject.getString("tpoName");
+        expectedEmail = jsonObject.getString("tpoEmail");
+        expectedId = jsonObject.getString("_id");
+        expectedArrayList.add(expectedName);
+        expectedArrayList.add(expectedEmail);
+        expectedArrayList.add(expectedId);
+        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("tpoName").getAsString();
+        actualEmail = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("tpoEmail").getAsString();
+        actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("_id").getAsString();
+        actualArrayList.add(actualName);
+        actualArrayList.add(actualEmail);
+        actualArrayList.add(actualId);
+        Utils.compareJson(expectedArrayList,actualArrayList);
+    }
+
+    @Then("Validate data message as {string}")
+    public void validateDataMessageAs(String responseMessage) {
+        message = response.getResponseBodyJson().getAsJsonObject().get("data").getAsString();
+        if(responseMessage.equalsIgnoreCase(message))
+            GemTestReporter.addTestStep("Validate response message","Successfully validated message",STATUS.PASS);
+        else
+            GemTestReporter.addTestStep("Validate response message","Unable to validate message. Expected is '"+responseMessage+"'. Actual is '"+message+"'.",STATUS.FAIL);
+
+    }
+
+    @Then("Validate systemConfig response")
+    public void validateSystemConfigResponse() {
+        String expectedMailCc = jsonObject.getJSONArray("mailCc").get(0).toString();
+        expectedArrayList.add(expectedMailCc);
+        String actualMailCc = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("mailCc").getAsString();
+        actualArrayList.add(actualMailCc);
+        Utils.compareJson(expectedArrayList,actualArrayList);
+    }
+
+    @Then("Store created id from the response")
+    public void storeCreatedIdFromTheResponse() {
+        expectedId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("_id").getAsString();
+    }
+
+    @Then("validate mailTemplate response")
+    public void validateMailTemplateResponse() {
+        actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("_id").getAsString();
+        expectedName = jsonObject.getString("name");
+        expectedArrayList.add(expectedId);
+        expectedArrayList.add(expectedName);
+        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("name").getAsString();
+        actualArrayList.add(actualId);
+        actualArrayList.add(actualName);
+        Utils.compareJson(expectedArrayList,actualArrayList);
+    }
+
+    @Then("Validate response data for all data update")
+    public void validateResponseMessageForAllDataUpdate() {
+        expectedId = jsonObject.getString("_id");
+        expectedArrayList.add(expectedId);
+        actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("updatedRecord").getAsJsonObject().get("_id").getAsString();
+        actualArrayList.add(actualId);
+        Utils.compareJson(expectedArrayList,actualArrayList);
+    }
+
+    @Then("Validate response data of accept offer letter")
+    public void validateResponseDataOfAcceptOfferLetter() {
+        expectedId = jsonObject.getString("_id");
+        expectedArrayList.add(expectedId);
+        actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("uid").getAsString();
+        actualArrayList.add(actualId);
         Utils.compareJson(expectedArrayList,actualArrayList);
     }
 }
