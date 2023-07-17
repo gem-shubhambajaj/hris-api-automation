@@ -36,7 +36,7 @@
     "getMISDetail": "/uat/users/getMISdetail",
     "getSkillsStatus": "/uat/users/getSkillsStatus",
     "getLwfData": "/uat/users/getlwfdata",
-    "tpoDetails": "/uat/users/tpodetails",
+    "tpoDetails": "/uat/users/tpodetails?id={uid}",
     "getAllPermission": "/uat/users/getAllPermission",
     "getAddressDetails": "/uat/users/getAddressDetails?dataType=countries",
     "getDesignationDetails": "/uat/users/getDesignationDetails?dataType=groups",
