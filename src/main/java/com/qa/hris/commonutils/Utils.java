@@ -11,6 +11,7 @@ import org.apache.http.HttpStatus;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
 
@@ -25,7 +26,6 @@ public class Utils extends GemjarTestngBase {
         if (expected == actual) {
             GemTestReporter.addTestStep("Status Verification", "Expected Status :" + expected + ",<br>Actual :" + actual, STATUS.PASS);
         } else {
-
             GemTestReporter.addTestStep("Status Verification", "Expected Status :" + expected + ",<br>Actual :" + actual, STATUS.FAIL);
         }
     }
@@ -185,27 +185,75 @@ public class Utils extends GemjarTestngBase {
         try {
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
             switch (payload) {
-                case "trainingSave"         -> jsonString = jsonString.replace("{uid}", GlobalVariable.uid).replace("{name}",GlobalVariable.newSavedName);
-                case "save"                 -> {
-                    GlobalVariable.newSavedName = generateName();
-                    String num = generatePhoneNumber();
-                    jsonString = jsonString.replace("{name}", GlobalVariable.newSavedName).replace("{email}", GlobalVariable.newSavedName + "@gmail.com").replace("{number}", num);
+                case "acceptOffer":
+                case "savetpo":
+                case "syncOfficialInfo":
+                case "userAuth":
+                case "triggerMail":
+                case "sendTrainingMail":
+                case "trainingSave":
+                case "downloadDocument":
+                case "uploadDocument":
+                case "sendBulkJoiningMail":
+                case "allDataUpdate":
+                case "updateFeedbackReminder":{
+                    jsonString = jsonString.replace("{uid}", GlobalVariable.uid);
+                    break;
                 }
-                case "saveBulkCandidate"    -> {
+                case "update": {
+                    jsonString = jsonString.replace("{uid}", GlobalVariable.uid);
+                }
+                case "save":
+                case "saveMasterTableData": {
+                    String sb = generateName();
+                    System.out.println(sb);
+                    String num = generatePhoneNumber();
+                    System.out.println(num);
+                    jsonString = jsonString.replace("{name}", sb).replace("{email}", sb + "@gmail.com").replace("{number}", num);
+                    break;
+                }
+                case "saveBulkCandidate": {
                     String name1 = generateName();
                     String name2 = generateName();
                     jsonString = jsonString.replace("{name1}", name1).replace("{name2}", name2).replace("{email1}", name1 + "@gmail.com").replace("{email2}", name2 + "@gmail.com");
+                    break;
                 }
-                case "saveTaxSavingOptions" -> {
+                case "mailtotpo": {
+                    jsonString = jsonString.replace("{uid}", GlobalVariable.tpoId);
+                    break;
+                }
+                case "saveTaxSavingOptions":
+                {
                     String name = generateName();
                     String empCode = generateEmpCode();
                     jsonString = jsonString.replace("{name}", name).replace("{code}", empCode);
+                    break;
                 }
-                case "mailtotpo"           -> jsonString = jsonString.replace("{uid}", GlobalVariable.tpoId);
-                case "taxSavingSetVerified"-> jsonString = jsonString.replace("{email}", GlobalVariable.taxSavingEmailId).replace("{uid}", GlobalVariable.taxSavingId);
-                case "saveGapAnalysisForm" -> jsonString = jsonString.replace("{num}", generatePhoneNumber());
-                case "saveRoles"           -> jsonString = jsonString.replace("{name}", generateName());
-                default                    -> jsonString = jsonString.replace("{uid}", GlobalVariable.uid);
+                case "taxSavingSetVerified": {
+                    jsonString = jsonString.replace("{email}", GlobalVariable.taxSaving_emailId).replace("{uid}", GlobalVariable.taxSaving_id);
+                    break;
+                }
+                case "saveGapAnalysisForm":{
+                    jsonString = jsonString.replace("{num}", generatePhoneNumber());
+                    break;
+                }
+                case "deleteCertificate":
+                case "updateCertification": {
+                    jsonString = jsonString.replace("{uid}", GlobalVariable.certificationUid);
+                    break;
+                }
+                case "saveRoles" :{
+                    String name = generateName();
+                    jsonString = jsonString.replace("{name}", name);
+                    break;
+                }
+                case "updateMasterTableData":{
+                    String phoneNumber = generatePhoneNumber();
+                    String name = generateName();
+                    jsonString = jsonString.replace("{name}",GlobalVariable.masterName).replace("{number}",phoneNumber).replace("{email1}", name + "@gmail.com");
+                    break;
+                }
+
             }
             jsonFile = new JSONObject(jsonString);
 
@@ -224,6 +272,13 @@ public class Utils extends GemjarTestngBase {
             num.append(randomNum);
         }
         return num.toString();
+    }
+
+    public static void compareJson(ArrayList<String> expected,ArrayList<String> actual){
+        if (expected.equals(actual)){
+            GemTestReporter.addTestStep("Compare expected values with actual values","Values matched",STATUS.PASS);
+        }else
+            GemTestReporter.addTestStep("Compare expected values with actual values","Values not matched",STATUS.FAIL);
     }
 
 }
