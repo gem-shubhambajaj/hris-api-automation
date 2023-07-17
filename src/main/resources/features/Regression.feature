@@ -3,11 +3,12 @@ Feature: HRIS Automation
   Background: Login Dashboard Authentication
     Given Set endpoint "postApi" and method "post" and payload "login" for Login Dashboard Authentication
     Then Verify dashboard status code 200
-
+s
 ##HRonboardSaveData
   Scenario: Save the candidate
     When Set endpoint and method and Description and payload "save" and "post" and "Save Candidate" and "save" and "hrSaveDataApi"
     Then Verify Status code 200
+
 
   Scenario Outline: Update candidate details
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
