@@ -89,6 +89,7 @@ public class Utils extends GemjarTestngBase {
             switch (urlNameFromConfig) {
                 case "deleteCandidate", "getCandidate", "tpoDetails" -> url = url.replace("{uid}", GlobalVariable.uid);
                 case "getAllCandidateMaster" -> url = url.replace("{authToken}", GlobalVariable.token);
+                case "getMasterTableData" -> url = url.replace("{name}",GlobalVariable.masterName);
             }
             GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url, STATUS.INFO);
             request.setURL(url);
@@ -206,9 +207,7 @@ public class Utils extends GemjarTestngBase {
                 case "save":
                 case "saveMasterTableData": {
                     String sb = generateName();
-                    System.out.println(sb);
                     String num = generatePhoneNumber();
-                    System.out.println(num);
                     jsonString = jsonString.replace("{name}", sb).replace("{email}", sb + "@gmail.com").replace("{number}", num);
                     break;
                 }
@@ -250,7 +249,7 @@ public class Utils extends GemjarTestngBase {
                 case "updateMasterTableData":{
                     String phoneNumber = generatePhoneNumber();
                     String name = generateName();
-                    jsonString = jsonString.replace("{name}",GlobalVariable.masterName).replace("{number}",phoneNumber).replace("{email1}", name + "@gmail.com");
+                    jsonString = jsonString.replace("{name}",GlobalVariable.masterName).replace("{number}",phoneNumber).replace("{email}", GlobalVariable.masterName + "@gmail.com");
                     break;
                 }
 

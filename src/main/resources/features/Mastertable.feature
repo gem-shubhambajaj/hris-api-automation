@@ -4,31 +4,31 @@ Feature: HRIS-API
     Given Set endpoint "postApi" and method "post" and payload "login" for Login Dashboard Authentication
     Then Verify dashboard status code 200
 
-  Scenario Outline: HRIS, User is able to get Master table data
+#  Scenario Outline: HRIS, User is able to get Master table data
+#    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+#    Then Verify Status code <Expected_status>
+#    Examples:
+#      | endpoint           | Method | Expected_status | Description           | api            |
+#      | getMasterTableData | get    | 200             | Get Master Table Data | masterTableApi |
+
+  Scenario Outline: HRIS, User is able to save Master Table data
+    Given Set endpoint and method and Description and payload "saveMasterTableData" and "post" and "Save Master Table Data" and "saveMasterTableData" and "masterTableApi"
+    Then Verify Status code <Expected_status>
+    Then Store created id from the response
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
+    Then Validate response data for save master table
     Examples:
       | endpoint           | Method | Expected_status | Description           | api            |
       | getMasterTableData | get    | 200             | Get Master Table Data | masterTableApi |
 
-  Scenario Outline: HRIS, User is able to save Master Table data
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<url>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint            | Method | Expected_status | Description            | payload             | url            |
-      | saveMasterTableData | post   | 200             | Save Master Table Data | saveMasterTableData | masterTableApi |
-
   Scenario Outline: HRIS, User is able to update Master Table data
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<url>"
+    Given Set endpoint and method and Description and payload "updateMasterTableData" and "post" and "Update Master Table Data" and "updateMasterTableData" and "masterTableApi"
     Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint              | Method | Expected_status | Description              | payload               | url            |
-      | updateMasterTableData | post   | 200             | Update Master Table Data | updateMasterTableData | masterTableApi |
-
-#Negative_scenarios
-  Scenario Outline: HRIS, User is not able to update Master Table data
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<url>"
+    Then Store created id from the response
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
+    Then Validate response data for update master table
     Examples:
-      | endpoint              | Method | Expected_status | Description              | payload | url            |
-      | updateMasterTableData | post   | 0               | Update Master Table Data | abc     | masterTableApi |
+      | endpoint           | Method | Expected_status | Description           | api            |
+      | getMasterTableData | get    | 200             | Get Master Table Data | masterTableApi |

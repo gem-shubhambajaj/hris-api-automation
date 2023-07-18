@@ -70,7 +70,7 @@
 
     "saveMasterTableData":"/uat/users/save",
     "updateMasterTableData": "/uat/users/update",
-    "getMasterTableData": "/uat/users/getAllData",
+    "getMasterTableData": "/uat/users/getAllData?search={name}",
 
     "saveResignationData": "/uat/users/save",
     "sendReminder": "/uat/users/sendReminder",

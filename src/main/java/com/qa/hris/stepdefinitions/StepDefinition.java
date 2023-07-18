@@ -260,4 +260,28 @@ public class StepDefinition {
         actualArrayList.add(actualId);
         Utils.compareJson(expectedArrayList,actualArrayList);
     }
+
+    @Then("Validate response data for save master table")
+    public void validateResponseDataForSaveMasterTable() {
+        expectedName = jsonObject.getString("fullName");
+        expectedArrayList.add(expectedId);
+        expectedArrayList.add(expectedName);
+        actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("_id").getAsString();
+        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("fullName").getAsString();
+        actualArrayList.add(actualId);
+        actualArrayList.add(actualName);
+        Utils.compareJson(expectedArrayList,actualArrayList);
+    }
+
+    @Then("Validate response data for update master table")
+    public void validateResponseDataForUpdateMasterTable() {
+        expectedNumber = jsonObject.getString("mobile1");
+        expectedArrayList.add(expectedId);
+        expectedArrayList.add(expectedNumber);
+        actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("_id").getAsString();
+        actualNumber = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("mobile1").getAsString();
+        actualArrayList.add(actualId);
+        actualArrayList.add(actualNumber);
+        Utils.compareJson(expectedArrayList,actualArrayList);
+    }
 }
