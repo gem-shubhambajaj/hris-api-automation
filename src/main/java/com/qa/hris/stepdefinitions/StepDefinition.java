@@ -104,11 +104,6 @@ public class StepDefinition {
         }
     }
 
-    @Then("Verify candidate is saved")
-    public void verifyCandidateIsSaved() {
-        response.toString();
-    }
-
     @Then("Verify update response")
     public void verifyUpdateResponse() {
         expectedName = jsonObject.getJSONObject("candidateDetails").getJSONObject("name").get("fullName").toString();

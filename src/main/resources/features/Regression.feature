@@ -139,7 +139,7 @@ Feature: HRIS Automation
       | saveUserAccessData | post   | 200             | User access details | saveUserAccessData | hrSaveDataApi |
 
 #   #Krishan
-  Scenario Outline: HRIS, User is able to save system config
+  Scenario Outline: Save system config
     Given Set endpoint and method and Description and payload "saveSystemConfig" and "post" and "Save System Config" and "saveSystemConfig" and "hrSaveDataApi"
     Then Verify Status code <Expected_status>
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
@@ -150,7 +150,7 @@ Feature: HRIS Automation
       | getSystemConfig | get    | 200             | Get System Config data | hrGetDataApi |
 
   #Krishan
-  Scenario Outline: HRIS, User is able to save mail templates
+  Scenario Outline: Save mail templates
     Given Set endpoint and method and Description and payload "saveMailTemplates" and "post" and "Save Mail Templates" and "saveMailTemplates" and "hrSaveDataApi"
     Then Verify Status code <Expected_status>
     Then Store created id from the response
@@ -160,23 +160,15 @@ Feature: HRIS Automation
     Examples:
       | endpoint         | Method | Expected_status | Description        | api          |
       | getMailTemplates | get    | 200             | Get mail templates | hrGetDataApi |
-    
 
 #HRonboardSaveData
 
-  Scenario Outline: HRIS, User is able to get data for a candidate
+  Scenario Outline: Get data for a candidate
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint     | Method | Expected_status | Description              | api          |
       | getCandidate | get    | 200             | Get data for a candidate | hrGetDataApi |
-
-  Scenario Outline: HRIS, User is able to send mail manually
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint    | Method | Expected_status | Description        | payload     | api           |
-      | triggerMail | post   | 200             | Send Mail Manually | triggerMail | hrSaveDataApi |
 
   Scenario Outline: Get all skill types
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
@@ -259,35 +251,14 @@ Feature: HRIS Automation
       | endpoint    | Method | Expected_status | Description                      | api          |
       | getItDetail | get    | 200             | Get data of employees in IT dept | hrGetDataApi |
 
-  Scenario Outline: HRIS, User is able to save skills
+  Scenario Outline: Save skills
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint               | Method | Expected_status | Description | payload                | api           |
       | saveEmployeeSkillsData | post   | 200             | Save Skills | saveEmployeeSkillsData | hrSaveDataApi |
 
-  Scenario Outline: HRIS, User is able to save user access details
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint           | Method | Expected_status | Description         | payload            | api           |
-      | saveUserAccessData | post   | 200             | User access details | saveUserAccessData | hrSaveDataApi |
-
-  Scenario Outline: HRIS, User is able to add skills mail
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint      | Method | Expected_status | Description     | payload       | api           |
-      | addSkillsMail | post   | 200             | Add Skills Mail | addSkillsMail | hrSaveDataApi |
-
-  Scenario Outline: HRIS, User is able to send mail manually
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint    | Method | Expected_status | Description        | payload     | api           |
-      | triggerMail | post   | 200             | Send Mail Manually | triggerMail | hrSaveDataApi |
-
-  Scenario Outline: HRIS, User is able to delete a candidate through Uid
+  Scenario Outline: Delete a candidate through Uid
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
@@ -295,31 +266,16 @@ Feature: HRIS Automation
       | deleteCandidate | get    | 200             | Delete a candidate through Uid | hrGetDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to sync official info
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint         | Method | Expected_status | Description        | payload          | api           |
-      | syncOfficialInfo | post   | 200             | Sync Official Info | syncOfficialInfo | hrSaveDataApi |
-
-    #Krishan
-  Scenario Outline: HRIS, User is able to save tpo
+  Scenario Outline: Save tpo
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint | Method | Expected_status | Description | payload | api           |
       | saveTpo  | post   | 200             | Save TPO    | savetpo | hrSaveDataApi |
 
-    #Krishan
-  Scenario Outline: HRIS, User is able to save system config
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint         | Method | Expected_status | Description        | payload          | api           |
-      | saveSystemConfig | post   | 200             | Save System Config | saveSystemConfig | hrSaveDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to send mail to tpo
+  Scenario Outline: Send mail to tpo
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
@@ -327,7 +283,7 @@ Feature: HRIS Automation
       | mailToTpo | post   | 200             | Send Mail To TPO | mailtotpo | hrSaveDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to save mail templates
+  Scenario Outline: Save mail templates
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
@@ -337,7 +293,7 @@ Feature: HRIS Automation
 
 #HROnboardingGetData
    #Krishan
-  Scenario Outline: HRIS, User is able to get data for new candidate
+  Scenario Outline: Get data for new candidate
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Data Fetched Successfully"
@@ -346,7 +302,7 @@ Feature: HRIS Automation
       | addNew   | get    | 200             | Get data for new candidate | hrGetDataApi |
 
   #Krishan
-  Scenario Outline: HRIS, User is able to get data for all HRs
+  Scenario Outline: Get data for all HRs
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "HR Details Fetched Successfully from MIS"
@@ -355,7 +311,7 @@ Feature: HRIS Automation
       | getAllHr | get    | 200             | Get data for all HRs | hrGetDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to get data for all roles
+  Scenario Outline: Get data for all roles
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Data Fetched"
@@ -364,7 +320,7 @@ Feature: HRIS Automation
       | getRoles | get    | 200             | Get data for all roles | hrGetDataApi |
 
      #Krishan
-  Scenario Outline: HRIS, User is able to get data for all candidates
+  Scenario Outline: Get data for all candidates
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Data Fetched Successfully for All Candidates"
@@ -373,7 +329,7 @@ Feature: HRIS Automation
       | getAllCandidate | get    | 200             | Get data for all candidates | hrGetDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to get data of all users
+  Scenario Outline: Get data of all users
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "User Data Fetched Successfully"
@@ -382,7 +338,7 @@ Feature: HRIS Automation
       | getAllUsers | get    | 200             | Get data of all users | hrGetDataApi |
 
       #Krishan
-  Scenario Outline: HRIS, User is able to get documents to be uploaded
+  Scenario Outline: Get documents to be uploaded
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Data Fetched Successfully for Documents to be Uploaded"
@@ -391,7 +347,7 @@ Feature: HRIS Automation
       | getDocumentsToBeUploaded | get    | 200             | Get docs to be uploaded | hrGetDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to get number of employees in different employee onboarding processes
+  Scenario Outline: Get number of employees in different employee onboarding processes
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Data Count for Onboarding Fetched Successfully"
@@ -400,7 +356,7 @@ Feature: HRIS Automation
       | getCount | get    | 200             | Get no of employees in diff employee onboarding processes | hrGetDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to get Reporting Manager data
+  Scenario Outline: Get Reporting Manager data
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "RM Data Fetched Successfully from MIS"
@@ -409,7 +365,7 @@ Feature: HRIS Automation
       | getRmDetail | get    | 200             | Get RM data | hrGetDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to get buddy details
+  Scenario Outline: Get buddy details
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Buddy Details Fetched Successfully from MIS"
@@ -418,7 +374,7 @@ Feature: HRIS Automation
       | getBuddyDetail | get    | 200             | Get buddy details | hrGetDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to get address details
+  Scenario Outline: Get address details
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Data Fetched successfully"
@@ -427,7 +383,7 @@ Feature: HRIS Automation
       | getAddressDetails | get    | 200             | Get address details | hrGetDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to get designation details
+  Scenario Outline:Get designation details
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Data Fetched successfully"
@@ -436,7 +392,7 @@ Feature: HRIS Automation
       | getDesignationDetails | get    | 200             | Get designation details | hrGetDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to get tech list
+  Scenario Outline:Get tech list
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Data Fetched successfully"
@@ -445,7 +401,7 @@ Feature: HRIS Automation
       | getTechList | get    | 200             | Get tech list | hrGetDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to get mentor list
+  Scenario Outline: Get mentor list
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Data Fetched successfully"
@@ -454,16 +410,7 @@ Feature: HRIS Automation
       | getMentorList | get    | 200             | Get mentor list | hrGetDataApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to get System Configuration data
-    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Then Validate response message "Data Fetched"
-    Examples:
-      | endpoint        | Method | Expected_status | Description            | api          |
-      | getSystemConfig | get    | 200             | Get System Config data | hrGetDataApi |
-
-    #Krishan
-  Scenario Outline: HRIS, User is able to get logs data
+  Scenario Outline:Get logs data
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Logs Data Fetched Successfully"
@@ -472,7 +419,7 @@ Feature: HRIS Automation
       | getTriggerLogs | get    | 200             | Get logs data | hrGetDataApi |
 
       #Krishan
-  Scenario Outline: HRIS, User is able to get mail templates
+  Scenario Outline:Get mail templates
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Data Fetched"
@@ -489,7 +436,7 @@ Feature: HRIS Automation
       | endpoint       | Method | Expected_status | Description       | payload        | api              |
       | getBotChatData | post   | 200             | Get Bot Chat data | getBotChatData | botAutomationApi |
 
-  Scenario Outline: Find Bot Chat data
+  Scenario Outline: Get Finance Bot Chat data
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response data of bot chat data
@@ -497,16 +444,23 @@ Feature: HRIS Automation
       | endpoint       | Method | Expected_status | Description   | payload        | api              |
       | finBotChatData | post   | 200             | Find Bot Chat | finBotChatData | botAutomationApi |
 
-  Scenario Outline: HRIS, User is able to set Bot Context
+  Scenario Outline: Set Bot Context
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Success"
     Examples:
       | endpoint      | Method | Expected_status | Description        | payload       | api              |
       | botContextSet | post   | 200             | Set Context of bot | botContextSet | botAutomationApi |
+
+  Scenario Outline: Set Finance Bot Chat Context
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint         | Method | Expected_status | Description               | payload          | api              |
+      | finBotContextSet | post   | 200             | Find Bot Chat Context Set | finBotContextSet | botAutomationApi |
 #--
 #Accounts
-  Scenario Outline: HRIS, User is able to trigger mail tax saving
+  Scenario Outline: Trigger mail tax saving
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Mail Sent"
@@ -514,7 +468,7 @@ Feature: HRIS Automation
       | endpoint             | Method | Expected_status | Description             | payload              | api             |
       | triggerMailTaxSaving | post   | 200             | Trigger mail tax saving | triggerMailTaxSaving | accountsDataApi |
 
-  Scenario Outline: HRIS, User is able to save tax saving options
+  Scenario Outline: Save tax saving options
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate Response data after saving tax options
@@ -522,7 +476,7 @@ Feature: HRIS Automation
       | endpoint             | Method | Expected_status | Description             | payload              | api             |
       | saveTaxSavingOptions | post   | 200             | Save tax saving options | saveTaxSavingOptions | accountsDataApi |
 
-  Scenario Outline: HRIS, User is able to set taxSavingOptions to verified
+  Scenario Outline: Set tax Saving Options to verified
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response data of tax savings option verification
@@ -554,7 +508,7 @@ Feature: HRIS Automation
       | endpoint         | Method | Expected_status | Description        | api             |
       | BiAnnualReminder | get    | 200             | Bi-Annual Reminder | accountsDataApi |
 
-  Scenario Outline: HRIS, User is able to tax saving reminder cron
+  Scenario Outline: Tax saving reminder cron
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Mail Sent"
@@ -570,9 +524,17 @@ Feature: HRIS Automation
       | endpoint           | Method | Expected_status | Description           | api             |
       | getTaxSavingExport | get    | 200             | Get tax saving export | accountsDataApi |
 
+  Scenario Outline: Sync official info of Accounts
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Synced successfully"
+    Examples:
+      | endpoint         | Method | Expected_status | Description        | api         |
+      | syncOfficialInfo | get    | 200             | Sync official info | accountsDataApi |
+
 #--
 #  Training
-  Scenario Outline: HRIS, User is able to save training
+  Scenario Outline: Save training
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
@@ -580,7 +542,7 @@ Feature: HRIS Automation
       | trainingSave | post   | 200             | Save Training | trainingSave | trainingApi |
 
 #Krishan
-  Scenario Outline: HRIS, User is able to get data for training probation candidate
+  Scenario Outline: Get data for training probation candidate
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Training and Probation Data Fetched Successfully"
@@ -660,14 +622,13 @@ Feature: HRIS Automation
       | endpoint | Method | Expected_status | Description         | payload  | api              |
       | userAuth | post   | 200             | User Authentication | userAuth | certificationApi |
 
-  Scenario Outline: HRIS, User is able to post certification reminder mail
+  Scenario Outline: Post certification reminder mail
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response of certification reminder mail
     Examples:
       | endpoint              | Method | Expected_status | Description                      | payload               | api              |
       | certificationReminder | post   | 200             | Post certification reminder mail | certificationReminder | certificationApi |
-
 
   Scenario Outline: Get certifications
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
@@ -717,7 +678,7 @@ Feature: HRIS Automation
       | endpoint                   | Method | Expected_status | Description                    | api              |
       | getCertificationMailStatus | get    | 200             | Get certifications Mail status | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get certificate download Url
+  Scenario Outline: Get certificate download Url
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response data of certificate download URL
@@ -725,7 +686,7 @@ Feature: HRIS Automation
       | endpoint                  | Method | Expected_status | Description                  | payload                   | api              |
       | getCertificateDownloadURL | post   | 200             | Get Certificate Download Url | getCertificateDownloadURL | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get certificate upload URL
+  Scenario Outline: Get certificate upload URL
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response data of certificate upload URL
@@ -734,7 +695,7 @@ Feature: HRIS Automation
       | endpoint                | Method | Expected_status | Description                | payload                 | api              |
       | getCertificateUploadURL | post   | 200             | Get Certificate Upload URL | getCertificateUploadURL | certificationApi |
 
-  Scenario Outline: HRIS, User is able to generate certificate
+  Scenario Outline: Generate certificate
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Excel uploaded in DB"
@@ -742,7 +703,7 @@ Feature: HRIS Automation
       | endpoint            | Method | Expected_status | Description          | api              |
       | generateCertificate | get    | 200             | Generate Certificate | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get employees by manager
+  Scenario Outline: Get employees by manager
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message of get employee by manager
@@ -750,7 +711,7 @@ Feature: HRIS Automation
       | endpoint     | Method | Expected_status | Description              | payload      | api              |
       | getEmployees | post   | 200             | Get employees by manager | getEmployees | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get certifications of employee
+  Scenario Outline: Get certifications of employee
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Certifications Fetched Successfully"
@@ -758,7 +719,7 @@ Feature: HRIS Automation
       | endpoint                 | Method | Expected_status | Description                    | api              |
       | getCertificationEmployee | get    | 200             | Get certifications of employee | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get management for certifications
+  Scenario Outline: Get management for certifications
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Role Fetched Successfully for Email ID: shubham.bajaj@geminisolutions.com"
@@ -766,7 +727,7 @@ Feature: HRIS Automation
       | endpoint                   | Method | Expected_status | Description                       | api              |
       | getManagementCertification | get    | 200             | Get management for certifications | certificationApi |
 
-  Scenario Outline: HRIS, User is able to generate certificate from JSON
+  Scenario Outline: Generate certificate from JSON
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Excel uploaded in DB"
@@ -775,7 +736,7 @@ Feature: HRIS Automation
       | getCertificateJSON | post   | 200             | Generate certificate from JSON | getCertificateJSON | certificationApi |
 
 #ExitAutomation
-  Scenario:Save and get resignation data
+  Scenario: Save and get resignation data
     Given Set endpoint and method and Description and payload "saveResignationData" and "post" and "Save Resignation Data" and "saveResignationData" and "exitAutomationApi"
     Then Verify Status code 200
     When Set endpoint and method and Description "getResignationData" and "get" and "get Resignation Data" and "exitAutomationApi"
@@ -786,7 +747,7 @@ Feature: HRIS Automation
     When Validate response message "Application Revoked"
     Then Validate revoke resignation response data
 
-  Scenario Outline: HRIS, User is able to send Reminder
+  Scenario Outline: Send Reminder
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Mail Sent"
@@ -800,13 +761,12 @@ Feature: HRIS Automation
   Scenario Outline: HRIS, User is able to upload candidate data
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
-
     Examples:
       | endpoint                       | Method | Expected_status | Description           | payload             | api              |
       | saveBulkCandidateFresherAssign | post   | 200             | Upload candidate data | uploadCandidateData | fresherAssignApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to send assignment mail
+  Scenario Outline: Send assignment mail
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
@@ -814,7 +774,7 @@ Feature: HRIS Automation
       | sendAssignmentMail | post   | 200             | Send Assignment Mail | sendAssignmentMail | fresherAssignApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to upload assignments
+  Scenario Outline: Upload assignments
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
@@ -822,7 +782,7 @@ Feature: HRIS Automation
       | uploadAssignments | post   | 200             | Upload Assignments | uploadAssignments | fresherAssignApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to download assignments
+  Scenario Outline: Download assignments
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
@@ -830,7 +790,7 @@ Feature: HRIS Automation
       | downloadAssignments | post   | 200             | Download Assignments | downloadAssignments | fresherAssignApi |
 
     #Krishan
-  Scenario Outline: HRIS, User is able to get fresher assignment data
+  Scenario Outline: Get fresher assignment data
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Fresher Assignment Data Fetched Successfully"

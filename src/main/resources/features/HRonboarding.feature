@@ -10,7 +10,7 @@ Feature: HRIS_API
     Then Verify Status code 200
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
-    Then Verify request body with response body
+    Then Verify response data for save candidate
     Examples:
       | endpoint     | Method | Expected_status | Description              | api          |
       | getCandidate | get    | 200             | Get data for a candidate | hrGetDataApi |
@@ -25,20 +25,20 @@ Feature: HRIS_API
     Then Verify Status code <Expected_status>
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
-    Then Verify request body with response body
+    Then Verify response data for save candidate
     Examples:
       | endpoint     | Method | Expected_status | Description              | api          |
       | getCandidate | get    | 200             | Get data for a candidate | hrGetDataApi |
 
-##    #500 issue
-###  Scenario Outline: HRIS, User is able to save bulk candidates
-###    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-###    Then Verify Status code <Expected_status>
-###    Examples:
-###      | endpoint          | Method | Expected_status | Description         | payload           | api           |
-###      | saveBulkCandidate | post   | 200             | Save Bulk Candidate | saveBulkCandidate | hrSaveDataApi |
-####500 error in db
-#
+    #500 issue
+  Scenario Outline: HRIS, User is able to save bulk candidates
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint          | Method | Expected_status | Description         | payload           | api           |
+      | saveBulkCandidate | post   | 200             | Save Bulk Candidate | saveBulkCandidate | hrSaveDataApi |
+#500 error in db
+
   Scenario Outline: HRIS, User is able to send bulk joining mails
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
