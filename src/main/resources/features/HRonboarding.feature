@@ -458,6 +458,6 @@ Feature: HRIS_API
 #    Then Verify Status code <Expected_status>
 #    Examples:
 #      | endpoint         | Method | Expected_status | Description        | api          |
-#      | getMailTemplates | get    | 200             | Get mail templates | hrGetDataApi |
+#      | getMailTemplates ge| get    | 200             | Get mail templates | hrGetDataApi |
 ##
 #

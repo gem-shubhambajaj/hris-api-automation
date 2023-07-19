@@ -185,75 +185,47 @@ public class Utils extends GemjarTestngBase {
         try {
             String jsonString = new String(Files.readAllBytes(Paths.get(filePath)));
             switch (payload) {
-                case "acceptOffer":
-                case "savetpo":
-                case "syncOfficialInfo":
-                case "userAuth":
-                case "triggerMail":
-                case "sendTrainingMail":
-                case "trainingSave":
-                case "downloadDocument":
-                case "uploadDocument":
-                case "sendBulkJoiningMail":
-                case "allDataUpdate":
-                case "updateFeedbackReminder":{
-                    jsonString = jsonString.replace("{uid}", GlobalVariable.uid);
-                    break;
-                }
-                case "update": {
-                    jsonString = jsonString.replace("{uid}", GlobalVariable.uid);
-                }
-                case "save":
-                case "saveMasterTableData": {
+                case "save", "saveMasterTableData" -> {
                     String sb = generateName();
                     System.out.println(sb);
                     String num = generatePhoneNumber();
                     System.out.println(num);
                     jsonString = jsonString.replace("{name}", sb).replace("{email}", sb + "@gmail.com").replace("{number}", num);
-                    break;
                 }
-                case "saveBulkCandidate": {
+                case "saveBulkCandidate" -> {
                     String name1 = generateName();
                     String name2 = generateName();
                     jsonString = jsonString.replace("{name1}", name1).replace("{name2}", name2).replace("{email1}", name1 + "@gmail.com").replace("{email2}", name2 + "@gmail.com");
-                    break;
                 }
-                case "mailtotpo": {
+                case "mailtotpo" -> {
                     jsonString = jsonString.replace("{uid}", GlobalVariable.tpoId);
-                    break;
                 }
-                case "saveTaxSavingOptions":
-                {
+                case "saveTaxSavingOptions" -> {
                     String name = generateName();
                     String empCode = generateEmpCode();
                     jsonString = jsonString.replace("{name}", name).replace("{code}", empCode);
-                    break;
                 }
-                case "taxSavingSetVerified": {
+                case "taxSavingSetVerified" -> {
                     jsonString = jsonString.replace("{email}", GlobalVariable.taxSaving_emailId).replace("{uid}", GlobalVariable.taxSaving_id);
-                    break;
                 }
-                case "saveGapAnalysisForm":{
+                case "saveGapAnalysisForm" -> {
                     jsonString = jsonString.replace("{num}", generatePhoneNumber());
-                    break;
                 }
-                case "deleteCertificate":
-                case "updateCertification": {
+                case "deleteCertificate", "updateCertification" -> {
                     jsonString = jsonString.replace("{uid}", GlobalVariable.certificationUid);
-                    break;
                 }
-                case "saveRoles" :{
+                case "saveRoles" -> {
                     String name = generateName();
                     jsonString = jsonString.replace("{name}", name);
-                    break;
                 }
-                case "updateMasterTableData":{
+                case "updateMasterTableData" -> {
                     String phoneNumber = generatePhoneNumber();
                     String name = generateName();
-                    jsonString = jsonString.replace("{name}",GlobalVariable.masterName).replace("{number}",phoneNumber).replace("{email1}", name + "@gmail.com");
-                    break;
+                    jsonString = jsonString.replace("{name}", GlobalVariable.masterName).replace("{number}", phoneNumber).replace("{email1}", name + "@gmail.com");
                 }
-
+                default -> {
+                    jsonString = jsonString.replace("{uid}", GlobalVariable.uid);
+                }
             }
             jsonFile = new JSONObject(jsonString);
 

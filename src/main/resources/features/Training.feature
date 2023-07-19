@@ -55,7 +55,7 @@ Feature: HRIS Automation
       | endpoint         | Method | Expected_status | Description        | api         |
       | getTrainingCount | get    | 200             | Get Training Count | trainingApi |
 
-  Scenario Outline: HRIS, User is able to validate token trainingz
+  Scenario Outline: HRIS, User is able to validate token training
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:

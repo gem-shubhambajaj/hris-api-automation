@@ -1,5 +1,5 @@
 {
-  "environment": "uat",
+  "environment": "beta",
   "project_name": "HRIS",
   "report_name": "HRIS-API-Regression",
   "entry_point": "https://apis.gemecosystem.com/enter-point",
