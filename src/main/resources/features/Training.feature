@@ -7,7 +7,7 @@ Feature: HRIS Automation
   Scenario: HRIS, User is able to save the candidate
     When Set endpoint and method and Description and payload "save" and "post" and "Save Candidate" and "save" and "hrSaveDataApi"
     Then Verify Status code 200
-#
+
   Scenario Outline: HRIS, User is able to save training
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>

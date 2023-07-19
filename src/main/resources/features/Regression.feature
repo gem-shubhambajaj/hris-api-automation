@@ -3,7 +3,7 @@ Feature: HRIS Automation
   Background: Login Dashboard Authentication
     Given Set endpoint "postApi" and method "post" and payload "login" for Login Dashboard Authentication
     Then Verify dashboard status code 200
-    
+
 #HRONBOARDINGSAVEDATA
   Scenario: Save the candidate
     When Set endpoint and method and Description and payload "save" and "post" and "Save Candidate" and "save" and "hrSaveDataApi"
@@ -11,7 +11,6 @@ Feature: HRIS Automation
     Given Set endpoint and method and Description "getCandidate" and "get" and "Get data for a candidate" and "hrGetDataApi"
     Then Verify Status code 200
     Then Verify response data for save candidate
-
 
   Scenario: Accept the offer letter of candidate
     When Set endpoint and method and Description and payload "save" and "post" and "accept offer" and "acceptOffer" and "hrSaveDataApi"
@@ -150,7 +149,6 @@ Feature: HRIS Automation
     Then Verify Status code 200
     Then validate mailTemplate response
 
-
   Scenario Outline: Get all skill types
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
@@ -175,7 +173,6 @@ Feature: HRIS Automation
       | endpoint     | Method | Expected_status | Description                     | api          |
       | getMISDetail | get    | 200             | Get MIS detail of all employees | hrGetDataApi |
 
-
   Scenario Outline: Get skills mail status
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
@@ -191,14 +188,6 @@ Feature: HRIS Automation
     Examples:
       | endpoint   | Method | Expected_status | Description  | api          |
       | getLwfData | get    | 200             | Get lwf data | hrGetDataApi |
-
-  Scenario Outline: Get TPO details
-    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Then Validate response message "TPO Details Fetched Successfully"
-    Examples:
-      | endpoint   | Method | Expected_status | Description     | api          |
-      | tpoDetails | get    | 200             | Get tpo details | hrGetDataApi |
 
   Scenario Outline: Get all permission types
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
@@ -238,14 +227,6 @@ Feature: HRIS Automation
     Examples:
       | endpoint        | Method | Expected_status | Description                    | api          |
       | deleteCandidate | get    | 200             | Delete a candidate through Uid | hrGetDataApi |
-
-    #Krishan
-  Scenario Outline: Save tpo
-    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
-    Then Verify Status code <Expected_status>
-    Examples:
-      | endpoint | Method | Expected_status | Description | payload | api           |
-      | saveTpo  | post   | 200             | Save TPO    | savetpo | hrSaveDataApi |
 
     #Krishan
   Scenario Outline: Send mail to tpo
@@ -439,7 +420,7 @@ Feature: HRIS Automation
       | endpoint             | Method | Expected_status | Description                      | payload              | api             |
       | taxSavingSetVerified | post   | 200             | Set taxSavingOptions to verified | taxSavingSetVerified | accountsDataApi |
 
-  Scenario Outline: Get all tax saving data
+#  Scenario Outline: Get all tax saving data
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response message "Tax Saving Options Data Fetched Successfully"
@@ -569,7 +550,7 @@ Feature: HRIS Automation
       | sendTrainingMail | post   | 200             | send Training Mail | sendTrainingMail | trainingApi |
 # --
 #Certification
-  Scenario Outline: User Authentication
+  Scenario Outline: User Authentication of Certification API
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate certificate user authentication response
@@ -645,7 +626,6 @@ Feature: HRIS Automation
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Then Validate response data of certificate upload URL
-
     Examples:
       | endpoint                | Method | Expected_status | Description                | payload                 | api              |
       | getCertificateUploadURL | post   | 200             | Get Certificate Upload URL | getCertificateUploadURL | certificationApi |

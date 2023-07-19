@@ -82,9 +82,7 @@ public class StepDefinition {
             } else if (payload.equalsIgnoreCase("saveTaxSavingOptions")) {
                 GlobalVariable.taxSavingEmailId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("email").getAsString();
                 JSONObject result = new JSONObject(response.getResponseBody());
-                JSONArray taxSavingOptions = result.getJSONObject("data").getJSONArray("taxSavingOptions");
-                JSONObject firstOption = taxSavingOptions.getJSONObject(0);
-                GlobalVariable.taxSavingId = firstOption.getString("_id");
+                GlobalVariable.taxSaving_id = result.getJSONObject("data").getJSONArray("taxSavingOptions").getJSONObject(0).getString("_id");
             } else if (payload.equalsIgnoreCase("postCertification")) {
                 JSONObject result = new JSONObject(response.getResponseBody());
                 JSONArray certification = result.getJSONObject("data").getJSONArray("certification");
@@ -152,13 +150,14 @@ public class StepDefinition {
         try {
             String emailFromJSON = jsonObject.getString("email");
             String aadharNumFromJSON = jsonObject.getString("aadhaarNumber");
-            String emailFromResponse = responseJSON.getJSONArray("data").getJSONObject(0).getString("email");
-            String adhaarFromResponse = responseJSON.getJSONArray("data").getJSONObject(0).getString("aadhaarNumber");
-            if (emailFromJSON.equalsIgnoreCase(emailFromResponse) && aadharNumFromJSON.equalsIgnoreCase(adhaarFromResponse))
-                GemTestReporter.addTestStep("Validate Response data after saving tax options", "Validated response", STATUS.PASS);
-            else
-                GemTestReporter.addTestStep("Validate Response data after saving tax options", "Unable to validate response", STATUS.FAIL);
-        } catch (Exception e) {
+            String emailFromResponse = responseJSON.getJSONObject("data").getString("email");
+            String adhaarFromResponse = responseJSON.getJSONObject("data").getString("aadhaarNumber");
+            expectedArrayList.add(emailFromJSON);
+            expectedArrayList.add(aadharNumFromJSON);
+            actualArrayList.add(emailFromResponse);
+            actualArrayList.add(adhaarFromResponse);
+            Utils.compareJson(expectedArrayList,actualArrayList);
+            } catch (Exception e) {
             GemTestReporter.addTestStep("Validate Response data after saving tax options", "Unable to validate response", STATUS.ERR);
         }
     }
@@ -170,8 +169,8 @@ public class StepDefinition {
             String emailFromJSON = jsonObject.getString("email");
             expectedArrayList.add(idFromJSON);
             expectedArrayList.add(emailFromJSON);
-            String emailResponse = responseJSON.getJSONArray("data").getJSONObject(0).getString("email");
-            String idResponse = responseJSON.getJSONArray("data").getJSONObject(0).getString("_id");
+            String emailResponse = responseJSON.getJSONObject("data").getString("email");
+            String idResponse = responseJSON.getJSONObject("data").getJSONArray("taxSavingOptions").getJSONObject(0).getString("_id");
             actualArrayList.add(idResponse);
             actualArrayList.add(emailResponse);
             Utils.compareJson(expectedArrayList, actualArrayList);

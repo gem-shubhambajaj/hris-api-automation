@@ -206,7 +206,7 @@ public class Utils extends GemjarTestngBase {
                     jsonString = jsonString.replace("{name}", name).replace("{code}", empCode);
                 }
                 case "taxSavingSetVerified" -> {
-                    jsonString = jsonString.replace("{email}", GlobalVariable.taxSaving_emailId).replace("{uid}", GlobalVariable.taxSaving_id);
+                    jsonString = jsonString.replace("{email}", GlobalVariable.taxSavingEmailId).replace("{uid}", GlobalVariable.taxSaving_id);
                 }
                 case "saveGapAnalysisForm" -> {
                     jsonString = jsonString.replace("{num}", generatePhoneNumber());
