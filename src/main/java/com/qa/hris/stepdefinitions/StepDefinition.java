@@ -26,7 +26,6 @@ public class StepDefinition {
     String message;
     JSONObject jsonObject, responseJSON, saveResignJSONObject;
 
-    String requestData;
     String actualName, expectedName, actualNumber, expectedNumber;
 
     String actualEmail;
@@ -104,29 +103,41 @@ public class StepDefinition {
 
     @Then("Verify update response")
     public void verifyUpdateResponse() {
-        expectedName = jsonObject.getJSONObject("candidateDetails").getJSONObject("name").get("fullName").toString();
-        expectedArrayList.add(expectedName);
-        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("updatedRecord").getAsJsonObject().get("candidateDetails").getAsJsonObject().get("name").getAsJsonObject().get("fullName").getAsString();
-        actualArrayList.add(actualName);
-        Utils.compareJson(expectedArrayList, actualArrayList);
+        try {
+            expectedName = jsonObject.getJSONObject("candidateDetails").getJSONObject("name").get("fullName").toString();
+            expectedArrayList.add(expectedName);
+            actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("updatedRecord").getAsJsonObject().get("candidateDetails").getAsJsonObject().get("name").getAsJsonObject().get("fullName").getAsString();
+            actualArrayList.add(actualName);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Validate update response", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
     }
 
     @Then("Verify candidate uploaded document is present")
     public void verifyCandidateUploadedDocumentIsPresent() {
-        if (response.toString().contains(GlobalVariable.uid)) {
-            GemTestReporter.addTestStep("Verify candidate uploaded document is present", "Candidate uploaded document is present", STATUS.PASS);
-        } else {
-            GemTestReporter.addTestStep("Verify candidate uploaded document is present", "Candidate uploaded document is not present", STATUS.FAIL);
+        try {
+            if (response.toString().contains(GlobalVariable.uid)) {
+                GemTestReporter.addTestStep("Verify candidate uploaded document is present", "Candidate uploaded document is present", STATUS.PASS);
+            } else {
+                GemTestReporter.addTestStep("Verify candidate uploaded document is present", "Candidate uploaded document is not present", STATUS.FAIL);
+            }
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Verify candidate uploaded document is present", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
         }
     }
 
     @Then("Validate response message {string}")
     public void validateResponseMsgFor(String responseMessage) {
-        message = response.getResponseBodyJson().getAsJsonObject().get("message").getAsString().replaceAll("\\[|\\]", "");
-        if (responseMessage.equalsIgnoreCase(message))
-            GemTestReporter.addTestStep("Validate response message", "Successfully validated message", STATUS.PASS);
-        else
-            GemTestReporter.addTestStep("Validate response message", "Unable to validate message. Expected is '" + responseMessage + "'. Actual is '" + message + "'.", STATUS.FAIL);
+        try {
+            message = response.getResponseBodyJson().getAsJsonObject().get("message").getAsString().replaceAll("\\[|\\]", "");
+            if (responseMessage.equalsIgnoreCase(message))
+                GemTestReporter.addTestStep("Validate response message", "Successfully validated message", STATUS.PASS);
+            else
+                GemTestReporter.addTestStep("Validate response message", "Unable to validate message. Expected is '" + responseMessage + "'. Actual is '" + message + "'.", STATUS.FAIL);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Validate response message", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
 
     }
 
@@ -178,41 +189,53 @@ public class StepDefinition {
         }
     }
 
-    @Then("Verify uploaded file name is present in response")
     @Then("Validate response data of upload documents")
     public void verifyUploadedFileNameIsPresentInResponse() {
-        expectedName = jsonObject.getJSONArray("uploadedDocuments").getJSONObject(0).get("filename").toString();
-        expectedArrayList.add(expectedName);
-        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("fileName").getAsString();
-        actualArrayList.add(actualName);
-        Utils.compareJson(expectedArrayList, actualArrayList);
+        try {
+            expectedName = jsonObject.getJSONArray("uploadedDocuments").getJSONObject(0).get("filename").toString();
+            expectedArrayList.add(expectedName);
+            actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("fileName").getAsString();
+            actualArrayList.add(actualName);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Verify response of upload documents", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
 
     }
 
     @Then("Validate response data of roles")
     public void verifySentNameIsPresentInAPIResponse() {
-        String expectedDescription = jsonObject.get("description").toString();
-        String actualDescription = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("description").getAsString();
-        expectedName = jsonObject.get("displayName").toString();
-        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("name").getAsString();
-        expectedArrayList.add(expectedDescription);
-        expectedArrayList.add(expectedName);
-        actualArrayList.add(actualDescription);
-        actualArrayList.add(actualName);
-        Utils.compareJson(expectedArrayList, actualArrayList);
+        try {
+            String expectedDescription = jsonObject.get("description").toString();
+            String actualDescription = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("description").getAsString();
+            expectedName = jsonObject.get("displayName").toString();
+            actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("name").getAsString();
+            expectedArrayList.add(expectedDescription);
+            expectedArrayList.add(expectedName);
+            actualArrayList.add(actualDescription);
+            actualArrayList.add(actualName);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Validate response data of roles", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
     }
 
     @Then("Verify response data for save candidate")
     public void verifyRequestBodyWithResponseBody() {
-        expectedName = jsonObject.getJSONObject("candidateDetails").getJSONObject("name").get("fullName").toString();
-        expectedNumber = jsonObject.getJSONObject("candidateDetails").get("primaryContactNumber").toString();
-        expectedArrayList.add(expectedName);
-        expectedArrayList.add(expectedNumber);
-        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("candidateDetails").getAsJsonObject().get("name").getAsJsonObject().get("fullName").getAsString();
-        actualNumber = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("candidateDetails").getAsJsonObject().get("primaryContactNumber").getAsString();
-        actualArrayList.add(actualName);
-        actualArrayList.add(actualNumber);
-        Utils.compareJson(expectedArrayList, actualArrayList);
+        try {
+            expectedName = jsonObject.getJSONObject("candidateDetails").getJSONObject("name").get("fullName").toString();
+            expectedNumber = jsonObject.getJSONObject("candidateDetails").get("primaryContactNumber").toString();
+            expectedArrayList.add(expectedName);
+            expectedArrayList.add(expectedNumber);
+            actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("candidateDetails").getAsJsonObject().get("name").getAsJsonObject().get("fullName").getAsString();
+            actualNumber = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("candidateDetails").getAsJsonObject().get("primaryContactNumber").getAsString();
+            actualArrayList.add(actualName);
+            actualArrayList.add(actualNumber);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }
+        catch (Exception e) {
+            GemTestReporter.addTestStep("Verify response data for save candidate", "Unable to validate: " + e, STATUS.ERR);
+        }
     }
 
     @Then("Validate export URL from response data")
@@ -331,135 +354,189 @@ public class StepDefinition {
 
     @Then("Validate response data of save skills")
     public void verifyPostRequestInPresentInGetResponse() {
-        expectedName = jsonObject.getString("name");
-        expectedEmail = jsonObject.getString("email");
-        expectedArrayList.add(expectedName);
-        expectedArrayList.add(expectedEmail);
-        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("name").getAsString();
-        actualEmail = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("email").getAsString();
-        actualArrayList.add(actualName);
-        actualArrayList.add(actualEmail);
-        Utils.compareJson(expectedArrayList,actualArrayList);
+        try {
+            expectedName = jsonObject.getString("name");
+            expectedEmail = jsonObject.getString("email");
+            expectedArrayList.add(expectedName);
+            expectedArrayList.add(expectedEmail);
+            actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("name").getAsString();
+            actualEmail = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("email").getAsString();
+            actualArrayList.add(actualName);
+            actualArrayList.add(actualEmail);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Validate response data of save skills", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
     }
 
     @Then("Validate response data of tpoDetails")
     public void verifyRequestWithGetResponse() {
-        expectedName = jsonObject.getString("tpoName");
-        expectedEmail = jsonObject.getString("tpoEmail");
-        expectedId = jsonObject.getString("_id");
-        expectedArrayList.add(expectedName);
-        expectedArrayList.add(expectedEmail);
-        expectedArrayList.add(expectedId);
-        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("tpoName").getAsString();
-        actualEmail = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("tpoEmail").getAsString();
-        actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("_id").getAsString();
-        actualArrayList.add(actualName);
-        actualArrayList.add(actualEmail);
-        actualArrayList.add(actualId);
-        Utils.compareJson(expectedArrayList,actualArrayList);
+        try {
+            expectedName = jsonObject.getString("tpoName");
+            expectedEmail = jsonObject.getString("tpoEmail");
+            expectedId = jsonObject.getString("_id");
+            expectedArrayList.add(expectedName);
+            expectedArrayList.add(expectedEmail);
+            expectedArrayList.add(expectedId);
+            actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("tpoName").getAsString();
+            actualEmail = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("tpoEmail").getAsString();
+            actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("_id").getAsString();
+            actualArrayList.add(actualName);
+            actualArrayList.add(actualEmail);
+            actualArrayList.add(actualId);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }
+        catch (Exception e) {
+            GemTestReporter.addTestStep("Validate response data of tpoDetails", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
     }
 
     @Then("Validate data message as {string}")
     public void validateDataMessageAs(String responseMessage) {
-        message = response.getResponseBodyJson().getAsJsonObject().get("data").getAsString();
-        if(responseMessage.equalsIgnoreCase(message))
-            GemTestReporter.addTestStep("Validate response message","Successfully validated message",STATUS.PASS);
-        else
-            GemTestReporter.addTestStep("Validate response message","Unable to validate message. Expected is '"+responseMessage+"'. Actual is '"+message+"'.",STATUS.FAIL);
+        try {
+            message = response.getResponseBodyJson().getAsJsonObject().get("data").getAsString();
+            if (responseMessage.equalsIgnoreCase(message))
+                GemTestReporter.addTestStep("Validate response message", "Successfully validated message", STATUS.PASS);
+            else
+                GemTestReporter.addTestStep("Validate response message", "Unable to validate message. Expected is '" + responseMessage + "'. Actual is '" + message + "'.", STATUS.FAIL);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Verify data message", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
 
     }
 
     @Then("Validate systemConfig response")
     public void validateSystemConfigResponse() {
-        String expectedMailCc = jsonObject.getJSONArray("mailCc").get(0).toString();
-        expectedArrayList.add(expectedMailCc);
-        String actualMailCc = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("mailCc").getAsString();
-        actualArrayList.add(actualMailCc);
-        Utils.compareJson(expectedArrayList,actualArrayList);
+        try {
+            String expectedMailCc = jsonObject.getJSONArray("mailCc").get(0).toString();
+            expectedArrayList.add(expectedMailCc);
+            String actualMailCc = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("mailCc").getAsString();
+            actualArrayList.add(actualMailCc);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Validate response data of systemConfig", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
     }
 
     @Then("Store created id from the response")
     public void storeCreatedIdFromTheResponse() {
-        expectedId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("_id").getAsString();
+        try {
+            expectedId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("_id").getAsString();
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Store created id from the response", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
     }
 
     @Then("validate mailTemplate response")
     public void validateMailTemplateResponse() {
-        actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("_id").getAsString();
-        expectedName = jsonObject.getString("name");
-        expectedArrayList.add(expectedId);
-        expectedArrayList.add(expectedName);
-        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("name").getAsString();
-        actualArrayList.add(actualId);
-        actualArrayList.add(actualName);
-        Utils.compareJson(expectedArrayList,actualArrayList);
+        try {
+            actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("_id").getAsString();
+            expectedName = jsonObject.getString("name");
+            expectedArrayList.add(expectedId);
+            expectedArrayList.add(expectedName);
+            actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("name").getAsString();
+            actualArrayList.add(actualId);
+            actualArrayList.add(actualName);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Validate response data of mailTemplate", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
     }
 
     @Then("Validate response data for all data update")
     public void validateResponseMessageForAllDataUpdate() {
-        expectedId = jsonObject.getString("_id");
-        expectedArrayList.add(expectedId);
-        actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("updatedRecord").getAsJsonObject().get("_id").getAsString();
-        actualArrayList.add(actualId);
-        Utils.compareJson(expectedArrayList,actualArrayList);
+        try {
+            expectedId = jsonObject.getString("_id");
+            expectedArrayList.add(expectedId);
+            actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("updatedRecord").getAsJsonObject().get("_id").getAsString();
+            actualArrayList.add(actualId);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Validate response data of all data", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
     }
 
     @Then("Validate response data of accept offer letter")
     public void validateResponseDataOfAcceptOfferLetter() {
-        expectedId = jsonObject.getString("_id");
-        expectedArrayList.add(expectedId);
-        actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("uid").getAsString();
-        actualArrayList.add(actualId);
-        Utils.compareJson(expectedArrayList,actualArrayList);
+        try {
+            expectedId = jsonObject.getString("_id");
+            expectedArrayList.add(expectedId);
+            actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("uid").getAsString();
+            actualArrayList.add(actualId);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Validate response data of accept offer letter", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
+
     }
 
     @Then("Validate response data for save master table")
     public void validateResponseDataForSaveMasterTable() {
-        expectedName = jsonObject.getString("fullName");
-        expectedArrayList.add(expectedId);
-        expectedArrayList.add(expectedName);
-        actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("_id").getAsString();
-        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("fullName").getAsString();
-        actualArrayList.add(actualId);
-        actualArrayList.add(actualName);
-        Utils.compareJson(expectedArrayList,actualArrayList);
+        try {
+            expectedName = jsonObject.getString("fullName");
+            expectedArrayList.add(expectedId);
+            expectedArrayList.add(expectedName);
+            actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("_id").getAsString();
+            actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("fullName").getAsString();
+            actualArrayList.add(actualId);
+            actualArrayList.add(actualName);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Validate response data of save master table", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
     }
 
     @Then("Validate response data for update master table")
     public void validateResponseDataForUpdateMasterTable() {
-        expectedNumber = jsonObject.getString("mobile1");
-        expectedArrayList.add(expectedId);
-        expectedArrayList.add(expectedNumber);
-        actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("_id").getAsString();
-        actualNumber = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("mobile1").getAsString();
-        actualArrayList.add(actualId);
-        actualArrayList.add(actualNumber);
-        Utils.compareJson(expectedArrayList,actualArrayList);
+        try {
+            expectedNumber = jsonObject.getString("mobile1");
+            expectedArrayList.add(expectedId);
+            expectedArrayList.add(expectedNumber);
+            actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("_id").getAsString();
+            actualNumber = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("mobile1").getAsString();
+            actualArrayList.add(actualId);
+            actualArrayList.add(actualNumber);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Validate response data of update master table", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
     }
 
     @Then("Validate response data for upload candidate data")
     public void validateResponseDataForUploadCandidateData() {
-        expectedArrayList.add(expectedId);
-        actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("_id").getAsString();
-        actualArrayList.add(actualId);
-        Utils.compareJson(expectedArrayList,actualArrayList);
+        try {
+            expectedArrayList.add(expectedId);
+            actualId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("_id").getAsString();
+            actualArrayList.add(actualId);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Validate response data of upload candidate data", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
     }
 
     @Then("Validate response data for upload assignments")
     public void validateResponseDataForUploadAssignments() {
-        expectedName = jsonObject.getJSONArray("uploadedDocuments").getJSONObject(0).getString("filename");
-        expectedArrayList.add(expectedName);
-        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("fileName").getAsString();
-        actualArrayList.add(actualName);
-        Utils.compareJson(expectedArrayList,actualArrayList);
+        try {
+            expectedName = jsonObject.getJSONArray("uploadedDocuments").getJSONObject(0).getString("filename");
+            expectedArrayList.add(expectedName);
+            actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("fileName").getAsString();
+            actualArrayList.add(actualName);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Validate response data of upload assignment", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
     }
 
     @Then("Validate response data for download assignments")
     public void validateResponseDataForDownloadAssignments() {
-        expectedName = jsonObject.getJSONArray("uploadedDocuments").getJSONObject(0).getString("filename");
-        expectedArrayList.add(expectedName);
-        actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("fileName").getAsString();
-        actualArrayList.add(actualName);
-        Utils.compareJson(expectedArrayList,actualArrayList);
+        try {
+            expectedName = jsonObject.getJSONArray("uploadedDocuments").getJSONObject(0).getString("filename");
+            expectedArrayList.add(expectedName);
+            actualName = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonArray().get(0).getAsJsonObject().get("fileName").getAsString();
+            actualArrayList.add(actualName);
+            Utils.compareJson(expectedArrayList, actualArrayList);
+        }catch (Exception e) {
+            GemTestReporter.addTestStep("Validate response data of download assignment", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+        }
     }
 }

@@ -344,6 +344,331 @@ Feature: HRIS Automation
       | getTriggerLogs | get    | 200             | Get logs data | hrGetDataApi |
 
 # # BotAutomate
+    Scenario Outline: Get Bot Chat data
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response data of bot chat data
+    Examples:
+      | endpoint       | Method | Expected_status | Description       | payload        | api              |
+      | getBotChatData | post   | 200             | Get Bot Chat data | getBotChatData | botAutomationApi |
+
+  Scenario Outline: Get Finance Bot Chat data
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response data of bot chat data
+    Examples:
+      | endpoint       | Method | Expected_status | Description   | payload        | api              |
+      | finBotChatData | post   | 200             | Find Bot Chat | finBotChatData | botAutomationApi |
+
+  Scenario Outline: Set Bot Context
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Success"
+    Examples:
+      | endpoint      | Method | Expected_status | Description        | payload       | api              |
+      | botContextSet | post   | 200             | Set Context of bot | botContextSet | botAutomationApi |
+
+  Scenario Outline: Set Finance Bot Chat Context
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint         | Method | Expected_status | Description               | payload          | api              |
+      | finBotContextSet | post   | 200             | Find Bot Chat Context Set | finBotContextSet | botAutomationApi |
+
+#Accounts
+  Scenario Outline: Trigger mail tax saving
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Mail Sent"
+    Examples:
+      | endpoint             | Method | Expected_status | Description             | payload              | api             |
+      | triggerMailTaxSaving | post   | 200             | Trigger mail tax saving | triggerMailTaxSaving | accountsDataApi |
+
+  Scenario Outline: Save tax saving options
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate Response data after saving tax options
+    Examples:
+      | endpoint             | Method | Expected_status | Description             | payload              | api             |
+      | saveTaxSavingOptions | post   | 200             | Save tax saving options | saveTaxSavingOptions | accountsDataApi |
+
+  Scenario Outline: Set tax Saving Options to verified
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response data of tax savings option verification
+    Examples:
+      | endpoint             | Method | Expected_status | Description                      | payload              | api             |
+      | taxSavingSetVerified | post   | 200             | Set taxSavingOptions to verified | taxSavingSetVerified | accountsDataApi |
+
+  Scenario Outline: Get all tax saving data
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Tax Saving Options Data Fetched Successfully"
+    Examples:
+      | endpoint            | Method | Expected_status | Description             | api             |
+      | getTaxSavingAllData | get    | 200             | Get all tax saving data | accountsDataApi |
+
+  Scenario Outline: Tax Saving Bi-Annual
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Mail Sent"
+    Examples:
+      | endpoint          | Method | Expected_status | Description          | api             |
+      | taxSavingBiAnnual | get    | 200             | Tax Saving Bi-annual | accountsDataApi |
+
+  Scenario Outline: Bi-Annual reminder
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Mail sent successfully"
+    Examples:
+      | endpoint         | Method | Expected_status | Description        | api             |
+      | BiAnnualReminder | get    | 200             | Bi-Annual Reminder | accountsDataApi |
+
+  Scenario Outline: Tax saving reminder cron
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Mail Sent"
+    Examples:
+      | endpoint              | Method | Expected_status | Description              | api             |
+      | taxSavingReminderCron | get    | 200             | Tax saving reminder cron | accountsDataApi |
+
+  Scenario Outline: Get tax saving export
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate export URL from response data
+    Examples:
+      | endpoint           | Method | Expected_status | Description           | api             |
+      | getTaxSavingExport | get    | 200             | Get tax saving export | accountsDataApi |
+
+  Scenario Outline: Sync official info of Accounts
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Synced successfully"
+    Examples:
+      | endpoint         | Method | Expected_status | Description        | api             |
+      | syncOfficialInfo | get    | 200             | Sync official info | accountsDataApi |
+
+#  Training
+  Scenario Outline: Save training
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint     | Method | Expected_status | Description   | payload      | api         |
+      | trainingSave | post   | 200             | Save Training | trainingSave | trainingApi |
+
+  Scenario Outline: Get data for training probation candidate
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Training and Probation Data Fetched Successfully"
+    Examples:
+      | endpoint                         | Method | Expected_status | Description                               | api          |
+      | getAllTrainingProbationCandidate | get    | 200             | Get data for training probation candidate | hrGetDataApi |
+
+  Scenario Outline: Send feedback reminder
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    #NO msg - Only status and data
+    Examples:
+      | endpoint             | Method | Expected_status | Description            | api         |
+      | sendFeedbackReminder | get    | 200             | Send Feedback Reminder | trainingApi |
+
+  Scenario Outline: Get all training gap form data
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Training Gap Analysis Data Fetched Successfully"
+    Examples:
+      | endpoint               | Method | Expected_status | Description                    | api         |
+      | getTrainingGapFormData | get    | 200             | Get All Training Gap Form Data | trainingApi |
+
+  Scenario Outline: Get training skills data
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Training Skills Data Fetched Successfully"
+    Examples:
+      | endpoint          | Method | Expected_status | Description              | api         |
+      | getTrainingSkills | get    | 200             | Get Training Skills Data | trainingApi |
+
+  Scenario Outline: Send training gap mail
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Mail sent successfully"
+    Examples:
+      | endpoint               | Method | Expected_status | Description            | api         |
+      | trainingGapMailTrigger | get    | 200             | Send Training Gap Mail | trainingApi |
+
+  Scenario Outline: Get training count
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Training Count Data Fetched Successfully"
+    Examples:
+      | endpoint         | Method | Expected_status | Description        | api         |
+      | getTrainingCount | get    | 200             | Get Training Count | trainingApi |
+
+  Scenario Outline: Get training
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Training Data Fetched Successfully"
+    Examples:
+      | endpoint    | Method | Expected_status | Description  | api         |
+      | getTraining | get    | 200             | Get Training | trainingApi |
+
+  Scenario Outline: Save training gap analysis form
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Response Added Successfully. Please Close this window now"
+    Examples:
+      | endpoint            | Method | Expected_status | Description            | payload             | api         |
+      | saveGapAnalysisForm | post   | 200             | Save Gap Analysis Form | saveGapAnalysisForm | trainingApi |
+
+  Scenario Outline: HRIS, User is able to send training mail
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Examples:
+      | endpoint         | Method | Expected_status | Description        | payload          | api         |
+      | sendTrainingMail | post   | 200             | send Training Mail | sendTrainingMail | trainingApi |
+
+#Certification
+  Scenario Outline: User Authentication
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate certificate user authentication response
+    Examples:
+      | endpoint | Method | Expected_status | Description         | payload  | api              |
+      | userAuth | post   | 200             | User Authentication | userAuth | certificationApi |
+
+  Scenario Outline: Post certification reminder mail
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response of certification reminder mail
+    Examples:
+      | endpoint              | Method | Expected_status | Description                      | payload               | api              |
+      | certificationReminder | post   | 200             | Post certification reminder mail | certificationReminder | certificationApi |
+
+  Scenario Outline: Get certifications
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Certifications Fetched Successfully"
+    Examples:
+      | endpoint       | Method | Expected_status | Description        | api              |
+      | getCertificate | get    | 200             | Get certifications | certificationApi |
+
+  Scenario Outline: Get certifications type
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Data Fetched Succeessfully"
+    Examples:
+      | endpoint              | Method | Expected_status | Description           | api              |
+      | GetCertificationsType | get    | 200             | GetCertificationsType | certificationApi |
+
+  Scenario Outline: Get employees details from MIS
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Data Fetched From MIS"
+    Examples:
+      | endpoint             | Method | Expected_status | Description                    | api              |
+      | getEmployeeDetailMIS | get    | 200             | Get employees details from MIS | certificationApi |
+
+  Scenario Outline: Get certifications by time
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Certifications Fetched Successfully with Time between startDate: 20220101 and endDate: 20230101"
+    Examples:
+      | endpoint               | Method | Expected_status | Description                | api              |
+      | getCertificationByTime | get    | 200             | Get certifications by time | certificationApi |
+
+  Scenario Outline: Get technology details
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Technology Details Fetched Successfully"
+    Examples:
+      | endpoint       | Method | Expected_status | Description            | api              |
+      | getTechDetails | get    | 200             | Get Technology Details | certificationApi |
+
+  Scenario Outline: Get certifications mail status
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Certifications Mail Status Data Fetched Successfully"
+    Examples:
+      | endpoint                   | Method | Expected_status | Description                    | api              |
+      | getCertificationMailStatus | get    | 200             | Get certifications Mail status | certificationApi |
+
+  Scenario Outline: Get certificate download Url
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response data of certificate download URL
+    Examples:
+      | endpoint                  | Method | Expected_status | Description                  | payload                   | api              |
+      | getCertificateDownloadURL | post   | 200             | Get Certificate Download Url | getCertificateDownloadURL | certificationApi |
+
+  Scenario Outline: Get certificate upload URL
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response data of certificate upload URL
+
+    Examples:
+      | endpoint                | Method | Expected_status | Description                | payload                 | api              |
+      | getCertificateUploadURL | post   | 200             | Get Certificate Upload URL | getCertificateUploadURL | certificationApi |
+
+  Scenario Outline: Generate certificate
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Excel uploaded in DB"
+    Examples:
+      | endpoint            | Method | Expected_status | Description          | api              |
+      | generateCertificate | get    | 200             | Generate Certificate | certificationApi |
+
+  Scenario Outline: Get employees by manager
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message of get employee by manager
+    Examples:
+      | endpoint     | Method | Expected_status | Description              | payload      | api              |
+      | getEmployees | post   | 200             | Get employees by manager | getEmployees | certificationApi |
+
+  Scenario Outline: Get certifications of employee
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Certifications Fetched Successfully"
+    Examples:
+      | endpoint                 | Method | Expected_status | Description                    | api              |
+      | getCertificationEmployee | get    | 200             | Get certifications of employee | certificationApi |
+
+  Scenario Outline: Get management for certifications
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Role Fetched Successfully for Email ID: shubham.bajaj@geminisolutions.com"
+    Examples:
+      | endpoint                   | Method | Expected_status | Description                       | api              |
+      | getManagementCertification | get    | 200             | Get management for certifications | certificationApi |
+
+  Scenario Outline: Generate certificate from JSON
+    Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Excel uploaded in DB"
+    Examples:
+      | endpoint           | Method | Expected_status | Description                    | payload            | api              |
+      | getCertificateJSON | post   | 200             | Generate certificate from JSON | getCertificateJSON | certificationApi |
+
+#ExitAutomation
+  Scenario: Save and get resignation data
+    Given Set endpoint and method and Description and payload "saveResignationData" and "post" and "Save Resignation Data" and "saveResignationData" and "exitAutomationApi"
+    Then Verify Status code 200
+    When Set endpoint and method and Description "getResignationData" and "get" and "get Resignation Data" and "exitAutomationApi"
+    Then Validate response message "OffBoarding Data Fetched Successfully"
+    And Validate response data of resignation
+    Then Set endpoint and method and Description and payload "save" and "post" and "revoke Resignation" and "revokeResignation" and "exitAutomationApi"
+    Then Verify Status code 200
+    When Validate response message "Application Revoked"
+    Then Validate revoke resignation response data
+
+  Scenario Outline: Send Reminder
+    Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
+    Then Verify Status code <Expected_status>
+    Then Validate response message "Mail Sent"
+    Examples:
+      | endpoint     | Method | Expected_status | Description   | api               |
+      | sendReminder | post   | 200             | Send Reminder | exitAutomationApi |
+
 
 ##FresherAssignment
   Scenario Outline: HRIS, User is able to upload candidate data
