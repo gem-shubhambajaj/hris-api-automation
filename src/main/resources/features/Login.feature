@@ -1,6 +1,6 @@
 Feature: HRIS API Authentication
 
- Scenario Outline: HRIS, User is able to login successfully in dashboard
+ Scenario Outline: login successfully in dashboard
     Given Set endpoint "<endpoint>" and method "<method>" and payload "<payload>" for Login Dashboard Authentication
     Then Verify dashboard status code <expectedStatus>
     Examples:

@@ -25,84 +25,84 @@ Feature: HRIS Automation
       | endpoint          | Method | Expected_status | Description        | payload           | api              |
       | postCertification | post   | 200             | Post Certification | postCertification | certificationApi |
 
-  Scenario Outline: HRIS, User is able to create certification type
+  Scenario Outline: create certification type
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint                | Method | Expected_status | Description               | payload           | api              |
       | createCertificationType | post   | 200             | create certification type | certificationType | certificationApi |
 
-  Scenario Outline: HRIS, User is able to post certification reminder mail
+  Scenario Outline: post certification reminder mail
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint              | Method | Expected_status | Description                      | payload               | api              |
       | certificationReminder | post   | 200             | Post certification reminder mail | certificationReminder | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get employees by manager
+  Scenario Outline: get employees by manager
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint     | Method | Expected_status | Description              | payload      | api              |
       | getEmployees | post   | 200             | Get employees by manager | getEmployees | certificationApi |
 
-  Scenario Outline: HRIS, User is able to generate certificate from JSON
+  Scenario Outline: generate certificate from JSON
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint           | Method | Expected_status | Description                    | payload            | api              |
       | getCertificateJSON | post   | 200             | Generate certificate from JSON | getCertificateJSON | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get certificate upload URL
+  Scenario Outline: get certificate upload URL
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint                | Method | Expected_status | Description                | payload                 | api              |
       | getCertificateUploadURL | post   | 200             | Get Certificate Upload URL | getCertificateUploadURL | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get certificate download Url
+  Scenario Outline: get certificate download Url
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint                  | Method | Expected_status | Description                  | payload                   | api              |
       | getCertificateDownloadURL | post   | 200             | Get Certificate Download Url | getCertificateDownloadURL | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get certifications
+  Scenario Outline: get certifications
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint       | Method | Expected_status | Description        | api              |
       | getCertificate | get    | 200             | Get certifications | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get certifications type
+  Scenario Outline: get certifications type
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint              | Method | Expected_status | Description           | api              |
       | GetCertificationsType | get    | 200             | GetCertificationsType | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get certifications of employee
+  Scenario Outline: get certifications of employee
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint                 | Method | Expected_status | Description                    | api              |
       | getCertificationEmployee | get    | 200             | Get certifications of employee | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get employees details from MIS
+  Scenario Outline: get employees details from MIS
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint             | Method | Expected_status | Description                    | api              |
       | getEmployeeDetailMIS | get    | 200             | Get employees details from MIS | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get management for certifications
+  Scenario Outline: get management for certifications
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint                   | Method | Expected_status | Description                       | api              |
       | getManagementCertification | get    | 200             | Get management for certifications | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get certifications by time
+  Scenario Outline: get certifications by time
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
@@ -116,28 +116,28 @@ Feature: HRIS Automation
       | endpoint                  | Method | Expected_status | Description                 | api              |
       | teamCertificationReminder | get    | 200             | Team certification reminder | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get technology details
+  Scenario Outline: get technology details
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint       | Method | Expected_status | Description            | api              |
       | getTechDetails | get    | 200             | Get Technology Details | certificationApi |
 
-  Scenario Outline: HRIS, User is able to generate certificate
+  Scenario Outline: generate certificate
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint            | Method | Expected_status | Description          | api              |
       | generateCertificate | get    | 200             | Generate Certificate | certificationApi |
 
-  Scenario Outline: HRIS, User is able to get certifications mail status
+  Scenario Outline: get certifications mail status
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint                   | Method | Expected_status | Description                    | api              |
       | getCertificationMailStatus | get    | 200             | Get certifications Mail status | certificationApi |
 
-  Scenario Outline: HRIS, User is able to delete certifications of employee
+  Scenario Outline: delete certifications of employee
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:

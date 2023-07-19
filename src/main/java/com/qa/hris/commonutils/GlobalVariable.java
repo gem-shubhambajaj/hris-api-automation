@@ -19,12 +19,9 @@ public class GlobalVariable {
     public static String taxSaving_emailId = "";
     public static String taxSaving_id = "";
     public static String certificationUid = "";
-
-    public static String masterId = "";
-
+    public static String id = "";
     public static String masterName = "";
     public static String taxSavingEmailId = "";
     public static String taxSavingId = "";
-    public static String newSavedName = "";
 }
 

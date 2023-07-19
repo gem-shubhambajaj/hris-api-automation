@@ -21,7 +21,6 @@ import org.slf4j.LoggerFactory;
 public class Utils extends GemjarTestngBase {
     static Logger logger = LoggerFactory.getLogger(StepDefinition.class);
 
-
     public static void verifyStatusCode(int expected, int actual) {
         if (expected == actual) {
             GemTestReporter.addTestStep("Status Verification", "Expected Status :" + expected + ",<br>Actual :" + actual, STATUS.PASS);
@@ -87,8 +86,9 @@ public class Utils extends GemjarTestngBase {
             }
             url += ProjectConfigData.getProperty(urlNameFromConfig);
             switch (urlNameFromConfig) {
-                case "deleteCandidate", "getCandidate", "tpoDetails" -> url = url.replace("{uid}", GlobalVariable.uid);
+                case "deleteCandidate", "getCandidate", "tpoDetails", "getCandidatesFresherAssign" -> url = url.replace("{uid}", GlobalVariable.uid);
                 case "getAllCandidateMaster" -> url = url.replace("{authToken}", GlobalVariable.token);
+                case "getMasterTableData" -> url = url.replace("{name}",GlobalVariable.masterName);
             }
             GemTestReporter.addTestStep("Url for " + method.toUpperCase() + " Request", url, STATUS.INFO);
             request.setURL(url);
@@ -187,9 +187,7 @@ public class Utils extends GemjarTestngBase {
             switch (payload) {
                 case "save", "saveMasterTableData" -> {
                     String sb = generateName();
-                    System.out.println(sb);
                     String num = generatePhoneNumber();
-                    System.out.println(num);
                     jsonString = jsonString.replace("{name}", sb).replace("{email}", sb + "@gmail.com").replace("{number}", num);
                 }
                 case "saveBulkCandidate" -> {
@@ -197,23 +195,23 @@ public class Utils extends GemjarTestngBase {
                     String name2 = generateName();
                     jsonString = jsonString.replace("{name1}", name1).replace("{name2}", name2).replace("{email1}", name1 + "@gmail.com").replace("{email2}", name2 + "@gmail.com");
                 }
-                case "mailtotpo" -> {
+                case "mailtotpo" ->
                     jsonString = jsonString.replace("{uid}", GlobalVariable.tpoId);
-                }
+
                 case "saveTaxSavingOptions" -> {
                     String name = generateName();
                     String empCode = generateEmpCode();
                     jsonString = jsonString.replace("{name}", name).replace("{code}", empCode);
                 }
-                case "taxSavingSetVerified" -> {
-                    jsonString = jsonString.replace("{email}", GlobalVariable.taxSavingEmailId).replace("{uid}", GlobalVariable.taxSaving_id);
-                }
-                case "saveGapAnalysisForm" -> {
+                case "taxSavingSetVerified" ->
+                    jsonString = jsonString.replace("{email}", GlobalVariable.taxSaving_emailId).replace("{uid}", GlobalVariable.taxSaving_id);
+
+                case "saveGapAnalysisForm" ->
                     jsonString = jsonString.replace("{num}", generatePhoneNumber());
-                }
-                case "deleteCertificate", "updateCertification" -> {
+
+                case "deleteCertificate", "updateCertification" ->
                     jsonString = jsonString.replace("{uid}", GlobalVariable.certificationUid);
-                }
+
                 case "saveRoles" -> {
                     String name = generateName();
                     jsonString = jsonString.replace("{name}", name);
@@ -221,16 +219,17 @@ public class Utils extends GemjarTestngBase {
                 case "updateMasterTableData" -> {
                     String phoneNumber = generatePhoneNumber();
                     String name = generateName();
-                    jsonString = jsonString.replace("{name}", GlobalVariable.masterName).replace("{number}", phoneNumber).replace("{email1}", name + "@gmail.com");
+                    jsonString = jsonString.replace("{name}",GlobalVariable.masterName).replace("{number}",phoneNumber).replace("{email}", GlobalVariable.masterName + "@gmail.com");
                 }
-                default -> {
+                case "uploadAssignments","downloadAssignments" ->
+                    jsonString = jsonString.replace("{uid}",GlobalVariable.id);
+                default ->
                     jsonString = jsonString.replace("{uid}", GlobalVariable.uid);
-                }
             }
             jsonFile = new JSONObject(jsonString);
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage());
         }
         return jsonFile;
 

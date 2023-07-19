@@ -4,14 +4,14 @@ Feature: HRIS Automation
     Given Set endpoint "postApi" and method "post" and payload "login" for Login Dashboard Authentication
     Then Verify dashboard status code 200
 
-  Scenario Outline: HRIS, User is able to schedule
+  Scenario Outline: schedule
     Given Set endpoint and method and Description and payload "<endpoint>" and "<Method>" and "<Description>" and "<payload>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
       | endpoint  | Method | Expected_status | Description | payload       | api              |
       | scheduler | post   | 200             | Scheduler   | cronScheduler | hrOnboardCronApi |
 
-  Scenario Outline: HRIS, User is able to upload docs mail
+  Scenario Outline: upload docs mail
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:
@@ -67,7 +67,7 @@ Feature: HRIS Automation
       | endpoint         | Method | Expected_status | Description   | api              |
       | syncOfficialInfo | get    | 200             | mis Sync Cron | hrOnboardCronApi |
 
-  Scenario Outline: HRIS, User is able to update LWF Data Cron
+  Scenario Outline: update LWF Data Cron
     Given Set endpoint and method and Description "<endpoint>" and "<Method>" and "<Description>" and "<api>"
     Then Verify Status code <Expected_status>
     Examples:

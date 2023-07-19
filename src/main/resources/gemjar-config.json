@@ -2,10 +2,6 @@
   "environment": "beta",
   "project_name": "HRIS",
   "report_name": "HRIS-API-Regression",
-  "entry_point": "https://apis.gemecosystem.com/enter-point",
-  "jewel_user": "shubham.bajaj",
-  "sub_id": "test_id",
-  "jewel_bridge_token": "f88bc18b-e9b3-4bf4-961e-dc6fd38f203a1686037386787",
   "glueCode":"com.qa.hris.stepdefinitions",
   "email_to": "shubham.bajaj@geminisolutions.com",
   "beta": {
@@ -44,7 +40,7 @@
     "getMentorList": "/uat/users/getMentorList",
     "getSystemConfig": "/uat/getSystemConfig?apiModule=accountsdata-reminderCron",
     "getTriggerLogs": "/uat/activity/getTriggerLogs",
-    "getMailTemplates": "/uat/getMailTemplates?module=onboarding",
+    "getMailTemplates": "/uat/getMailTemplates?module=onboarding&name=rmmail",
 
     "save": "/uat/users/save",
     "saveBulkCandidate": "/uat/users/saveBulkCandidate",
@@ -70,7 +66,7 @@
 
     "saveMasterTableData":"/uat/users/save",
     "updateMasterTableData": "/uat/users/update",
-    "getMasterTableData": "/uat/users/getAllData",
+    "getMasterTableData": "/uat/users/getAllData?search={name}",
 
     "saveResignationData": "/uat/users/save",
     "sendReminder": "/uat/users/sendReminder",
@@ -120,7 +116,7 @@
 
     "saveBulkCandidateFresherAssign": "/uat/assignments/saveBulkCandidate",
     "validateTokenAssignments": "/uat/assignments/validateTokenAssignments",
-    "getCandidatesFresherAssign": "/uat/assignments/getCandidates",
+    "getCandidatesFresherAssign": "/uat/assignments/getCandidates?{uid}",
     "sendAssignmentMail": "/uat/assignments/sendAssignmentMail",
     "uploadAssignments": "/uat/assignments/uploadAssignments",
     "downloadAssignments": "/uat/assignments/downloadAssignments",
