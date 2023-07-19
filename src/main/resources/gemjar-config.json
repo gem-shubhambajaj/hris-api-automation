@@ -120,7 +120,7 @@
 
     "saveBulkCandidateFresherAssign": "/uat/assignments/saveBulkCandidate",
     "validateTokenAssignments": "/uat/assignments/validateTokenAssignments",
-    "getCandidatesFresherAssign": "/uat/assignments/getCandidates",
+    "getCandidatesFresherAssign": "/uat/assignments/getCandidates?{uid}",
     "sendAssignmentMail": "/uat/assignments/sendAssignmentMail",
     "uploadAssignments": "/uat/assignments/uploadAssignments",
     "downloadAssignments": "/uat/assignments/downloadAssignments",

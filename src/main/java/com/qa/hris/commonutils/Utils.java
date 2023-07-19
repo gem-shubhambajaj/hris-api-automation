@@ -87,7 +87,7 @@ public class Utils extends GemjarTestngBase {
             }
             url += ProjectConfigData.getProperty(urlNameFromConfig);
             switch (urlNameFromConfig) {
-                case "deleteCandidate", "getCandidate", "tpoDetails" -> url = url.replace("{uid}", GlobalVariable.uid);
+                case "deleteCandidate", "getCandidate", "tpoDetails", "getCandidatesFresherAssign" -> url = url.replace("{uid}", GlobalVariable.uid);
                 case "getAllCandidateMaster" -> url = url.replace("{authToken}", GlobalVariable.token);
                 case "getMasterTableData" -> url = url.replace("{name}",GlobalVariable.masterName);
             }
@@ -197,7 +197,8 @@ public class Utils extends GemjarTestngBase {
                 case "uploadDocument":
                 case "sendBulkJoiningMail":
                 case "allDataUpdate":
-                case "updateFeedbackReminder":{
+                case "updateFeedbackReminder":
+                case "sendAssignmentMail": {
                     jsonString = jsonString.replace("{uid}", GlobalVariable.uid);
                     break;
                 }
@@ -205,7 +206,8 @@ public class Utils extends GemjarTestngBase {
                     jsonString = jsonString.replace("{uid}", GlobalVariable.uid);
                 }
                 case "save":
-                case "saveMasterTableData": {
+                case "saveMasterTableData":
+                case "uploadCandidateData": {
                     String sb = generateName();
                     String num = generatePhoneNumber();
                     jsonString = jsonString.replace("{name}", sb).replace("{email}", sb + "@gmail.com").replace("{number}", num);
@@ -251,6 +253,10 @@ public class Utils extends GemjarTestngBase {
                     String name = generateName();
                     jsonString = jsonString.replace("{name}",GlobalVariable.masterName).replace("{number}",phoneNumber).replace("{email}", GlobalVariable.masterName + "@gmail.com");
                     break;
+                }
+                case "uploadAssignments":
+                case "downloadAssignments": {
+                    jsonString = jsonString.replace("{uid}",GlobalVariable.id);
                 }
 
             }
