@@ -1,0 +1,481 @@
+{
+  "statusCode": "[200]",
+  "message": "Data Fetched",
+  "data": {
+    "statusCode": "[200]",
+    "message": "System Configuration Data Fetched Successfully",
+    "data": [
+      {
+        "mailCc": [
+          "akanksha.dubey@geminisolutions.com"         ],
+        "_id": "632b18ce484343306d0bbdaa",
+        "apiModule": "accountsdata-uat-reminderCron",
+        "__v": 0,
+        "cronSchedule": "cron(30 15 11 5 ? *)",
+        "dateOfTheMonth": "11",
+        "dayOfTheWeek": "",
+        "mailFrom": "colleague.connect@geminisolutions.com",
+        "monthOfTheYear": "5",
+        "reminderRate": "monthly",
+        "timeOfTheDay": "1530",
+        "status": [
+          {
+            "_id": "6432dbe5cb871d00089b5d28",
+            "updatedBy": "anshuman.singh@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com",
+                "anamika.malhotra@geminisolutions.com",
+                "anchal.sharma@geminisolutions.com"               ],
+              "_id": "6432dbe5cb871d00089b5d29",
+              "dayOfTheWeek": "3",
+              "timeOfTheDay": "2312",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "6433b978787e9a0008e5cc76",
+            "updatedBy": "anshuman.singh@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com",
+                "anamika.malhotra@geminisolutions.com",
+                "niharika.srivastava@geminisolutions.com",
+                "anchal.sharma@geminisolutions.com",
+                "nishant.sardana@geminisolutions.com"               ],
+              "_id": "6433b978787e9a0008e5cc77",
+              "dayOfTheWeek": "3",
+              "timeOfTheDay": "1500",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "64369cfcfa16df0008ad180b",
+            "updatedBy": "anshuman.singh@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "palak.aggarwal@geminisolutions.com",
+                "niharika.srivastava@geminisolutions.com"               ],
+              "_id": "64369cfcfa16df0008ad180c",
+              "dayOfTheWeek": "5",
+              "timeOfTheDay": "1500",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "6463448af413620008d3cda3",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "6463448af413620008d3cda4",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "64916c01a413bb0008fcc090",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "64916c01a413bb0008fcc091",
+              "dayOfTheWeek": "2",
+              "timeOfTheDay": "1437",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "64916c6aa413bb0008fcc0aa",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "64916c6aa413bb0008fcc0ab",
+              "dayOfTheWeek": "3",
+              "timeOfTheDay": "1439",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "6494319c73933d0008e4233f",
+            "updatedBy": "prateek.singh@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "6494319c73933d0008e42340",
+              "dayOfTheWeek": "3",
+              "timeOfTheDay": "1428",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "649561ecbd7bb50008a42f38",
+            "updatedBy": "krishan.pandey@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "649561ecbd7bb50008a42f39",
+              "dayOfTheWeek": "2",
+              "timeOfTheDay": "1428",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "64956223aca67200082b51ff",
+            "updatedBy": "krishan.pandey@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "64956223aca67200082b5200",
+              "dayOfTheWeek": "2",
+              "timeOfTheDay": "1428",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "64956298aca67200082b5229",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "64956298aca67200082b522a",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "6499d838034c3f000828f46f",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com",
+                "anchal.sharma@geminisolutions.com"               ],
+              "_id": "6499d838034c3f000828f470",
+              "dayOfTheWeek": "1",
+              "timeOfTheDay": "1002",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "6499d8ab034c3f000828f4a1",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com",
+                "anchal.sharma@geminisolutions.com"               ],
+              "_id": "6499d8ab034c3f000828f4a2",
+              "dayOfTheWeek": "7",
+              "timeOfTheDay": "0000",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "6499d9f8034c3f000828f4d7",
+            "updatedBy": "krishan.pandey@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "anchal.sharma@geminisolutions.com"               ],
+              "_id": "6499d9f8034c3f000828f4d8",
+              "dayOfTheWeek": "2",
+              "timeOfTheDay": "1028",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "649a65016939ef0008ff5654",
+            "updatedBy": "krishan.pandey@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com",
+                "anchal.sharma@geminisolutions.com"               ],
+              "_id": "649a65016939ef0008ff5655",
+              "dayOfTheWeek": "2",
+              "timeOfTheDay": "1028",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "649a659f6939ef0008ff5692",
+            "updatedBy": "krishan.pandey@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "anchal.sharma@geminisolutions.com"               ],
+              "_id": "649a659f6939ef0008ff5693",
+              "dayOfTheWeek": "2",
+              "timeOfTheDay": "1028",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "649a69476e84e7000878520c",
+            "updatedBy": "krishan.pandey@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com",
+                "anchal.sharma@geminisolutions.com"               ],
+              "_id": "649a69476e84e7000878520d",
+              "dayOfTheWeek": "2",
+              "timeOfTheDay": "1028",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "649a69dd6e84e70008785252",
+            "updatedBy": "krishan.pandey@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "anchal.sharma@geminisolutions.com"               ],
+              "_id": "649a69dd6e84e70008785253",
+              "dayOfTheWeek": "2",
+              "timeOfTheDay": "1028",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "649a6ff3af18df000854aaca",
+            "updatedBy": "krishan.pandey@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com",
+                "anchal.sharma@geminisolutions.com"               ],
+              "_id": "649a6ff3af18df000854aacb",
+              "dayOfTheWeek": "2",
+              "timeOfTheDay": "1028",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "649aa9db6c3fc2000898e8b2",
+            "updatedBy": "krishan.pandey@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "anchal.sharma@geminisolutions.com"               ],
+              "_id": "649aa9db6c3fc2000898e8b3",
+              "dayOfTheWeek": "2",
+              "timeOfTheDay": "1028",
+              "monthOfTheYear": "",
+              "dateOfTheMonth": ""             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "649ab0dc65c5bc00087e2f56",
+            "updatedBy": "krishan.pandey@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com",
+                "anchal.sharma@geminisolutions.com"               ],
+              "_id": "649ab0dc65c5bc00087e2f57",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "1",
+              "dateOfTheMonth": "19"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "649e7ae380730e00080aed33",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "649e7ae380730e00080aed34",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "649e7d5bded86a0008ead733",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "649e7d5bded86a0008ead734",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "649ea841e179310008de587c",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "649ea841e179310008de587d",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "649eab303a2bfc00087a3b37",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "649eab303a2bfc00087a3b38",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "649ec7b8dbf23e00080a04f7",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "649ec7b8dbf23e00080a04f8",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "64a3f781549e2000083973f3",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "64a3f781549e2000083973f4",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "64a4032e5ccadf0008338079",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "64a4032e5ccadf000833807a",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "64a511e6679b5d000869d1f1",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "64a511e6679b5d000869d1f2",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "64a515b19c46050009122d20",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "64a515b19c46050009122d21",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "64a516969c46050009122d9a",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "64a516969c46050009122d9b",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "64a5203248e6340008b3a563",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "64a5203248e6340008b3a564",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "64a5449faa03dd0008a47241",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "64a5449faa03dd0008a47242",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "64b1311cf3c7ba0008bbee5a",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "64b1311cf3c7ba0008bbee5b",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           },
+          {
+            "_id": "64b4d521525c7d0008e530e1",
+            "updatedBy": "shubham.bajaj@geminisolutions.com",
+            "change": {
+              "mailCc": [
+                "akanksha.dubey@geminisolutions.com"               ],
+              "_id": "64b4d521525c7d0008e530e2",
+              "dayOfTheWeek": "",
+              "timeOfTheDay": "1530",
+              "monthOfTheYear": "5",
+              "dateOfTheMonth": "11"             },
+            "updatedAt": "2023-07-17T05:44:01.314Z",
+            "createdAt": "2023-07-17T05:44:01.314Z"           }
+        ],
+        "updatedAt": "2023-07-17T05:44:01.314Z"       }
+    ]
+  }
+}

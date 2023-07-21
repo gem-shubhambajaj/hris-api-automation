@@ -1,0 +1,19 @@
+{
+  "screenId": "bc",
+  "data": [
+    {
+      "email": "saksham.khanna@geminisolutions.com",
+      "role": [
+        {
+          "name": "ROLE_ADMIN_CLEARANCE_ONLY",
+          "displayName": "ADMIN CLEARANCE ONLY"
+        }
+      ],
+      "name": "Saksham Khanna",
+      "department": "App Services",
+      "designation": "Software Engineer L2",
+      "team": "TechOps",
+      "status": []
+    }
+  ]
+}

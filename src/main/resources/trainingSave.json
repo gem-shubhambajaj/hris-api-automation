@@ -1,0 +1,63 @@
+{
+
+  "_id": "{uid}",
+
+  "email": "{name}@geminisolutions.com",
+
+  "name": "{name}",
+
+  "empCode": "",
+
+  "screenId": "tf",
+
+  "feedback": {
+
+    "technicalSupport": "Strongly Agree",
+
+    "wasContentRelevant": "Yes",
+
+    "difficultyLevel": "9",
+
+    "wasTimeSufficient": "Yes",
+
+    "additionalResouces": "No",
+
+    "traineeAssesmetTest": {
+
+      "rating": "No",
+
+      "comment": ""
+
+    },
+
+    "questionIrrelevant": "yes",
+
+    "preMaterialProvided": "yes",
+
+    "preTrainingPrep": "good ",
+
+    "particpantsEnagagement": "yes",
+
+    "interactivityFromParticipants": "Yes",
+
+    "anyExternalDistraction": {
+
+      "rating": "Yes",
+
+      "comment": "ddddddd"
+
+    },
+
+    "participantsQueries": "yes",
+
+    "courseContentChallenging": "yes",
+
+    "obstaclesInTraining": "dddd",
+
+    "improvementPreTrainingPhase": "ddddd",
+
+    "questionQualityByParticipants": "9"
+
+  }
+
+}

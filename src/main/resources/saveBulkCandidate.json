@@ -1,0 +1,16 @@
+{
+  "collegeName": "new clg",
+  "otherCollege": "new clg",
+  "dateOfJoining": "2023-07-06",
+  "participents": [
+    {
+      "name": "new can",
+      "roll_no": 233344,
+      "phoneNumber": "8765433344",
+      "email": "prat@mail.com",
+      "entryType": "BTech",
+      "isBA": false,
+      "isBTech": true
+    }
+  ]
+}

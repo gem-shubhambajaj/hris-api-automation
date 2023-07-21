@@ -1,0 +1,8 @@
+{
+  "mobile1": "{number}",
+  "_id": "{uid}",
+  "fullName": "{name}",
+  "candidateUId": "ABCD",
+  "countryCode1": "+91",
+  "personalEmail": "{email}"
+}

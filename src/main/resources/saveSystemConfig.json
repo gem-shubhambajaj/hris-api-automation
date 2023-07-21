@@ -1,0 +1,12 @@
+{
+  "reminderRate": "monthly",
+  "monthOfTheYear": "5",
+  "dateOfTheMonth": "11",
+  "timeOfTheDay": "",
+  "dayOfTheWeek": "",
+  "mailFrom": "colleague.connect@geminisolutions.com",
+  "mailCc": [
+    "akanksha.dubey@geminisolutions.com"
+  ],
+  "apiModule": "accountsdata-reminderCron"
+}

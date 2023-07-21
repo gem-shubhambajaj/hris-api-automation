@@ -1,0 +1,8 @@
+{
+  "sId": "uc",
+  "newBody": "<!DOCTYPE html>\n<html>\n<head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n .ac{\n   background-color: teal;\n  color: white; \n  border-radius:5px;\n  margin-left:30%;\n  padding: 14px 25px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n}\n</style>\n</head>\n<body>\n    <div>\n        <p>\n            Dear {{ecChairName}}, <br><br>\n            Greetings of the day!\n            <br><br>\n\n            {{candidateFullName}} for {{profile}} is expected to join us on {{doj}}.\n            Please assign an EC Mentor and provide laptop details for {{him}}, in order to proceed with\n            {{his}} joining formalities.\n        </p>\n        <br>\n         <a class=\"ac\" style=\"text-decoration: none\" href=\"{{link}}\">\n      Assign EC Mentor\n        </a>\n   <p>Please click on the below link<br><a href=\"{{link}}\">{{link}}</a></p>\n     <p>\n            <b>Regards,</b><br>\n            <b>Onboarding Team</b>\n        </p>\n    </div>\n</body>\n</html>",
+  "name": "rmmail",
+  "module": "onboarding",
+  "screenId": "abl",
+  "attachments": []
+}

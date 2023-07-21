@@ -1,0 +1,49 @@
+{
+  "candidateDetails": {
+    "designation": {
+      "designationName": "GET",
+      "designationId": 2,
+      "designationGroupId": "1",
+      "designationGroupName": "Technical"
+    },
+    "location": {
+      "locationId": 7,
+      "locationName": "Canaan Tower"
+    },
+    "gender": {
+      "genderId": 1,
+      "genderType": "Male"
+    },
+    "role": {
+      "roleId": "5",
+      "roleName": "Trainee"
+    },
+    "doj": "2023-07-12",
+    "email": "{email}",
+    "name": {
+      "fullName": "{name}"
+    },
+    "offerDate": "2023-07-05",
+    "primaryContactNumber": "{number}",
+    "professionalExperience": "l",
+    "profile": "QA",
+    "profileStakeholder": {
+      "name": "Anil Pahal",
+      "email": "anil.pahal@geminisolutions.com"
+    },
+    "skipTraining": "true",
+    "trainingDuration": 0,
+    "noOfCompanyWorkedWith": 10
+  },
+  "hrSpokes": {
+    "name": "Akanksha Dubey",
+    "email": "akanksha.dubey@geminisolutions.com"
+  },
+  "source": {
+    "sourceName": "LinkedIn",
+    "campusName": "",
+    "campusLocation": ""
+  },
+  "currentScreenId": "sol",
+  "candidateId": null
+}

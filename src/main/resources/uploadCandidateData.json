@@ -1,0 +1,16 @@
+{
+  "collegeName": "{name}",
+  "otherCollege": "{name}",
+  "dateOfJoining": "2023-07-27",
+  "participents": [
+    {
+      "name": "{name}",
+      "roll_no": "{number}",
+      "phoneNumber": "{number}",
+      "email": "{email}",
+      "entryType": "BTech",
+      "isBA": false,
+      "isBTech": true
+    }
+  ]
+}

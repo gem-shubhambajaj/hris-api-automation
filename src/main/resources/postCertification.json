@@ -1,0 +1,22 @@
+{
+  "resource": {
+    "name": "Abc",
+    "email": "shubham.bajaj@geminisolutions.com"
+  },
+  "department": {
+    "name": "Application Development"
+  },
+  "team": {
+    "name": "Digital"
+  },
+  "certification": {
+    "name": "Selenium Testing",
+    "classification": "Technical",
+    "technology": "Illustrator",
+    "provider": "Gemini",
+    "completionDate": "20230701",
+    "validthrough": "",
+    "certificateLink": "c51bf45e-8ffe-4337-a7b2-7aa8f0b2c786Document3.pdf"
+  },
+  "designation": "Senior Software Engineer L2"
+}
