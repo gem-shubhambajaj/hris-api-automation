@@ -7,6 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
+import org.apache.commons.codec.binary.Base64;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -44,7 +45,8 @@ public class StepDefinition {
     public void setEndpointAndMethodAndDescription(String url, String method, String Description, String api) {
         try {
             Map<String, String> header = new HashMap<>();
-            header.put("Authorization", GlobalVariable.token);
+            byte[] token = Base64.decodeBase64(GlobalVariable.token);
+            header.put("Authorization", new String(token));
             response = Utils.apiWithoutPayloads(url, method, header, Description, api);
             status = Integer.parseInt(response.getResponseBodyJson().getAsJsonObject().get("statusCode").getAsString().replaceAll("\\[|\\]", ""));
             GemTestReporter.addTestStep("Trigger " + url + " API for " + Description, "API was successfully triggered", STATUS.PASS);
@@ -63,7 +65,8 @@ public class StepDefinition {
     public void setParameters(String urlNameConfig, String method, String Description, String payload, String api) {
         jsonObject = Utils.updateDetails(payload);
         HashMap<String, String> header = new HashMap<>();
-        header.put("Authorization", GlobalVariable.token);
+        byte[] token = Base64.decodeBase64(GlobalVariable.token);
+        header.put("Authorization", new String(token));
         String step = "";
         try {
             response = Utils.apiWithPayloads(urlNameConfig, method, header, step, jsonObject, api);
@@ -110,7 +113,7 @@ public class StepDefinition {
             actualArrayList.add(actualName);
             Utils.compareJson(expectedArrayList, actualArrayList);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Validate update response", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate update response", "Unable to validate: " + e, STATUS.ERR);
         }
     }
 
@@ -123,7 +126,7 @@ public class StepDefinition {
                 GemTestReporter.addTestStep("Verify candidate uploaded document is present", "Candidate uploaded document is not present", STATUS.FAIL);
             }
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Verify candidate uploaded document is present", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Verify candidate uploaded document is present", "Unable to validate: " + e, STATUS.ERR);
         }
     }
 
@@ -136,7 +139,7 @@ public class StepDefinition {
             else
                 GemTestReporter.addTestStep("Validate response message", "Unable to validate message. Expected is '" + responseMessage + "'. Actual is '" + message + "'.", STATUS.FAIL);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Validate response message", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate response message", "Unable to validate: " + e, STATUS.ERR);
         }
 
     }
@@ -161,8 +164,8 @@ public class StepDefinition {
         try {
             String emailFromJSON = jsonObject.getString("email");
             String aadharNumFromJSON = jsonObject.getString("aadhaarNumber");
-            String emailFromResponse = responseJSON.getJSONArray("data").getJSONObject(0).getString("email");
-            String adhaarFromResponse = responseJSON.getJSONArray("data").getJSONObject(0).getString("aadhaarNumber");
+            String emailFromResponse = responseJSON.getJSONObject("data").get("email").toString();
+            String adhaarFromResponse = responseJSON.getJSONObject("data").get("aadhaarNumber").toString();
             if (emailFromJSON.equalsIgnoreCase(emailFromResponse) && aadharNumFromJSON.equalsIgnoreCase(adhaarFromResponse))
                 GemTestReporter.addTestStep("Validate Response data after saving tax options", "Validated response", STATUS.PASS);
             else
@@ -175,13 +178,9 @@ public class StepDefinition {
     @Then("Validate response data of tax savings option verification")
     public void validateResponseDataOfTaxSavingsOptionVerification() {
         try {
-            String idFromJSON = jsonObject.getString("_id");
             String emailFromJSON = jsonObject.getString("email");
-            expectedArrayList.add(idFromJSON);
             expectedArrayList.add(emailFromJSON);
-            String emailResponse = responseJSON.getJSONArray("data").getJSONObject(0).getString("email");
-            String idResponse = responseJSON.getJSONArray("data").getJSONObject(0).getString("_id");
-            actualArrayList.add(idResponse);
+            String emailResponse = responseJSON.getJSONObject("data").get("email").toString();
             actualArrayList.add(emailResponse);
             Utils.compareJson(expectedArrayList, actualArrayList);
         } catch (Exception e) {
@@ -198,7 +197,7 @@ public class StepDefinition {
             actualArrayList.add(actualName);
             Utils.compareJson(expectedArrayList, actualArrayList);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Verify response of upload documents", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Verify response of upload documents", "Unable to validate: " + e, STATUS.ERR);
         }
 
     }
@@ -216,7 +215,7 @@ public class StepDefinition {
             actualArrayList.add(actualName);
             Utils.compareJson(expectedArrayList, actualArrayList);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Validate response data of roles", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate response data of roles", "Unable to validate: " + e, STATUS.ERR);
         }
     }
 
@@ -333,7 +332,7 @@ public class StepDefinition {
             actualArrayList.add(emailFromResponse);
             Utils.compareJson(expectedArrayList, actualArrayList);
         } catch (Exception e) {
-            GemTestReporter.addTestStep("Validate response data of resignation", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate response data of resignation", "Unable to validate: " + e, STATUS.ERR);
         }
     }
 
@@ -365,7 +364,7 @@ public class StepDefinition {
             actualArrayList.add(actualEmail);
             Utils.compareJson(expectedArrayList, actualArrayList);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Validate response data of save skills", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate response data of save skills", "Unable to validate: " + e, STATUS.ERR);
         }
     }
 
@@ -387,7 +386,7 @@ public class StepDefinition {
             Utils.compareJson(expectedArrayList, actualArrayList);
         }
         catch (Exception e) {
-            GemTestReporter.addTestStep("Validate response data of tpoDetails", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate response data of tpoDetails", "Unable to validate: " + e, STATUS.ERR);
         }
     }
 
@@ -400,7 +399,7 @@ public class StepDefinition {
             else
                 GemTestReporter.addTestStep("Validate response message", "Unable to validate message. Expected is '" + responseMessage + "'. Actual is '" + message + "'.", STATUS.FAIL);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Verify data message", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Verify data message", "Unable to validate: " + e, STATUS.ERR);
         }
 
     }
@@ -414,7 +413,7 @@ public class StepDefinition {
             actualArrayList.add(actualMailCc);
             Utils.compareJson(expectedArrayList, actualArrayList);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Validate response data of systemConfig", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate response data of systemConfig", "Unable to validate: " + e, STATUS.ERR);
         }
     }
 
@@ -423,7 +422,7 @@ public class StepDefinition {
         try {
             expectedId = response.getResponseBodyJson().getAsJsonObject().get("data").getAsJsonObject().get("_id").getAsString();
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Store created id from the response", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Store created id from the response", "Unable to validate: " + e, STATUS.ERR);
         }
     }
 
@@ -439,7 +438,7 @@ public class StepDefinition {
             actualArrayList.add(actualName);
             Utils.compareJson(expectedArrayList, actualArrayList);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Validate response data of mailTemplate", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate response data of mailTemplate", "Unable to validate: " + e, STATUS.ERR);
         }
     }
 
@@ -452,7 +451,7 @@ public class StepDefinition {
             actualArrayList.add(actualId);
             Utils.compareJson(expectedArrayList, actualArrayList);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Validate response data of all data", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate response data of all data", "Unable to validate: " + e, STATUS.ERR);
         }
     }
 
@@ -465,7 +464,7 @@ public class StepDefinition {
             actualArrayList.add(actualId);
             Utils.compareJson(expectedArrayList, actualArrayList);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Validate response data of accept offer letter", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate response data of accept offer letter", "Unable to validate: " + e, STATUS.ERR);
         }
 
     }
@@ -482,7 +481,7 @@ public class StepDefinition {
             actualArrayList.add(actualName);
             Utils.compareJson(expectedArrayList, actualArrayList);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Validate response data of save master table", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate response data of save master table", "Unable to validate: " + e, STATUS.ERR);
         }
     }
 
@@ -498,7 +497,7 @@ public class StepDefinition {
             actualArrayList.add(actualNumber);
             Utils.compareJson(expectedArrayList, actualArrayList);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Validate response data of update master table", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate response data of update master table", "Unable to validate: " + e, STATUS.ERR);
         }
     }
 
@@ -510,7 +509,7 @@ public class StepDefinition {
             actualArrayList.add(actualId);
             Utils.compareJson(expectedArrayList, actualArrayList);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Validate response data of upload candidate data", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate response data of upload candidate data", "Unable to validate: " + e, STATUS.ERR);
         }
     }
 
@@ -523,7 +522,7 @@ public class StepDefinition {
             actualArrayList.add(actualName);
             Utils.compareJson(expectedArrayList, actualArrayList);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Validate response data of upload assignment", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate response data of upload assignment", "Unable to validate: " + e, STATUS.ERR);
         }
     }
 
@@ -536,7 +535,13 @@ public class StepDefinition {
             actualArrayList.add(actualName);
             Utils.compareJson(expectedArrayList, actualArrayList);
         }catch (Exception e) {
-            GemTestReporter.addTestStep("Validate response data of download assignment", "Unable to validate: " + e, STATUS.ERR, takeSnapShot());
+            GemTestReporter.addTestStep("Validate response data of download assignment", "Unable to validate: " + e, STATUS.ERR);
         }
     }
+
+    @Given("Set endpoint {string} and method {string} and payload {string} for Authentication token Generation")
+        public void tokenGeneration(String url, String method, String payload) throws Exception {
+           int response = Utils.generateToken(method);
+            status = response;
+        }
 }

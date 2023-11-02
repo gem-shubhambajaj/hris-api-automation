@@ -1,3 +1,4 @@
+@reg
 Feature: HRIS Automation
 
   Background: Login Dashboard Authentication

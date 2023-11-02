@@ -1,0 +1,6 @@
+{
+  "client_id" : "0a58a246-e3d0-434b-b4d6-d0bc1a2c645b",
+  "scope": "api://0a58a246-e3d0-434b-b4d6-d0bc1a2c645b/.default",
+  "client_secret": "pvS8Q~sZ4FB~CwdatuyWsYm8fzyt9pXtFpLeYatS",
+  "grant_type": "client_credentials"
+}

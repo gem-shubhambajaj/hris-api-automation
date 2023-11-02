@@ -3,12 +3,13 @@
   "project_name": "HRIS",
   "report_name": "HRIS-API-Regression",
   "entry_point": "https://apis.gemecosystem.com/enter-point",
-  "jewel_user": "shubham.bajaj",
+  "jewel_user": "krishan.pandey",
   "sub_id": "test_id",
-  "jewel_bridge_token": "f88bc18b-e9b3-4bf4-961e-dc6fd38f203a1686037386787",
+  "email_report": "N",
+  "jewel_bridge_token": "f2a155b2-7256-459b-9aec-1aeea01c83d91683881147328",
   "glueCode":"com.qa.hris.stepdefinitions",
-  "email_to": "shubham.bajaj@geminisolutions.com",
   "beta": {
+    "tokenApi": "https://login.microsoftonline.com/b9806c7d-9280-4e44-afea-6dc0ff495c2f/oauth2/v2.0/token",
     "postApi": "https://1cpiy4gcuf.execute-api.ap-south-1.amazonaws.com/uat/users/auth",
     "masterTableApi": "https://j3b5pu2uol.execute-api.ap-south-1.amazonaws.com/uat",
     "addNew": "/uat/users/addnew",
@@ -125,7 +126,6 @@
     "uploadAssignments": "/uat/assignments/uploadAssignments",
     "downloadAssignments": "/uat/assignments/downloadAssignments",
     "validateTokenFresherAssign": "/uat/assignments/validateTokenAssignments",
-
     "userAuth": "/uat/users/auth",
     "postCertification": "/uat/certifications?newSchema=true",
     "createCertificationType": "/uat/certificationsType",
@@ -146,6 +146,5 @@
     "getCertificationMailStatus": "/uat/certifications/getCertificationsStatus",
     "updateCertification": "/uat/certifications?newSchema=true",
     "deleteCertificate": "/uat/certifications/delete?newSchema=true"
-
   }
 }

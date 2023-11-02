@@ -1,3 +1,4 @@
+@reg
 Feature: HRIS-API
 
   Background: Login Dashboard Authentication
